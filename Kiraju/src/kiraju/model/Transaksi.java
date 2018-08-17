@@ -18,21 +18,31 @@ public class Transaksi  implements java.io.Serializable {
      private Date dtEnd;
      private Integer total;
      private Short status;
-     private Set<Pesan> pesan = new HashSet<Pesan>(0);
+     private Set<Pesan> pesan = new HashSet<>(0);
      private String namaPemesan;
      private Users userStart;
      private Users userEnd;
      private Date endDtOnly;
      private Date endTimeOnly;
+     private MetodePembayaran metodePembayaranId;
+     private Pelanggan pelangganId;
+     private Diskon diskonId;
+     private Pajak pajakId;
+     private Integer diskonTotal;
+     private Integer pajakTotal;
+     private Integer modalTotal;
 
     public Transaksi() {
     }
+    
+    public Transaksi(int id) {
+        this.id = id;
+    }
 
-    public Transaksi(Meja mejaId, Date dtStart, Date dtEnd, Integer total, Short status, Set<Pesan> pesan, String namaPemesan, Users userStart, Users userEnd, Date endDtOnly, Date endTimeOnly) {
+    public Transaksi(Meja mejaId, Date dtStart, Date dtEnd, Short status, Set<Pesan> pesan, String namaPemesan, Users userStart, Users userEnd, Date endDtOnly, Date endTimeOnly, MetodePembayaran metodePembayaranId) {
        this.mejaId = mejaId;
        this.dtStart = dtStart;
        this.dtEnd = dtEnd;
-       this.total = total;
        this.status = status;
        this.pesan = pesan;
        this.namaPemesan = namaPemesan;
@@ -40,6 +50,7 @@ public class Transaksi  implements java.io.Serializable {
        this.userEnd = userEnd;
        this.endDtOnly = endDtOnly;
        this.endTimeOnly = endTimeOnly;
+       this.metodePembayaranId = metodePembayaranId;
     }
    
     public int getId() {
@@ -125,6 +136,62 @@ public class Transaksi  implements java.io.Serializable {
     
     public void setEndTimeOnly(Date endTimeOnly) {
         this.endTimeOnly = endTimeOnly;
+    }
+
+    public MetodePembayaran getMetodePembayaranId() {
+        return metodePembayaranId;
+    }
+
+    public void setMetodePembayaranId(MetodePembayaran metodePembayaranId) {
+        this.metodePembayaranId = metodePembayaranId;
+    }
+
+    public Pelanggan getPelangganId() {
+        return pelangganId;
+    }
+
+    public void setPelangganId(Pelanggan pelangganId) {
+        this.pelangganId = pelangganId;
+    }
+
+    public Diskon getDiskonId() {
+        return diskonId;
+    }
+
+    public void setDiskonId(Diskon diskonId) {
+        this.diskonId = diskonId;
+    }
+
+    public Pajak getPajakId() {
+        return pajakId;
+    }
+
+    public void setPajakId(Pajak pajakId) {
+        this.pajakId = pajakId;
+    }
+
+    public Integer getDiskonTotal() {
+        return diskonTotal;
+    }
+
+    public void setDiskonTotal(Integer diskonTotal) {
+        this.diskonTotal = diskonTotal;
+    }
+
+    public Integer getPajakTotal() {
+        return pajakTotal;
+    }
+
+    public void setPajakTotal(Integer pajakTotal) {
+        this.pajakTotal = pajakTotal;
+    }
+
+    public Integer getModalTotal() {
+        return modalTotal;
+    }
+
+    public void setModalTotal(Integer modalTotal) {
+        this.modalTotal = modalTotal;
     }
 
 

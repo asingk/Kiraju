@@ -11,20 +11,24 @@ public class Pesan  implements java.io.Serializable {
 
      private int id;
      private Transaksi transaksiId;
-     private Menu menuId;
-     private Short jumlah;
+//     private MenuItem menuItemId;
+     private Integer jumlah;
+     private Integer modal;
+     private Integer untung;
+     private Integer tambahan;
+     private MenuItem menuItemCode;
 
     public Pesan() {
     }
 
 	
-    public Pesan(Transaksi transaksiId, Menu menuId) {
+    public Pesan(Transaksi transaksiId) {
         this.transaksiId = transaksiId;
-        this.menuId = menuId;
+//        this.menuItemId = menuItemId;
     }
-    public Pesan(Transaksi transaksiId, Menu menuId, Short jumlah) {
+    public Pesan(Transaksi transaksiId, Integer jumlah) {
        this.transaksiId = transaksiId;
-       this.menuId = menuId;
+//       this.menuItemId = menuItemId;
        this.jumlah = jumlah;
     }
    
@@ -42,19 +46,51 @@ public class Pesan  implements java.io.Serializable {
     public void setTransaksiId(Transaksi transaksiId) {
         this.transaksiId = transaksiId;
     }
-    public Menu getMenuId() {
-        return this.menuId;
-    }
-    
-    public void setMenuId(Menu menuId) {
-        this.menuId = menuId;
-    }
-    public Short getJumlah() {
+//    public MenuItem getMenuItemId() {
+//        return this.menuItemId;
+//    }
+//    
+//    public void setMenuItemId(MenuItem menuItemId) {
+//        this.menuItemId = menuItemId;
+//    }
+    public Integer getJumlah() {
         return this.jumlah;
     }
     
-    public void setJumlah(Short jumlah) {
+    public void setJumlah(Integer jumlah) {
         this.jumlah = jumlah;
+    }
+
+    public Integer getModal() {
+        return modal;
+    }
+
+    public void setModal(Integer modal) {
+        this.modal = modal;
+    }
+
+    public Integer getUntung() {
+        return untung;
+    }
+
+    public void setUntung(Integer untung) {
+        this.untung = untung;
+    }
+
+    public Integer getTambahan() {
+        return tambahan;
+    }
+
+    public void setTambahan(Integer tambahan) {
+        this.tambahan = tambahan;
+    }
+
+    public MenuItem getMenuItemCode() {
+        return menuItemCode;
+    }
+
+    public void setMenuItemCode(MenuItem menuItemCode) {
+        this.menuItemCode = menuItemCode;
     }
 
 

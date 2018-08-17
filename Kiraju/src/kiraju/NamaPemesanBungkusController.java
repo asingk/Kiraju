@@ -12,8 +12,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import kiraju.interfaces.ITransaksi;
 import kiraju.implement.TransaksiModel;
+import kiraju.interfaces.ITransaksi;
 import kiraju.model.Users;
 
 /**
@@ -36,7 +36,7 @@ public class NamaPemesanBungkusController implements Initializable {
     
     @FXML
     private void simpanBtn(ActionEvent actionEvent) {
-        id = iTransaksi.insertByNama(namaPemesanTF.getText(), loginUser.getId());
+//        id = iTransaksi.insertByNama(namaPemesanTF.getText(), loginUser.getId());
         okClicked = true;
         dialogStage.close();
     }

@@ -1,23 +1,31 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated May 18, 2017 12:05:48 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="kiraju.model.Pesan" table="PESAN" schema="APP">
-        <id name="id" type="int">
-            <column name="ID" />
-            <generator class="increment">
-                <param name="schema">APP</param>
-            </generator>
-        </id>
-        <many-to-one name="transaksiId" class="kiraju.model.Transaksi">
-            <column name="TRANSAKSI_ID" not-null="true" />
-        </many-to-one>
-        <many-to-one name="menuId" class="kiraju.model.Menu">
-            <column name="MENU_ID" not-null="true" />
-        </many-to-one>
-        <property name="jumlah" type="java.lang.Short">
-            <column name="JUMLAH" />
-        </property>
-    </class>
+  <class name="kiraju.model.Pesan" schema="APP" table="PESAN">
+    <id name="id" type="int">
+      <column name="ID"/>
+      <generator class="increment">
+        <param name="schema">APP</param>
+      </generator>
+    </id>
+    <many-to-one class="kiraju.model.Transaksi" name="transaksiId">
+      <column name="TRANSAKSI_ID" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="kiraju.model.MenuItem" name="menuItemCode">
+      <column name="MENU_ITEM_CODE" not-null="true"/>
+    </many-to-one>
+    <property name="jumlah" type="java.lang.Integer">
+      <column name="JUMLAH"/>
+    </property>
+    <property name="modal" type="java.lang.Integer">
+      <column name="MODAL"/>
+    </property>
+    <property name="untung" type="java.lang.Integer">
+      <column name="UNTUNG"/>
+    </property>
+    <property name="tambahan" type="java.lang.Integer">
+      <column name="TAMBAHAN"/>
+    </property>
+  </class>
 </hibernate-mapping>

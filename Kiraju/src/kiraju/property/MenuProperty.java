@@ -29,19 +29,24 @@ public class MenuProperty {
     private final ObjectProperty<Date> updatedDate = new SimpleObjectProperty<>();
     private final IntegerProperty jenisId = new SimpleIntegerProperty();
     private final StringProperty jenisNama = new SimpleStringProperty();
-    private StringProperty deletedFlag = new SimpleStringProperty();
+//    private final StringProperty deletedFlag = new SimpleStringProperty();
+    
+    //Arvit@20170830-Retail Version
+//    private final StringProperty code = new SimpleStringProperty();
+//    private final StringProperty jenisCode = new SimpleStringProperty();
+    private final StringProperty status = new SimpleStringProperty();
 
     /**
      * @return the id
      */
-    public short getId() {
-        return (short) id.get();
+    public int getId() {
+        return id.get();
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(short id) {
+    public void setId(int id) {
         this.id.set(id);
     }
     
@@ -112,14 +117,14 @@ public class MenuProperty {
     /**
      * @return the jenisId
      */
-    public short getJenisId() {
-        return (short) jenisId.get();
+    public int getJenisId() {
+        return jenisId.get();
     }
 
     /**
      * @param jenisId the jenisId to set
      */
-    public void setJenisId(short jenisId) {
+    public void setJenisId(int jenisId) {
         this.jenisId.set(jenisId);
     }
     
@@ -145,17 +150,53 @@ public class MenuProperty {
         return jenisNama;
     }
 
-    public short getDeletedFlag() {
-        return deletedFlag.get().equalsIgnoreCase("Aktif") ? (short) 0 : (short) 1;
+//    public short getDeletedFlag() {
+//        return deletedFlag.get().equalsIgnoreCase("Aktif") ? (short) 0 : (short) 1;
+//    }
+//
+//    public void setDeletedFlag(short deletedFlag) {
+//        String status = deletedFlag == 0 ? "Aktif" : "Tidak Aktif";
+//        this.deletedFlag.set(status);
+//    }
+//    
+//    public StringProperty deletedFlagProperty() {
+//        return deletedFlag;
+//    }
+//
+//    public String getCode() {
+//        return code.get();
+//    }
+//
+//    public void setCode(String cd) {
+//        this.code.set(cd);
+//    }
+//    
+//    public StringProperty codeProperty() {
+//        return code;
+//    }
+//
+//    public String getJenisCode() {
+//        return jenisCode.get();
+//    }
+//
+//    public void setJenisCode(String jenisCode) {
+//        this.jenisCode.set(jenisCode);
+//    }
+//    
+//    public StringProperty jenisCodeProperty() {
+//        return jenisCode;
+//    }
+    public Boolean getStatus() {
+        Boolean statusBoolean = status.get().equalsIgnoreCase("Ya") ? Boolean.TRUE : Boolean.FALSE;
+        return statusBoolean;
     }
 
-    public void setDeletedFlag(short deletedFlag) {
-        String status = deletedFlag == 0 ? "Aktif" : "Tidak Aktif";
-        this.deletedFlag.set(status);
+    public void setStatus(Boolean status) {
+        String statusString = status ? "Ya" : "Tidak";
+        this.status.set(statusString);
     }
     
-    public StringProperty deletedFlagProperty() {
-        return deletedFlag;
+    public StringProperty statusProperty() {
+        return status;
     }
-    
 }

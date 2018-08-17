@@ -10,31 +10,30 @@ import java.util.Date;
 public class Menu  implements java.io.Serializable {
 
 
-     private short id;
+     private int id;
      private String nama;
-     private Integer harga;
+//     private Integer harga;
      private Date createdDt;
      private Date updatedDt;
-     private JenisMenu jenis;
-     private Short deletedFlag;
+     private JenisMenu jenisMenuId;
+//     private Short deletedFlag;
+//     private String code;
+     
+     //v2
+     private Boolean status;
 
     public Menu() {
     }
-
-    public Menu(String nama, Integer harga, Date createdDt, Date updatedDt, JenisMenu jenis, Short deletedFlag) {
-       this.nama = nama;
-       this.harga = harga;
-       this.createdDt = createdDt;
-       this.updatedDt = updatedDt;
-       this.jenis = jenis;
-       this.deletedFlag = deletedFlag;
+    
+    public Menu(int id) {
+        this.id = id;
     }
    
-    public short getId() {
+    public int getId() {
         return this.id;
     }
     
-    public void setId(short id) {
+    public void setId(int id) {
         this.id = id;
     }
     public String getNama() {
@@ -44,13 +43,13 @@ public class Menu  implements java.io.Serializable {
     public void setNama(String nama) {
         this.nama = nama;
     }
-    public Integer getHarga() {
-        return this.harga;
-    }
-    
-    public void setHarga(Integer harga) {
-        this.harga = harga;
-    }
+//    public Integer getHarga() {
+//        return this.harga;
+//    }
+//    
+//    public void setHarga(Integer harga) {
+//        this.harga = harga;
+//    }
     public Date getCreatedDt() {
         return this.createdDt;
     }
@@ -65,19 +64,43 @@ public class Menu  implements java.io.Serializable {
     public void setUpdatedDt(Date updatedDt) {
         this.updatedDt = updatedDt;
     }
-    public JenisMenu getJenis() {
-        return this.jenis;
+//    public JenisMenu getJenis() {
+//        return this.jenisMenuId;
+//    }
+//    
+//    public void setJenis(JenisMenu jenis) {
+//        this.jenisMenuId = jenis;
+//    }
+//    public Short getDeletedFlag() {
+//        return this.deletedFlag;
+//    }
+//    
+//    public void setDeletedFlag(Short deletedFlag) {
+//        this.deletedFlag = deletedFlag;
+//    }
+//
+//    public String getCode() {
+//        return code;
+//    }
+//
+//    public void setCode(String code) {
+//        this.code = code;
+//    }
+
+    public Boolean getStatus() {
+        return status;
     }
-    
-    public void setJenis(JenisMenu jenis) {
-        this.jenis = jenis;
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
-    public Short getDeletedFlag() {
-        return this.deletedFlag;
+
+    public JenisMenu getJenisMenuId() {
+        return jenisMenuId;
     }
-    
-    public void setDeletedFlag(Short deletedFlag) {
-        this.deletedFlag = deletedFlag;
+
+    public void setJenisMenuId(JenisMenu jenisMenuId) {
+        this.jenisMenuId = jenisMenuId;
     }
 
 

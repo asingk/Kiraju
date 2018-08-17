@@ -1,20 +1,25 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated May 18, 2017 12:05:48 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="kiraju.model.JenisMenu" table="JENIS_MENU" schema="APP">
-        <id name="id" type="short">
-            <column name="ID" />
-            <generator class="increment">
-                <param name="schema">APP</param>
-            </generator>
-        </id>
-        <property name="nama" type="string">
-            <column name="NAMA" length="50" />
-        </property>
-        <property name="deletedFlag" type="java.lang.Short">
-            <column name="DELETED_FLAG" />
-        </property>
-    </class>
+  <class name="kiraju.model.JenisMenu" schema="APP" table="JENIS_MENU">
+    <id name="id" type="int">
+      <column name="ID"/>
+      <generator class="increment">
+        <param name="schema">APP</param>
+      </generator>
+    </id>
+    <property name="nama" type="string">
+      <column length="50" name="NAMA"/>
+    </property>
+<!--    <property name="deletedFlag" type="java.lang.Short">
+      <column name="DELETED_FLAG"/>
+    </property>
+    <property name="code" type="string">
+      <column length="20" name="CODE"/>
+    </property>-->
+    <property name="status" type="java.lang.Boolean">
+        <column name="STATUS" />
+    </property>
+  </class>
 </hibernate-mapping>

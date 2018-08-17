@@ -7,7 +7,10 @@ package kiraju.interfaces;
 
 import java.util.List;
 import javafx.collections.ObservableList;
+import kiraju.model.MenuItem;
+import kiraju.model.Pelanggan;
 import kiraju.model.Pesan;
+import kiraju.model.Transaksi;
 import kiraju.property.PesanProperty;
 
 /**
@@ -16,8 +19,13 @@ import kiraju.property.PesanProperty;
  */
 public interface IPesan {
     List<Pesan> getAll();
-    int insert(PesanProperty pesanProperty);
-    void update(PesanProperty pesanProperty);
+    int insert(Pesan pesan);
+    void update(Pesan pesan);
     ObservableList<PesanProperty> getDetailByTransaksiId(int transaksiId);
     void deleteByTransaksiId(int transaksiId);
+//    void insertAll(List<PesanProperty> pesanPropList, int transaksiId);
+//    void deleteByMenuIdAndTransaksiId(int transaksiId, int menuId);
+    void deleteById(Pesan pesan);
+    List<Pesan> getPieChartByPelanggan(Pelanggan pelanggan);
+    List<Object[]> getByMenuItemAndTransaksi(MenuItem menuItem, Transaksi transaksi);
 }

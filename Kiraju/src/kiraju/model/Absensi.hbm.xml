@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 6, 2017 3:02:35 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="kiraju.model.Absensi" table="ABSENSI" schema="APP" optimistic-lock="version" dynamic-update="true">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="increment">
+                <param name="schema">APP</param>
+            </generator>
+        </id>
+<!--        <property name="userId" type="java.lang.Short">
+            <column name="USER_ID" />
+        </property>-->
+        <many-to-one name="userId" class="kiraju.model.Users">
+            <column name="USER_ID" />
+        </many-to-one>
+        <property name="masuk" type="timestamp">
+            <column name="MASUK" length="29" />
+        </property>
+        <property name="keluar" type="timestamp">
+            <column name="KELUAR" length="29" />
+        </property>
+        <property name="total" type="time">
+            <column name="TOTAL" length="8" />
+        </property>
+    </class>
+</hibernate-mapping>

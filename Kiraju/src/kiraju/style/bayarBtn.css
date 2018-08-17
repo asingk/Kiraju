@@ -10,12 +10,15 @@ and open the template in the editor.
 
 .button{
     -fx-background-color: #00e676;
-    /*-fx-text-fill: rgba(255, 255, 255, .8);*/
 }
 .button:hover{
     -fx-background-color: #00b248;
-    /*-fx-text-fill: rgba(255, 255, 255, .8);*/
 }
-.button>.text{
-    /*-fx-font-size: large;*/
+
+.button:armed{
+    -fx-background-color: -fx-pressed-base;
+}
+
+.button:focused{
+    -fx-background-color: #2196f3;
 }

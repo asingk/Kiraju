@@ -9,23 +9,26 @@ package kiraju.model;
 public class JenisMenu  implements java.io.Serializable {
 
 
-     private short id;
+     private int id;
      private String nama;
-     private Short deletedFlag;
+//     private Short deletedFlag;
+//     private String code;
+     
+     //v2
+     private Boolean status;
 
     public JenisMenu() {
     }
-
-    public JenisMenu(String nama, Short deletedFlag) {
-       this.nama = nama;
-       this.deletedFlag = deletedFlag;
+    
+    public JenisMenu(int id) {
+        this.id = id;
     }
    
-    public short getId() {
+    public int getId() {
         return this.id;
     }
     
-    public void setId(short id) {
+    public void setId(int id) {
         this.id = id;
     }
     public String getNama() {
@@ -35,12 +38,28 @@ public class JenisMenu  implements java.io.Serializable {
     public void setNama(String nama) {
         this.nama = nama;
     }
-    public Short getDeletedFlag() {
-        return this.deletedFlag;
+//    public Short getDeletedFlag() {
+//        return this.deletedFlag;
+//    }
+//    
+//    public void setDeletedFlag(Short deletedFlag) {
+//        this.deletedFlag = deletedFlag;
+//    }
+//
+//    public String getCode() {
+//        return code;
+//    }
+//
+//    public void setCode(String code) {
+//        this.code = code;
+//    }
+
+    public Boolean getStatus() {
+        return status;
     }
-    
-    public void setDeletedFlag(Short deletedFlag) {
-        this.deletedFlag = deletedFlag;
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
 

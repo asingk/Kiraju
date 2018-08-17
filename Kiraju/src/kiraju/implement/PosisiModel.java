@@ -25,7 +25,7 @@ import org.hibernate.criterion.Restrictions;
  */
 public class PosisiModel implements IPosisi {
     
-    private final static Logger logger = Logger.getLogger(PosisiModel.class);
+    private final static Logger LOGGER = Logger.getLogger(PosisiModel.class);
 
     @Override
     public ObservableList<PosisiProperty> getAll() {
@@ -47,7 +47,7 @@ public class PosisiModel implements IPosisi {
             }
             tx.commit();
         } catch (HibernateException e) {
-            logger.error("failed to select to database", e);
+            LOGGER.error("failed to select to database", e);
         } finally {
             session.close();
         }
@@ -56,8 +56,8 @@ public class PosisiModel implements IPosisi {
     }
 
     @Override
-    public short getIdByName(String nama) {
-        short id = 0;
+    public int getIdByName(String nama) {
+        int id = 0;
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx;
         try {
@@ -69,7 +69,7 @@ public class PosisiModel implements IPosisi {
             }
             tx.commit();
         } catch (HibernateException e) {
-            logger.error("failed to select to database", e);
+            LOGGER.error("failed to select to database", e);
         }finally {
             session.close();
         }

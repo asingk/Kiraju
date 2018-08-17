@@ -33,12 +33,12 @@ public class JDBCConnection {
     private final static Logger LOGGER = Logger.getLogger(JDBCConnection.class);
     //for development
     private static final String DRIVER = "org.apache.derby.jdbc.ClientDriver";
-    private static final String URL = "jdbc:derby://localhost:1527/kiraju1";
+    private static final String URL = "jdbc:derby://localhost:1527/kiraju";
     //for production
 //    private static final String DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
 //    private static final String URL = "jdbc:derby:kiraju";
     private static final String SYS_BACKUP = "CALL SYSCS_UTIL.SYSCS_BACKUP_DATABASE(?)";
-    private static final String USER = "root";
+    private static final String USER = "app";
     private static final String PWD = "password";
     
     public static void databaseBackup(String backupDir) {
@@ -147,7 +147,7 @@ public class JDBCConnection {
 
     private static void createTable(final Connection connection) {
        //path to the resource included in the application jar file
-       final String resourcePathDDL = "/kiraju1/sql/kiraju_ddl.sql"; 
+       final String resourcePathDDL = "/kiraju2/sql/kiraju_ddl.sql"; 
        //get the default encoding of the JVM
        final String fileEncoding = "UTF-8";
        
@@ -163,11 +163,14 @@ public class JDBCConnection {
                     final String str = errorsEncountered + " errors encountered while running the sql script";
                     throw new RuntimeException(str);
                 }
-                String sqlFirstInstallDate = "INSERT INTO APP.GENERAL (INSTALL_DT) VALUES (?)";
+                String sqlFirstInstallDate = "INSERT INTO APP.GENERAL (ID, INSTALL_DT, MODE_CAFE, PRINTER_CODE) VALUES (?,?,?,?)";
                try (PreparedStatement preparedStatement = connection.prepareStatement(sqlFirstInstallDate)) {
-                   preparedStatement.setDate(1, java.sql.Date.valueOf(java.time.LocalDate.now()));
+                    preparedStatement.setDate(2, java.sql.Date.valueOf(java.time.LocalDate.now()));
 //                   preparedStatement.setDate(1, java.sql.Date.valueOf("2017-01-01"));
-                   preparedStatement.executeUpdate();
+                    preparedStatement.setShort(1, (short) 1);
+                    preparedStatement.setBoolean(3, true);
+                    preparedStatement.setString(4, "58mm");
+                    preparedStatement.executeUpdate();
                }
            } catch (UnsupportedEncodingException | RuntimeException e) {
                LOGGER.error("Error in running the sql script", e);

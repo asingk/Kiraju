@@ -1,32 +1,37 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated May 18, 2017 12:05:48 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="kiraju.model.Menu" table="MENU" schema="APP">
-        <id name="id" type="short">
-            <column name="ID" />
-            <generator class="increment">
-                <param name="schema">APP</param>
-            </generator>
-        </id>
-        <property name="nama" type="string">
-            <column name="NAMA" length="50" />
-        </property>
-        <property name="harga" type="java.lang.Integer">
+  <class name="kiraju.model.Menu" schema="APP" table="MENU">
+    <id name="id" type="int">
+      <column name="ID"/>
+      <generator class="increment">
+        <param name="schema">APP</param>
+      </generator>
+    </id>
+    <property name="nama" type="string">
+      <column length="50" name="NAMA"/>
+    </property>
+    <!--        <property name="harga" type="java.lang.Integer">
             <column name="HARGA" />
-        </property>
-        <property name="createdDt" type="timestamp">
-            <column name="CREATED_DT" length="29" />
-        </property>
-        <property name="updatedDt" type="timestamp">
-            <column name="UPDATED_DT" length="29" />
-        </property>
-        <many-to-one name="jenis" class="kiraju.model.JenisMenu">
-            <column name="JENIS" />
-        </many-to-one>
-        <property name="deletedFlag" type="java.lang.Short">
+        </property>-->
+    <property name="createdDt" type="timestamp">
+      <column length="29" name="CREATED_DT"/>
+    </property>
+    <property name="updatedDt" type="timestamp">
+      <column length="29" name="UPDATED_DT"/>
+    </property>
+    <many-to-one class="kiraju.model.JenisMenu" name="jenisMenuId">
+      <column name="JENIS_MENU_ID"/>
+    </many-to-one>
+    <!--        <property name="deletedFlag" type="java.lang.Short">
             <column name="DELETED_FLAG" />
         </property>
-    </class>
+        <property name="code" type="string">
+            <column length="20" name="CODE"/>
+        </property>-->
+    <property name="status" type="java.lang.Boolean">
+      <column name="STATUS"/>
+    </property>
+  </class>
 </hibernate-mapping>

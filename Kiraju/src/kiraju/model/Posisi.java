@@ -9,26 +9,26 @@ package kiraju.model;
 public class Posisi  implements java.io.Serializable {
 
 
-     private short id;
+     private int id;
      private String nama;
 
     public Posisi() {
     }
 
 	
-    public Posisi(short id) {
+    public Posisi(int id) {
         this.id = id;
     }
-    public Posisi(short id, String nama) {
+    public Posisi(int id, String nama) {
        this.id = id;
        this.nama = nama;
     }
    
-    public short getId() {
+    public int getId() {
         return this.id;
     }
     
-    public void setId(short id) {
+    public void setId(int id) {
         this.id = id;
     }
     public String getNama() {

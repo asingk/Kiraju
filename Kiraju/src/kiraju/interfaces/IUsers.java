@@ -17,9 +17,10 @@ import kiraju.property.UsersProperty;
  */
 public interface IUsers {
     ObservableList<UsersProperty> getAll();
-    short insert(Users users, Stage stage);
+    boolean insert(Users users, Stage stage);
     boolean update(Users users, Stage stage);
-    void delete(short id);
+    void delete(int id);
     Users selectByUsername(String userName);
     List<Users> getAllWithin99();
+    Users selectByUsernameIncludeStaff(String userName);
 }

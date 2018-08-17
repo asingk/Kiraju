@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 5, 2017 3:24:32 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="kiraju.model.Pelanggan" table="PELANGGAN" schema="APP" optimistic-lock="version">
+        <id name="id" type="string">
+            <column name="ID" length="50" />
+            <generator class="assigned" />
+        </id>
+        <property name="nama" type="string">
+            <column name="NAMA" length="100" />
+        </property>
+        <property name="alamat" type="string">
+            <column name="ALAMAT" length="250" />
+        </property>
+        <property name="noTelp" type="string">
+            <column name="NO_TELP" length="20" />
+        </property>
+        <property name="status" type="java.lang.Boolean">
+            <column name="STATUS" />
+        </property>
+        <property name="dtStart" type="timestamp">
+            <column name="DT_START" length="29" />
+        </property>
+    </class>
+</hibernate-mapping>

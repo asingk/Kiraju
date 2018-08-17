@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.stage.Stage;
 import kiraju.model.JenisMenu;
 import kiraju.property.JenisMenuProperty;
+import kiraju.util.Choice;
 
 /**
  *
@@ -18,8 +19,9 @@ import kiraju.property.JenisMenuProperty;
 public interface IJenisMenu {
     List<JenisMenu> getAll();
     ObservableList<JenisMenuProperty> getAllProperty();
-    short insert(JenisMenu jenisMenu, Stage stage);
-    void update(JenisMenu jenisMenu, Stage stage);
+    boolean insert(JenisMenu jenisMenu, Stage stage);
+    boolean update(JenisMenu jenisMenu, Stage stage);
     void delete(short id);
     List<JenisMenu> getAllActive();
+    ObservableList<Choice> getAllActiveChoice();
 }

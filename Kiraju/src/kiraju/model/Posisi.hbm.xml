@@ -4,7 +4,7 @@
 <!-- Generated May 18, 2017 12:05:48 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="kiraju.model.Posisi" table="POSISI" schema="APP">
-        <id name="id" type="short">
+        <id name="id" type="int">
             <column name="ID" />
             <generator class="assigned"></generator>
         </id>

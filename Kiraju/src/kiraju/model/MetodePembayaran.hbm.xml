@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 3, 2017 10:59:10 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="kiraju.model.MetodePembayaran" table="METODE_PEMBAYARAN" schema="APP" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="increment">
+                <param name="schema">APP</param>
+            </generator>
+        </id>
+        <property name="nama" type="string">
+            <column name="NAMA" length="50" />
+        </property>
+        <property name="status" type="java.lang.Boolean">
+            <column name="STATUS" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-font-size: 1.5em;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kiraju.AbsensiController">
+   <children>
+      <AnchorPane fx:id="anchorPane1" prefHeight="302.0" prefWidth="590.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox layoutX="176.0" layoutY="120.0" spacing="5.0" AnchorPane.leftAnchor="175.0" AnchorPane.topAnchor="150.0">
+               <children>
+                  <Label focusTraversable="false" style="-fx-font-size: 14px;" text="Masukkan Username Anda" />
+                  <TextField fx:id="usernameTF" promptText="Username" />
+               </children>
+            </VBox>
+            <ButtonBar focusTraversable="false" layoutX="91.0" layoutY="321.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+              <buttons>
+                <Button cancelButton="true" mnemonicParsing="false" onAction="#tutupBtn" text="Batal" />
+                  <Button fx:id="nextBtn" defaultButton="true" disable="true" mnemonicParsing="false" onAction="#nextBtn" text="Berikutnya" />
+              </buttons>
+            </ButtonBar>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="anchorPane2" prefHeight="302.0" prefWidth="590.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <StackPane layoutX="237.0" layoutY="13.0048828125" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+               <children>
+                  <VBox spacing="5.0">
+                     <children>
+                        <StackPane>
+                           <children>
+                              <Text fx:id="nama" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 24px;" text="Vita Sarini Mukhtasar" />
+                           </children>
+                        </StackPane>
+                        <StackPane>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 14px;" text="Status Anda" />
+                           </children>
+                        </StackPane>
+                        <StackPane>
+                           <children>
+                              <Text fx:id="status" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 36;" text="Keluar" />
+                           </children>
+                        </StackPane>
+                     </children>
+                  </VBox>
+               </children>
+            </StackPane>
+            <VBox layoutX="171.0" layoutY="119.0" spacing="5.0" AnchorPane.leftAnchor="175.0" AnchorPane.topAnchor="150.0">
+               <children>
+                  <Label focusTraversable="false" style="-fx-font-size: 14px;" text="Masukkan password Anda" />
+                  <PasswordField fx:id="passwordTF" promptText="Password" />
+               </children>
+            </VBox>
+            <ButtonBar focusTraversable="false" layoutX="316.0" layoutY="312.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+               <buttons>
+                  <Button cancelButton="true" mnemonicParsing="false" onAction="#tutupBtn" text="Batal" />
+                  <Button fx:id="masukBtn" defaultButton="true" mnemonicParsing="false" onAction="#masukBtn" text="Masuk" />
+               </buttons>
+            </ButtonBar>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

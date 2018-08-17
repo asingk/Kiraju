@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 27, 2017 5:09:05 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="kiraju.model.Diskon" table="DISKON" schema="APP" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="ID"/>
+            <generator class="increment">
+              <param name="schema">APP</param>
+            </generator>
+        </id>
+        <property name="tipe" type="java.lang.Integer">
+            <column name="TIPE" />
+        </property>
+        <property name="bilangan" type="java.lang.Integer">
+            <column name="BILANGAN" />
+        </property>
+        <property name="status" type="java.lang.Boolean">
+            <column name="STATUS" />
+        </property>
+        <property name="nama" type="string">
+            <column name="NAMA" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>

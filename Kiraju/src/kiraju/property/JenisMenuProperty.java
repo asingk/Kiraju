@@ -17,19 +17,23 @@ import javafx.beans.property.StringProperty;
 public class JenisMenuProperty {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty nama = new SimpleStringProperty();
-    private final StringProperty deletedFlag = new SimpleStringProperty();
+//    private final StringProperty deletedFlag = new SimpleStringProperty();
+    
+    //added by Arvit@20170907 - retail version
+//    private final StringProperty kode = new SimpleStringProperty();
+    private final StringProperty status = new SimpleStringProperty();
 
     /**
      * @return the id
      */
-    public short getId() {
-        return (short) id.get();
+    public int getId() {
+        return id.get();
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(short id) {
+    public void setId(int id) {
         this.id.set(id);
     }
     
@@ -55,16 +59,41 @@ public class JenisMenuProperty {
         return nama;
     }
 
-    public short getDeletedFlag() {
-        return deletedFlag.get().equalsIgnoreCase("Aktif") ? (short) 0 : (short) 1;
+//    public short getDeletedFlag() {
+//        return deletedFlag.get().equalsIgnoreCase("Aktif") ? (short) 0 : (short) 1;
+//    }
+//
+//    public void setDeletedFlag(short deletedFlag) {
+//        String status = deletedFlag == 0 ? "Aktif" : "Tidak Aktif";
+//        this.deletedFlag.set(status);
+//    }
+//    
+//    public StringProperty deletedFlagProperty() {
+//        return deletedFlag;
+//    }
+//
+//    public String getKode() {
+//        return kode.get();
+//    }
+//
+//    public void setKode(String kode) {
+//        this.kode.set(kode);
+//    }
+//    
+//    public StringProperty kodeProperty() {
+//        return kode;
+//    }
+    public Boolean getStatus() {
+        Boolean statusBoolean = status.get().equalsIgnoreCase("Ya") ? Boolean.TRUE : Boolean.FALSE;
+        return statusBoolean;
     }
 
-    public void setDeletedFlag(short deletedFlag) {
-        String status = deletedFlag == 0 ? "Aktif" : "Tidak Aktif";
-        this.deletedFlag.set(status);
+    public void setStatus(Boolean status) {
+        String statusString = status ? "Ya" : "Tidak";
+        this.status.set(statusString);
     }
     
-    public StringProperty deletedFlagProperty() {
-        return deletedFlag;
+    public StringProperty statusProperty() {
+        return status;
     }
 }

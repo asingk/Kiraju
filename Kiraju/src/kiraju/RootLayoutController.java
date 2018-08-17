@@ -5,15 +5,18 @@
  */
 package kiraju;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent; 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -24,23 +27,27 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Pair;
+import kiraju.implement.UsersModel;
 import kiraju.interfaces.IUsers;
 import kiraju.model.Posisi;
 import kiraju.model.Users;
-import kiraju.implement.UsersModel;
 import kiraju.util.CommonConstant;
 import kiraju.util.JDBCConnection;
+import org.apache.log4j.Logger;
 
 /**
  *
  * @author arvita
  */
-public class RootLayoutController implements Initializable {
+public class RootLayoutController extends AdminController implements Initializable {
+    
+    private final static Logger LOGGER = Logger.getLogger(RootLayoutController.class);
     
     @FXML
     private Text namaUser;
@@ -54,7 +61,7 @@ public class RootLayoutController implements Initializable {
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if(!JDBCConnection.checkInstallDate() && !CommonConstant.ISPREMIUM.equalsIgnoreCase("Y")){
+        if(!JDBCConnection.checkInstallDate() && !CommonConstant.ISPREMIUM){
             masuk.setDisable(true);
         }else{
             masuk.setDisable(false);
@@ -163,14 +170,39 @@ public class RootLayoutController implements Initializable {
             masuk.setText("Masuk");
             namaUser.setText("");
             login = false;
-            Users users = new Users();
-            users.setId(CommonConstant.USER_NONE);
-            users.setNama("Tanpa User");
-            users.setPosisiId(new Posisi(CommonConstant.USER_NONE));
-            mainApp.setLoginUser(users);
+//            Users users = new Users();
+//            users.setId(String.valueOf(CommonConstant.USER_NONE));
+//            users.setNama("Tanpa User");
+//            users.setPosisiId(new Posisi(CommonConstant.USER_NONE));
+            mainApp.setLoginUser(new Users(String.valueOf(CommonConstant.USER_NONE), "Tanpa User", new Posisi(CommonConstant.USER_NONE)));
         } else {
             // ... user chose CANCEL or closed the dialog
         }
+    }
+    
+    @FXML
+    private void absensiBtn(ActionEvent actionEvent) {
+        try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(AdminController.class.getResource("Absensi.fxml"));
+                AnchorPane page = (AnchorPane) loader.load();
+                
+                Stage dialogStage = new Stage();
+                dialogStage.setTitle("Absensi");
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.initOwner(primaryStage);
+                
+                Scene scene = new Scene(page);
+                dialogStage.setScene(scene);
+                
+                AbsensiController controller = loader.getController();
+                controller.setDialogStage(dialogStage);
+                
+                dialogStage.showAndWait();
+
+            } catch (IOException ex) {
+                LOGGER.error("failed to load Bayar.fxml", ex);
+            }
     }
     
 }

@@ -6,15 +6,12 @@
 package kiraju.property;
 
 import java.text.NumberFormat;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZoneId;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import kiraju.util.CommonConstant;
@@ -30,10 +27,18 @@ public class TransaksiProperty {
     private final StringProperty namaPemesan = new SimpleStringProperty();
     private final IntegerProperty jumlah = new SimpleIntegerProperty();
     private final StringProperty namaMenu = new SimpleStringProperty();
-    private final ObjectProperty<LocalTime> waktu = new SimpleObjectProperty<>();
+    private final StringProperty waktu = new SimpleStringProperty();
     private final IntegerProperty meja = new SimpleIntegerProperty();
     private final StringProperty statusTransaksi = new SimpleStringProperty();
     private final StringProperty total = new SimpleStringProperty();
+    
+    //20170912 - retail version
+    private final StringProperty tanggal = new SimpleStringProperty();
+    private final StringProperty diskonNama = new SimpleStringProperty();
+    private final StringProperty pajakNama = new SimpleStringProperty();
+    private final IntegerProperty diskonTotal = new SimpleIntegerProperty();
+    private final IntegerProperty pajakTotal = new SimpleIntegerProperty();
+    private final StringProperty metodePembayaranNama = new SimpleStringProperty();
 
     public int getId() {
         return id.get();
@@ -83,19 +88,18 @@ public class TransaksiProperty {
         return namaMenu;
     }
 
-    public LocalTime getWaktu() {
+    public String getWaktu() {
         return waktu.get();
     }
 
     public void setWaktu(Date waktu) {
-//        System.out.println("Date waktu = "+ waktu);
-//        Date test = new Date();
-        LocalTime time = LocalDateTime.ofInstant(waktu.toInstant(), ZoneId.systemDefault()).toLocalTime();
-//        System.out.println("LocalTime time = "+ time);
-        this.waktu.set(time);
+//        LocalTime time = LocalDateTime.ofInstant(waktu.toInstant(), ZoneId.systemDefault()).toLocalTime();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+        String out = dateFormat.format(waktu);
+        this.waktu.set(out);
     }
     
-    public ObjectProperty<LocalTime> waktuProperty() {
+    public StringProperty waktuProperty() {
         return waktu;
     }
 
@@ -123,9 +127,9 @@ public class TransaksiProperty {
 
     public void setStatusTransaksi(Short statusTransaksi) {
         String status = "";
-        if(statusTransaksi == CommonConstant.TRANSAKSI_BAYAR){
+        if(Objects.equals(statusTransaksi, CommonConstant.TRANSAKSI_BAYAR)){
             status = "BAYAR";
-        }else if(statusTransaksi == CommonConstant.TRANSAKSI_BATAL){
+        }else if(Objects.equals(statusTransaksi, CommonConstant.TRANSAKSI_BATAL)){
             status = "BATAL";
         }
         this.statusTransaksi.set(status);
@@ -135,8 +139,8 @@ public class TransaksiProperty {
         return statusTransaksi;
     }
 
-    public String getTotal() {
-        return total.get().replace(".", "");
+    public Integer getTotal() {
+        return Integer.valueOf(total.get().replace(".", ""));
     }
 
     public void setTotal(Integer total) {
@@ -145,5 +149,82 @@ public class TransaksiProperty {
     
     public StringProperty totalProperty() {
         return total;
+    }
+
+    public String getTanggal() {
+        return tanggal.get();
+    }
+
+    public void setTanggal(Date tanggal) {
+//        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+//        LocalDate date = tanggal.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//        String out = date.format(format);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String out = dateFormat.format(tanggal);
+        this.tanggal.set(out);
+    }
+    
+    public StringProperty tanggalProperty() {
+        return tanggal;
+    }
+
+    public String getDiskonNama() {
+        return diskonNama.get();
+    }
+
+    public void setDiskonNama(String diskonNama) {
+        this.diskonNama.set(diskonNama);
+    }
+    
+    public StringProperty diskonNamaProperty() {
+        return diskonNama;
+    }
+
+    public String getPajakNama() {
+        return pajakNama.get();
+    }
+
+    public void setPajakNama(String pajakNama) {
+        this.pajakNama.set(pajakNama);
+    }
+    
+    public StringProperty pajakNamaProperty() {
+        return pajakNama;
+    }
+
+    public Integer getDiskonTotal() {
+        return diskonTotal.get();
+    }
+
+    public void setDiskonTotal(Integer diskonTotal) {
+        this.diskonTotal.set(diskonTotal);
+    }
+    
+    public IntegerProperty diskonTotalProperty() {
+        return diskonTotal;
+    }
+
+    public Integer getPajakTotal() {
+        return pajakTotal.get();
+    }
+
+    public void setPajakTotal(Integer pajakTotal) {
+        this.pajakTotal.set(pajakTotal);
+    }
+    
+    public IntegerProperty pajakTotalProperty() {
+        return pajakTotal;
+    }
+
+    public String getMetodePembayaranNama() {
+        return metodePembayaranNama.get();
+    }
+
+    public void setMetodePembayaranNama(String metodePembayaranNama) {
+        this.metodePembayaranNama.set(metodePembayaranNama);
+    }
+    
+    public StringProperty metodePembayaranNamaProperty() {
+        return metodePembayaranNama;
     }
 }

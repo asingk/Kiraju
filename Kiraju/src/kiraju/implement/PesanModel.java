@@ -10,10 +10,15 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import kiraju.interfaces.IPesan;
+import kiraju.model.Diskon;
 import kiraju.model.Menu;
+import kiraju.model.MenuItem;
+import kiraju.model.Pajak;
+import kiraju.model.Pelanggan;
 import kiraju.model.Pesan;
 import kiraju.model.Transaksi;
 import kiraju.property.PesanProperty;
+import kiraju.util.CommonConstant;
 import kiraju.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
@@ -47,15 +52,15 @@ public class PesanModel implements IPesan{
     }
 
     @Override
-    public int insert(PesanProperty pesanProperty) {
-        Pesan pesan = new Pesan();
-        pesan.setJumlah(Short.parseShort(pesanProperty.getJumlah()));
-        Transaksi transaksi = new Transaksi();
-        transaksi.setId(pesanProperty.getTransaksiId());
-        pesan.setTransaksiId(transaksi);
-        Menu menu = new Menu();
-        menu.setId(pesanProperty.getMenuId());
-        pesan.setMenuId(menu);
+    public int insert(Pesan pesan) {
+//        Pesan pesan = new Pesan();
+//        pesan.setJumlah(pesanProperty.getJumlah());
+//        Transaksi transaksi = new Transaksi();
+//        transaksi.setId(pesanProperty.getTransaksiId());
+//        pesan.setTransaksiId(transaksi);
+//        Menu menu = new Menu();
+//        menu.setId(pesanProperty.getMenuId());
+//        pesan.setMenuItemId(menu);    //TODO set menu item id
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx;
         try {
@@ -64,28 +69,29 @@ public class PesanModel implements IPesan{
             tx.commit();
         } catch (HibernateException e) {
             LOGGER.error("failed to insert to database", e);
-        } finally {
-            session.close();
         }
+        session.close();
         return pesan.getId();
     }
 
     @Override
-    public void update(PesanProperty pesanProperty) {
+    public void update(Pesan pesan) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx;
         try {
             tx = session.beginTransaction();
-            Query query =  session.createQuery("update Pesan set jumlah = :jumlah where id = :id");
-            query.setParameter("jumlah", Short.parseShort(pesanProperty.getJumlah()) );
-            query.setParameter("id", pesanProperty.getId());
+            Query query =  session.createQuery("update Pesan set jumlah = :jumlah, modal = :modal, untung = :untung, tambahan = :tambahan where id = :id");
+            query.setParameter("jumlah", pesan.getJumlah());
+            query.setParameter("modal", pesan.getModal());
+            query.setParameter("untung", pesan.getUntung());
+            query.setParameter("tambahan", pesan.getTambahan());
+            query.setParameter("id", pesan.getId());
             query.executeUpdate();
             tx.commit();
         } catch (HibernateException e) {
             LOGGER.error("failed to update to database", e);
-        } finally {
-            session.close();
         }
+        session.close();
     }
 
     @Override
@@ -95,21 +101,42 @@ public class PesanModel implements IPesan{
         Transaction tx;
         try {
             tx = session.beginTransaction();
-            List<Object[]> obj = session.createQuery("from Pesan p join p.transaksiId t join p.menuId m where p.transaksiId = "+transaksiId+" and p.jumlah is not 0 order by m.jenis, p.menuId").list();
+            Query query = session.createQuery("from Pesan p join p.transaksiId t left join t.diskonId d left join t.pajakId pj join p.menuItemCode mi join mi.menuId m where p.transaksiId = :transaksiId order by p.id");
+            Transaksi transaksiBefore = new Transaksi();
+            transaksiBefore.setId(transaksiId);
+            query.setParameter("transaksiId", transaksiBefore);
+            List<Object[]> obj = query.list();
             if(null != obj){
                 for(Object[] row : obj){
                     PesanProperty pesanProperty = new PesanProperty();
                     Pesan pesan = (Pesan) row[0];
                     Transaksi transaksi = (Transaksi) row[1];
-                    Menu menu = (Menu) row[2];
+                    MenuItem menuItem = (MenuItem) row[4];
+                    Menu menu = (Menu) row[5];
+                    Diskon diskon = (Diskon) row[2];
+                    Pajak pajak = (Pajak) row[3];
                     pesanProperty.setId(pesan.getId());
                     pesanProperty.setTransaksiId(transaksiId);
-                    pesanProperty.setJumlah(pesan.getJumlah().toString());
-                    pesanProperty.setNama(menu.getNama());
-                    pesanProperty.setHarga(menu.getHarga());
-                    pesanProperty.setTotalHarga(menu.getHarga() * pesan.getJumlah());
+                    pesanProperty.setJumlah(pesan.getJumlah());
+//                    pesanProperty.setMenuItemId(menuItem.getId());
+                    pesanProperty.setMenuItemNama(menuItem.getNama());
+                    pesanProperty.setHarga(menuItem.getHargaTotal());
+                    pesanProperty.setTotalHarga(menuItem.getHargaTotal() * pesan.getJumlah());
+                    pesanProperty.setNama(menu.getNama() + " " + menuItem.getNama());
+                    pesanProperty.setCode(menuItem.getCode());
+                    pesanProperty.setMenuId(menu.getId());
+                    pesanProperty.setMenuNama(menu.getNama());
                     pesanProperty.setNamaPemesan(transaksi.getNamaPemesan());
-                    pesanProperty.setMejaId(transaksi.getMejaId().getId());
+//                    pesanProperty.setMejaId(transaksi.getMejaId().getId());
+                    if(null != diskon){
+                        pesanProperty.setDiskonId(diskon.getId());
+                        pesanProperty.setDiskonNama(diskon.getNama());
+                    }
+                    if(null != pajak){
+                        pesanProperty.setPajakId(pajak.getId());
+                        pesanProperty.setPajakNama(pajak.getNama());
+                    }
+                    pesanProperty.setTotalModal(pesan.getModal() * pesan.getJumlah());
                     menuMejaObsList.add(pesanProperty);
                 }
             }
@@ -139,6 +166,133 @@ public class PesanModel implements IPesan{
         } finally {
             session.close();
         }
+    }
+
+//    @Override
+//    public void insertAll(List<PesanProperty> pesanPropList, int transaksiId) {
+//        Pesan pesan = new Pesan();
+////        pesan.setJumlah(pesanProperty.getJumlah());
+//        Transaksi transaksi = new Transaksi();
+////        transaksi.setId(pesanProperty.getTransaksiId());
+////        pesan.setTransaksiId(transaksi);
+////        Menu menu = new Menu();
+////        menu.setId(pesanProperty.getMenuId());
+//        MenuItem menuItem = new MenuItem();
+////        pesan.setMenuItemId(menu);
+//        Session session = HibernateUtil.getSessionFactory().openSession();
+////        Transaction tx;
+////        ScrollableResults pesanCursor = session.createQuery("FROM PESAN").scroll();
+//        try {
+//            Transaction tx = session.beginTransaction();
+//            for(int i = 0; i < pesanPropList.size(); i++){
+//                pesan.setJumlah(pesanPropList.get(i).getJumlah());
+//                transaksi.setId(transaksiId);
+//                pesan.setTransaksiId(transaksi);
+//                menuItem.setId(pesanPropList.get(i).getMenuItemId());
+//                pesan.setMenuItemId(menuItem);
+//                pesan.setModal(pesanPropList.get(i).getModal());
+//                Integer untung;
+//                if(pesanPropList.get(i).getUntungCode()==CommonConstant.RUPIAH_CODE) {
+//                    untung = pesanPropList.get(i).getUntung();
+//                }else{
+//                    float untungPersen = (float) pesanPropList.get(i).getUntung()/100;
+//                    untung = Math.round(untungPersen*pesanPropList.get(i).getModal());
+//                }
+//                pesan.setUntung(untung);
+//                Integer tambahan;
+//                if(pesanPropList.get(i).getTambahanCode()==CommonConstant.RUPIAH_CODE) {
+//                    tambahan = pesanPropList.get(i).getTambahan();
+//                }else{
+//                    float tambahanPersen = (float) pesanPropList.get(i).getTambahan()/100;
+//                    tambahan = Math.round(tambahanPersen*(pesanPropList.get(i).getModal()+untung));
+//                }
+//                pesan.setTambahan(tambahan);
+//                
+//                session.save(pesan);
+//                if(i % 20 == 0){
+//                    session.flush();
+//                    session.clear();
+//                }
+//            }
+////            session.save(pesan);
+//            tx.commit();
+//        } catch (HibernateException e) {
+//            LOGGER.error("failed to insert to database", e);
+//        } finally {
+//            session.close();
+//        }
+//    }
+
+//    @Override
+//    public void deleteByMenuIdAndTransaksiId(int transaksiId, int menuId) {
+//        Session session = HibernateUtil.getSessionFactory().openSession();
+//        try {
+//            Transaction tx = session.beginTransaction();
+//            Query query =  session.createQuery("delete from Pesan where transaksiId = :transaksiId and menuItemId in (select id from MenuItem where menuId = :menuId)");
+//            Transaksi transaksi = new Transaksi();
+//            transaksi.setId(transaksiId);
+//            Menu menu = new Menu();
+//            menu.setId(menuId);
+//            query.setParameter("transaksiId", transaksi);
+//            query.setParameter("menuId", menu);
+//            query.executeUpdate();
+//            tx.commit();
+//        } catch (HibernateException e) {
+//            LOGGER.error("failed to delete to database", e);
+//        }
+//        session.close();
+//    }
+
+    @Override
+    public void deleteById(Pesan pesan) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            Transaction tx = session.beginTransaction();
+            session.delete(pesan);
+            tx.commit();
+        } catch (HibernateException e) {
+            LOGGER.error("failed to delete to database", e);
+        }
+        session.close();
+    }
+
+    @Override
+    public List<Pesan> getPieChartByPelanggan(Pelanggan pelanggan) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List resultList = new ArrayList();
+        try {
+            Transaction tx = session.beginTransaction();
+            Query query = session.createQuery("select m.nama, sum(p.jumlah) as total from Pesan p join p.transaksiId t join p.menuItemCode mi join mi.menuId m where t.pelangganId = :pelangganId and t.status = :status group by m.id, m.nama");
+            query.setParameter("pelangganId", pelanggan);
+            query.setParameter("status", CommonConstant.TRANSAKSI_BAYAR);
+            resultList = query.list();
+            tx.commit();
+        } catch (HibernateException e) {
+            LOGGER.error("failed to select to database", e);
+        }
+        session.close();
+        return resultList;
+    }
+
+    @Override
+    public List<Object[]> getByMenuItemAndTransaksi(MenuItem menuItem, Transaksi transaksi) {
+        List<Object[]> resultList = new ArrayList();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            Transaction tx = session.beginTransaction();
+            Query query = session.createQuery("from Pesan p join p.menuItemCode mi where p.transaksiId = :transaksi and mi.code = :menuItemCode");
+            query.setParameter("transaksi", transaksi);
+            query.setParameter("menuItemCode", menuItem.getCode());
+//            Criteria criteria = session.createCriteria(MenuItem.class);
+//            criteria.add(Restrictions.eq("menuItemId", pesan.getMenuItemId()));
+//            criteria.add(Restrictions.eq("transaksiId", pesan.getTransaksiId()));
+            resultList = query.list();
+            tx.commit();
+        } catch (HibernateException e) {
+            LOGGER.error("failed to select to database", e);
+        }
+        session.close();
+        return resultList;
     }
     
 }

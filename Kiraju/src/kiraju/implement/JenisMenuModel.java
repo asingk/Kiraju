@@ -14,10 +14,12 @@ import javafx.stage.Stage;
 import kiraju.interfaces.IJenisMenu;
 import kiraju.model.JenisMenu;
 import kiraju.property.JenisMenuProperty;
+import kiraju.util.Choice;
 import kiraju.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.JDBCException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -30,7 +32,7 @@ import org.hibernate.exception.ConstraintViolationException;
  * @author arvita
  */
 public class JenisMenuModel implements IJenisMenu{
-    private final static Logger logger = Logger.getLogger(JenisMenuModel.class);
+    private final static Logger LOGGER = Logger.getLogger(JenisMenuModel.class);
 
     @Override
     public List<JenisMenu> getAll() {
@@ -40,12 +42,12 @@ public class JenisMenuModel implements IJenisMenu{
         try {
             tx = session.beginTransaction();
             Criteria criteria = session.createCriteria(JenisMenu.class);
-            criteria.addOrder(Order.asc("deletedFlag"));
+            criteria.addOrder(Order.desc("status"));
             criteria.addOrder(Order.asc("id"));
             resultList = criteria.list();
             tx.commit();
         } catch (HibernateException e) {
-            logger.error("failed to select to database", e);
+            LOGGER.error("failed to select to database", e);
         } finally {
             session.close();
         }
@@ -61,8 +63,10 @@ public class JenisMenuModel implements IJenisMenu{
                     JenisMenu jenisMenu = (JenisMenu) o;
                     JenisMenuProperty jenisMenuProp = new JenisMenuProperty();
                     jenisMenuProp.setId(jenisMenu.getId());
+//                    jenisMenuProp.setKode(jenisMenu.getCode());
                     jenisMenuProp.setNama(jenisMenu.getNama());
-                    jenisMenuProp.setDeletedFlag(jenisMenu.getDeletedFlag());
+//                    jenisMenuProp.setDeletedFlag(jenisMenu.getDeletedFlag());
+                    jenisMenuProp.setStatus(jenisMenu.getStatus());
                     dataProperty.add(jenisMenuProp);
                 }
             }
@@ -70,48 +74,82 @@ public class JenisMenuModel implements IJenisMenu{
     }
 
     @Override
-    public short insert(JenisMenu jenisMenu, Stage stage) {
+    public boolean insert(JenisMenu jenisMenu, Stage stage) {
+        boolean result = true;
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx;
         try {
-            tx = session.beginTransaction();
+            Transaction tx = session.beginTransaction();
             session.save(jenisMenu);
             tx.commit();
-        } catch (ConstraintViolationException cve) {
+        } 
+        catch (ConstraintViolationException cve) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.initOwner(stage);
             alert.setTitle("Salah!");
             alert.setHeaderText("Nama Sudah Terpakai");
             alert.setContentText("Silahkan masukkan nama yang lain");
             alert.showAndWait();
-        } catch (HibernateException e) {
-            logger.error("failed to insert to database", e);
-        } finally {
+            result = false;
+        } 
+        catch (JDBCException jdbce) {
+            String sqlSate = jdbce.getSQLException().getNextException().getSQLState();
+            if(sqlSate.equalsIgnoreCase("23505")){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.initOwner(stage);
+                alert.setTitle("Salah!");
+                alert.setHeaderText("nama Sudah Terpakai");
+                alert.setContentText("Silahkan masukkan yang berbeda");
+                alert.showAndWait();
+            }
+            result = false;
+        }
+        catch (HibernateException e) {
+            LOGGER.error("failed to insert to database", e);
+            result = false;
+        }
+        finally{
             session.close();
         }
-        return jenisMenu.getId();
+        return result;
     }
 
     @Override
-    public void update(JenisMenu jenisMenu, Stage stage) {
+    public boolean update(JenisMenu jenisMenu, Stage stage) {
+        boolean result = true;
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx;
         try {
             tx = session.beginTransaction();
             session.update(jenisMenu);
             tx.commit();
-        } catch (ConstraintViolationException cve) {
+        } 
+        catch (ConstraintViolationException cve) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.initOwner(stage);
             alert.setTitle("Salah!");
             alert.setHeaderText("Nama Sudah Terpakai");
             alert.setContentText("Silahkan masukkan nama yang lain");
             alert.showAndWait();
-        } catch (HibernateException e) {
-            logger.error("failed to update to database", e);
+            result = false;
+        } 
+        catch (JDBCException jdbce) {
+            String sqlSate = jdbce.getSQLException().getNextException().getSQLState();
+            if(sqlSate.equalsIgnoreCase("23505")){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.initOwner(stage);
+                alert.setTitle("Salah!");
+                alert.setHeaderText("nama Sudah Terpakai");
+                alert.setContentText("Silahkan masukkan yang berbeda");
+                alert.showAndWait();
+            }
+            result = false;
+        }
+        catch (HibernateException e) {
+            LOGGER.error("failed to update to database", e);
         } finally {
             session.close();
         }
+        return result;
     }
 
     @Override
@@ -120,13 +158,14 @@ public class JenisMenuModel implements IJenisMenu{
         Transaction tx;
         try {
             tx = session.beginTransaction();
-            Query query =  session.createQuery("update JenisMenu set deletedFlag = :deleted_flag where id = :id");
-            query.setParameter("deleted_flag", (short) 1);
+            Query query =  session.createQuery("update JenisMenu set status = :status where id = :id");
+//            query.setParameter("deleted_flag", (short) 1);
+            query.setParameter("status", Boolean.FALSE);
             query.setParameter("id", id);
             query.executeUpdate();
             tx.commit();
         } catch (HibernateException e) {
-            logger.error("failed to delete to database", e);
+            LOGGER.error("failed to delete to database", e);
         } finally {
             session.close();
         }
@@ -140,16 +179,41 @@ public class JenisMenuModel implements IJenisMenu{
         try {
             tx = session.beginTransaction();
             Criteria criteria = session.createCriteria(JenisMenu.class);
-            criteria.add(Restrictions.eq("deletedFlag", (short) 0));
+//            criteria.add(Restrictions.eq("deletedFlag", (short) 0));
+            criteria.add(Restrictions.eq("status", Boolean.TRUE));
             criteria.addOrder(Order.asc("id"));
             resultList = criteria.list();
             tx.commit();
         } catch (HibernateException e) {
-            logger.error("failed to select to database", e);
+            LOGGER.error("failed to select to database", e);
         } finally {
             session.close();
         }
         return resultList;
+    }
+
+    @Override
+    public ObservableList<Choice> getAllActiveChoice() {
+        ObservableList<Choice> data = FXCollections.observableArrayList();
+//        data.add(new Choice(0, "Semua"));
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            Transaction tx = session.beginTransaction();
+            Criteria criteria = session.createCriteria(JenisMenu.class);
+            criteria.add(Restrictions.eq("status", Boolean.TRUE));
+            criteria.addOrder(Order.asc("id"));
+            List<JenisMenu> resultList = criteria.list();
+//            if(null != resultList && !resultList.isEmpty()) {
+                for(JenisMenu jenisMenu : resultList) {
+                    data.add(new Choice(jenisMenu.getId(), jenisMenu.getNama()));
+                }
+//            }
+            tx.commit();
+        } catch (HibernateException e) {
+            LOGGER.error("failed to select to database", e);
+        }
+        session.close();
+        return data;
     }
     
 }

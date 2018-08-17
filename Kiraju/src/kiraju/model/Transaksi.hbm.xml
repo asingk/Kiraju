@@ -11,7 +11,7 @@
             </generator>
         </id>
         <many-to-one name="mejaId" class="kiraju.model.Meja">
-            <column name="MEJA_ID" />
+            <column name="MEJA_ID" default="0"/>
         </many-to-one>
         <property name="dtStart" type="timestamp">
             <column name="DT_START" length="29" />
@@ -45,6 +45,27 @@
         </property>
         <property name="endTimeOnly" type="time">
             <column name="END_TIME_ONLY" length="8" />
+        </property>
+        <many-to-one name="metodePembayaranId" class="kiraju.model.MetodePembayaran">
+            <column name="METODE_PEMBAYARAN_ID" />
+        </many-to-one>
+        <many-to-one name="pelangganId" class="kiraju.model.Pelanggan">
+            <column name="PELANGGAN_ID" />
+        </many-to-one>
+        <many-to-one name="diskonId" class="kiraju.model.Diskon">
+            <column name="DISKON_ID" />
+        </many-to-one>
+        <many-to-one name="pajakId" class="kiraju.model.Pajak">
+            <column name="PAJAK_ID" />
+        </many-to-one>
+        <property name="diskonTotal" type="java.lang.Integer">
+            <column name="DISKON_TOTAL" />
+        </property>
+        <property name="pajakTotal" type="java.lang.Integer">
+            <column name="PAJAK_TOTAL" />
+        </property>
+        <property name="modalTotal" type="java.lang.Integer">
+            <column name="MODAL_TOTAL" />
         </property>
     </class>
 </hibernate-mapping>

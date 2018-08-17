@@ -9,6 +9,7 @@ import java.util.List;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import kiraju.interfaces.IValidation;
@@ -44,7 +45,71 @@ public class Validation implements IValidation{
     }
     
     @Override
-    public boolean isTextFieldInputValid(TextField[] textFields, String[] namaTextFields, List<ChoiceBox<String>> choiceBoxs, String[] namaChoiceBoxs, Stage stage) {
+    public boolean isTextFieldInputValid(TextField[] textFields, String[] namaTextFields, List<ChoiceBox<Choice>> choiceBoxs, String[] namaChoiceBoxs, Stage stage) {
+        String errorMessage = "";
+        for(int i = 0; i < textFields.length; i++){
+            TextField textField = textFields[i];
+            if(null == textField.getText() || textField.getText().length() == 0){
+                errorMessage += namaTextFields[i] + " wajib diisi\n";
+            }
+        }
+        for(int i = 0; i < choiceBoxs.size(); i++){
+            ChoiceBox<Choice> choiceBox = choiceBoxs.get(i);
+            if(null == choiceBox.getValue()){
+                errorMessage += namaChoiceBoxs[i] + " wajib dipilih\n";
+            }
+        }
+        
+        if(errorMessage.length() == 0 ){
+            return true;
+        }else{
+            // Show the error message.
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.initOwner(stage);
+            alert.setTitle("Salah!");
+            alert.setHeaderText("Silahkan diisi bagian yang salah");
+            alert.setContentText(errorMessage);
+
+            alert.showAndWait();
+
+            return false;
+        }
+    }
+
+    @Override
+    public boolean isTextFieldInputValidv2(TextField[] textFields, String[] namaTextFields, List<ComboBox<String>> comboBoxs, String[] namaComboBoxs, Stage stage) {
+        String errorMessage = "";
+        for(int i = 0; i < textFields.length; i++){
+            TextField textField = textFields[i];
+            if(null == textField.getText() || textField.getText().length() == 0){
+                errorMessage += namaTextFields[i] + " wajib diisi\n";
+            }
+        }
+        for(int i = 0; i < comboBoxs.size(); i++){
+            ComboBox<String> comboBox = comboBoxs.get(i);
+            if(null == comboBox.getValue() || comboBox.getValue().length() == 0){
+                errorMessage += namaComboBoxs[i] + " wajib dipilih\n";
+            }
+        }
+        
+        if(errorMessage.length() == 0 ){
+            return true;
+        }else{
+            // Show the error message.
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.initOwner(stage);
+            alert.setTitle("Salah!");
+            alert.setHeaderText("Silahkan diisi bagian yang salah");
+            alert.setContentText(errorMessage);
+
+            alert.showAndWait();
+
+            return false;
+        }
+    }
+
+    @Override
+    public boolean isTextFieldInputValid3(TextField[] textFields, String[] namaTextFields, List<ChoiceBox<String>> choiceBoxs, String[] namaChoiceBoxs, Stage stage) {
         String errorMessage = "";
         for(int i = 0; i < textFields.length; i++){
             TextField textField = textFields[i];

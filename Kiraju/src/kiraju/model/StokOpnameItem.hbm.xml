@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 22, 2017 2:46:48 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="kiraju.model.StokOpnameItem" table="STOK_OPNAME_ITEM" schema="APP" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="increment">
+                <param name="schema">APP</param>
+            </generator>
+        </id>
+<!--        <property name="stokOpnameId" type="java.lang.Integer">
+            <column name="STOK_OPNAME_ID" />
+        </property>-->
+        <many-to-one name="stokOpnameId" class="kiraju.model.StokOpname">
+            <column name="STOK_OPNAME_ID" />
+        </many-to-one>
+<!--        <property name="menuItemId" type="java.lang.Integer">
+            <column name="MENU_ITEM_ID" />
+        </property>-->
+        <many-to-one name="menuItemCode" class="kiraju.model.MenuItem">
+            <column name="MENU_ITEM_CODE" />
+        </many-to-one>
+        <property name="stokTersedia" type="java.lang.Integer">
+            <column name="STOK_TERSEDIA" />
+        </property>
+        <property name="stokSelisih" type="java.lang.Integer">
+            <column name="STOK_SELISIH" />
+        </property>
+        <property name="stokAwal" type="java.lang.Integer">
+            <column name="STOK_AWAL" />
+        </property>
+        <property name="ket" type="string">
+            <column name="KET" length="250" />
+        </property>
+    </class>
+</hibernate-mapping>

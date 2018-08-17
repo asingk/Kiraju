@@ -16,23 +16,23 @@ import javafx.beans.property.StringProperty;
  */
 public class UsersProperty {
     
-    private final IntegerProperty id = new SimpleIntegerProperty();
+    private final StringProperty id = new SimpleStringProperty();
     private final StringProperty nama = new SimpleStringProperty();
     private final StringProperty userName = new SimpleStringProperty();
     private final StringProperty password = new SimpleStringProperty();
     private final IntegerProperty posisiId = new SimpleIntegerProperty();
     private final StringProperty posisiNama = new SimpleStringProperty();
-    private final StringProperty deletedFlag = new SimpleStringProperty();
+    private final StringProperty status = new SimpleStringProperty();
 
-    public short getId() {
-        return (short) id.get();
+    public String getId() {
+        return id.get();
     }
 
-    public void setId(short id) {
+    public void setId(String id) {
         this.id.set(id);
     }
     
-    public IntegerProperty idProperty() {
+    public StringProperty idProperty() {
         return id;
     }
 
@@ -72,11 +72,11 @@ public class UsersProperty {
         return password;
     }
 
-    public short getPosisiId() {
-        return (short) posisiId.get();
+    public int getPosisiId() {
+        return posisiId.get();
     }
 
-    public void setPosisiId(short posisiId) {
+    public void setPosisiId(int posisiId) {
         this.posisiId.set(posisiId);
     }
     
@@ -96,17 +96,32 @@ public class UsersProperty {
         return posisiNama;
     }
     
-    public short getDeletedFlag() {
-        return deletedFlag.get().equalsIgnoreCase("Aktif") ? (short) 0 : (short) 1;
+//    public Boolean getDeletedFlag() {
+//        Boolean statusBoolean = status.get().equalsIgnoreCase("Ya") ? Boolean.TRUE : Boolean.FALSE;
+//        return statusBoolean;
+//    }
+//
+//    public void setDeletedFlag(Boolean status) {
+//        String statusString = status ? "Ya" : "Tidak";
+//        this.status.set(statusString);
+//    }
+//    
+//    public StringProperty deletedFlagProperty() {
+//        return status;
+//    }
+
+    public Boolean getStatus() {
+        Boolean statusBoolean = status.get().equalsIgnoreCase("Ya") ? Boolean.TRUE : Boolean.FALSE;
+        return statusBoolean;
     }
 
-    public void setDeletedFlag(short deletedFlag) {
-        String status = deletedFlag == 0 ? "Aktif" : "Tidak Aktif";
-        this.deletedFlag.set(status);
+    public void setStatus(Boolean status) {
+        String statusString = status ? "Ya" : "Tidak";
+        this.status.set(statusString);
     }
     
-    public StringProperty deletedFlagProperty() {
-        return deletedFlag;
+    public StringProperty statusProperty() {
+        return status;
     }
     
 }

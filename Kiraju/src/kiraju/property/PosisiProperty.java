@@ -18,11 +18,11 @@ public class PosisiProperty {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty nama = new SimpleStringProperty();
 
-    public short getId() {
-        return (short) id.get();
+    public int getId() {
+        return id.get();
     }
 
-    public void setId(short id) {
+    public void setId(int id) {
         this.id.set(id);
     }
     

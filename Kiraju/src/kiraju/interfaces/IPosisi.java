@@ -14,5 +14,5 @@ import kiraju.property.PosisiProperty;
  */
 public interface IPosisi {
     ObservableList<PosisiProperty> getAll();
-    short getIdByName(String nama);
+    int getIdByName(String nama);
 }

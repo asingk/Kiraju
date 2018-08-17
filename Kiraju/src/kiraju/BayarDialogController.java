@@ -18,12 +18,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import kiraju.implement.MejaModel;
+import kiraju.implement.TransaksiModel;
 import kiraju.interfaces.IMeja;
 import kiraju.interfaces.ITransaksi;
 import kiraju.model.Meja;
-import kiraju.implement.MejaModel;
 import kiraju.model.Transaksi;
-import kiraju.implement.TransaksiModel;
 import kiraju.model.Users;
 import kiraju.property.PesanProperty;
 import kiraju.util.CommonConstant;
@@ -40,7 +40,7 @@ public class BayarDialogController implements Initializable{
     @FXML
     private TableColumn<PesanProperty, String> hargaColumn;
     @FXML
-    private TableColumn<PesanProperty, String> jumlahColumn;
+    private TableColumn<PesanProperty, Integer> jumlahColumn;
     @FXML
     private Text mejaNo;
     @FXML
@@ -66,7 +66,7 @@ public class BayarDialogController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         namaColumn.setCellValueFactory(cellData -> cellData.getValue().namaProperty());
         hargaColumn.setCellValueFactory(cellData -> cellData.getValue().hargaProperty());
-        jumlahColumn.setCellValueFactory(cellData -> cellData.getValue().jumlahProperty());
+        jumlahColumn.setCellValueFactory(cellData -> cellData.getValue().jumlahProperty().asObject());
     }
     
     public void setDialogStage(Stage dialogStage){

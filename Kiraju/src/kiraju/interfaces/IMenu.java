@@ -5,21 +5,22 @@
  */
 package kiraju.interfaces;
 
-import java.util.List;
 import javafx.collections.ObservableList;
+import javafx.stage.Stage;
 import kiraju.model.Menu;
 import kiraju.property.MenuProperty;
-import kiraju.property.PesanProperty;
 
 /**
  *
  * @author arvita
  */
 public interface IMenu {
-    ObservableList<MenuProperty> getAllProperty(short jenisId);
-    short insert(Menu menu);
-    void update(Menu menu);
+    ObservableList<MenuProperty> getAllProperty(int jenisId);
+    boolean insert(Menu menu, Stage stage);
+    boolean update(Menu menu, Stage stage);
     void delete(short id);
-    ObservableList<PesanProperty> getAllAndJumlah(short jenisId, int transaksiId);
-    List getChartByMonthAndJenisMenu(int bulan, Short jenisMenu);
+//    ObservableList<PesanProperty> getAllAndJumlah(short jenisId, int transaksiId);
+//    List getChartByMonthAndJenisMenu(int bulan, Short jenisMenu);
+    //Added by Arvit@20170830-Retail version
+    ObservableList<MenuProperty> getActiveProperty(int jenisId);
 }

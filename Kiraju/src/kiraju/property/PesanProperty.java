@@ -21,7 +21,7 @@ public class PesanProperty {
 
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty nama = new SimpleStringProperty();
-    private final StringProperty jumlah = new SimpleStringProperty();
+    private final IntegerProperty jumlah = new SimpleIntegerProperty();
     private final StringProperty harga = new SimpleStringProperty();
     private final IntegerProperty transaksiId = new SimpleIntegerProperty();
     private final IntegerProperty jenisId = new SimpleIntegerProperty();
@@ -31,6 +31,24 @@ public class PesanProperty {
     private final StringProperty namaPemesan = new SimpleStringProperty();
     private final StringProperty mejaNama = new SimpleStringProperty();
     private String hargaNumberFormat;
+    
+    //added by Arvit@20170831 - retail version
+    private final StringProperty code = new SimpleStringProperty();
+//    private final IntegerProperty menuItemId = new SimpleIntegerProperty();
+    private final StringProperty menuNama = new SimpleStringProperty();
+    private final IntegerProperty modal = new SimpleIntegerProperty();
+    private final IntegerProperty untungCode = new SimpleIntegerProperty();
+    private final IntegerProperty untung = new SimpleIntegerProperty();
+    private final IntegerProperty tambahanCode = new SimpleIntegerProperty();
+    private final IntegerProperty tambahan = new SimpleIntegerProperty();
+    private final StringProperty menuItemNama = new SimpleStringProperty();
+    private final StringProperty diskonNama = new SimpleStringProperty();
+    private final StringProperty pajakNama = new SimpleStringProperty();
+    private final IntegerProperty diskonId = new SimpleIntegerProperty();
+    private final IntegerProperty pajakId = new SimpleIntegerProperty();
+    private final IntegerProperty totalModal = new SimpleIntegerProperty();
+    private String jumlahNumberFormat;
+//    private final StringProperty menuItemCode = new SimpleStringProperty();
 
     public int getId() {
         return id.get();
@@ -56,20 +74,20 @@ public class PesanProperty {
         return nama;
     }
 
-    public String getJumlah() {
+    public Integer getJumlah() {
         return jumlah.get();
     }
 
-    public void setJumlah(String jumlah) {
+    public void setJumlah(Integer jumlah) {
         this.jumlah.set(jumlah);
     }
     
-    public StringProperty jumlahProperty() {
+    public IntegerProperty jumlahProperty() {
         return jumlah;
     }
     
-    public String getHarga() {
-        return harga.get().replace(".", "");
+    public Integer getHarga() {
+        return Integer.valueOf(harga.get().replace(".", ""));
     }
 
     public void setHarga(Integer harga) {
@@ -105,11 +123,11 @@ public class PesanProperty {
         return jenisId;
     }
     
-    public short getMenuId() {
-        return (short) menuId.get();
+    public int getMenuId() {
+        return menuId.get();
     }
 
-    public void setMenuId(short menuId) {
+    public void setMenuId(int menuId) {
         this.menuId.set(menuId);
     }
     
@@ -171,6 +189,194 @@ public class PesanProperty {
 
     public void setHargaNumberFormat(String hargaNumberFormat) {
         this.hargaNumberFormat = hargaNumberFormat;
+    }
+
+    public String getCode() {
+        return code.get();
+    }
+
+    public void setCode(String code) {
+        this.code.set(code);
+    }
+    
+    public StringProperty codeProperty() {
+        return code;
+    }
+
+//    public Integer getMenuItemId() {
+//        return menuItemId.get();
+//    }
+//
+//    public void setMenuItemId(Integer menuItemId) {
+//        this.menuItemId.set(menuItemId);
+//    }
+//    
+//    public IntegerProperty menuItemIdProperty() {
+//        return menuItemId;
+//    }
+
+    public String getMenuNama() {
+        return menuNama.get();
+    }
+
+    public void setMenuNama(String menuNama) {
+        this.menuNama.set(menuNama);
+    }
+    
+    public StringProperty menuNamaProperty() {
+        return menuNama;
+    }
+
+    public Integer getModal() {
+        return modal.get();
+    }
+
+    public void setModal(Integer modal) {
+        this.modal.set(modal);
+    }
+    
+    public IntegerProperty modalProperty() {
+        return modal;
+    }
+
+    public Integer getUntungCode() {
+        return untungCode.get();
+    }
+
+    public void setUntungCode(Integer untungCode) {
+        this.untungCode.set(untungCode);
+    }
+    
+    public IntegerProperty untungCodeProperty() {
+        return untungCode;
+    }
+
+    public Integer getUntung() {
+        return untung.get();
+    }
+
+    public void setUntung(Integer untung) {
+        this.untung.set(untung);
+    }
+    
+    public IntegerProperty untungProperty() {
+        return untung;
+    }
+
+    public Integer getTambahanCode() {
+        return tambahanCode.get();
+    }
+
+    public void setTambahanCode(Integer tambahanCode) {
+        this.tambahanCode.set(tambahanCode);
+    }
+    
+    public IntegerProperty tambahanCodeProperty() {
+        return tambahanCode;
+    }
+
+    public Integer getTambahan() {
+        return tambahan.get();
+    }
+
+    public void setTambahan(Integer tambahan) {
+        this.tambahan.set(tambahan);
+    }
+    
+    public IntegerProperty tambahanProperty() {
+        return tambahan;
+    }
+
+    public String getMenuItemNama() {
+        return menuItemNama.get();
+    }
+
+    public void setMenuItemNama(String menuItemNama) {
+        this.menuItemNama.set(menuItemNama);
+    }
+    
+    public StringProperty menuItemNamaProperty() {
+        return menuItemNama;
+    }
+
+    public String getDiskonNama() {
+        return diskonNama.get();
+    }
+
+    public void setDiskonNama(String diskonNama) {
+        this.diskonNama.set(diskonNama);
+    }
+    
+    public StringProperty diskonNamaProperty() {
+        return diskonNama;
+    }
+
+    public String getPajakNama() {
+        return pajakNama.get();
+    }
+
+    public void setPajakNama(String pajakNama) {
+        this.pajakNama.set(pajakNama);
+    }
+    
+    public StringProperty pajakNamaProperty() {
+        return pajakNama;
+    }
+
+    public Integer getDiskonId() {
+        return diskonId.get();
+    }
+
+    public void setDiskonId(Integer diskonId) {
+        this.diskonId.set(diskonId);
+    }
+    
+    public IntegerProperty diskonIdProperty() {
+        return diskonId;
+    }
+
+    public Integer getPajakId() {
+        return pajakId.get();
+    }
+
+    public void setPajakId(Integer pajakId) {
+        this.pajakId.set(pajakId);
+    }
+    
+    public IntegerProperty pajakIdProperty() {
+        return pajakId;
+    }
+
+    public String getJumlahNumberFormat() {
+        return numberFormat.format(jumlah.get());
+    }
+
+    public void setJumlahNumberFormat(String jumlahNumberFormat) {
+        this.jumlahNumberFormat = jumlahNumberFormat;
+    }
+
+//    public String getMenuItemCode() {
+//        return menuItemCode.get();
+//    }
+//
+//    public void setMenuItemCode(String menuItemCode) {
+//        this.menuItemCode.set(menuItemCode);
+//    }
+//    
+//    public StringProperty menuItemCodeProperty() {
+//        return menuItemCode;
+//    }
+
+    public Integer getTotalModal() {
+        return totalModal.get();
+    }
+
+    public void setTotalModal(Integer totalModal) {
+        this.totalModal.set(totalModal);
+    }
+    
+    public IntegerProperty totalModalProperty() {
+        return totalModal;
     }
     
 }

@@ -24,6 +24,7 @@ import org.apache.log4j.Logger;
  */
 public class Kiraju extends Application {
     private final static Logger LOGGER = Logger.getLogger(Kiraju.class);
+    
     private Stage stage;
     private BorderPane root;
     private AdminController adminController;
@@ -53,6 +54,7 @@ public class Kiraju extends Application {
         root = loader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        
         RootLayoutController controller = loader.getController();
         controller.setMainApp(this);
         stage.show();
