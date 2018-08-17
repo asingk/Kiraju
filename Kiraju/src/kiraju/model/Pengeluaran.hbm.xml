@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 18, 2017 12:05:48 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="kiraju.model.Pengeluaran" table="PENGELUARAN" schema="APP" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="increment">
+                <param name="schema">APP</param>
+            </generator>
+        </id>
+        <property name="nama" type="string">
+            <column name="NAMA" length="100" />
+        </property>
+        <property name="harga" type="java.lang.Integer">
+            <column name="HARGA" />
+        </property>
+        <property name="dtOnly" type="date">
+            <column name="DT_ONLY" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

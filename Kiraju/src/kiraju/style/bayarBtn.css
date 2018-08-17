@@ -1,0 +1,21 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 10, 2017, 5:11:48 PM
+    Author     : arvita
+*/
+
+.button{
+    -fx-background-color: #00e676;
+    /*-fx-text-fill: rgba(255, 255, 255, .8);*/
+}
+.button:hover{
+    -fx-background-color: #00b248;
+    /*-fx-text-fill: rgba(255, 255, 255, .8);*/
+}
+.button>.text{
+    /*-fx-font-size: large;*/
+}

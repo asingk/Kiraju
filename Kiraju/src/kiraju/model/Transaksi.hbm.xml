@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 18, 2017 12:05:48 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="kiraju.model.Transaksi" table="TRANSAKSI" schema="APP">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="increment">
+                <param name="schema">APP</param>
+            </generator>
+        </id>
+        <many-to-one name="mejaId" class="kiraju.model.Meja">
+            <column name="MEJA_ID" />
+        </many-to-one>
+        <property name="dtStart" type="timestamp">
+            <column name="DT_START" length="29" />
+        </property>
+        <property name="dtEnd" type="timestamp">
+            <column name="DT_END" length="29" />
+        </property>
+        <property name="total" type="java.lang.Integer">
+            <column name="TOTAL" />
+        </property>
+        <property name="status" type="java.lang.Short">
+            <column name="STATUS" />
+        </property>
+        <set name="pesan" table="PESAN" inverse="true" lazy="true" cascade="delete" fetch="join">
+            <key>
+                <column name="TRANSAKSI_ID" not-null="true" />
+            </key>
+            <one-to-many class="kiraju.model.Pesan" />
+        </set>
+        <property name="namaPemesan" type="string">
+            <column name="NAMA_PEMESAN" length="20" />
+        </property>
+        <many-to-one name="userStart" class="kiraju.model.Users">
+            <column name="USER_START" />
+        </many-to-one>
+        <many-to-one name="userEnd" class="kiraju.model.Users">
+            <column name="USER_END" />
+        </many-to-one>
+        <property name="endDtOnly" type="date">
+            <column name="END_DT_ONLY" length="10" />
+        </property>
+        <property name="endTimeOnly" type="time">
+            <column name="END_TIME_ONLY" length="8" />
+        </property>
+    </class>
+</hibernate-mapping>

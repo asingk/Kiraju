@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 18, 2017 12:05:48 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="kiraju.model.JenisMenu" table="JENIS_MENU" schema="APP">
+        <id name="id" type="short">
+            <column name="ID" />
+            <generator class="increment">
+                <param name="schema">APP</param>
+            </generator>
+        </id>
+        <property name="nama" type="string">
+            <column name="NAMA" length="50" />
+        </property>
+        <property name="deletedFlag" type="java.lang.Short">
+            <column name="DELETED_FLAG" />
+        </property>
+    </class>
+</hibernate-mapping>

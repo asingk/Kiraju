@@ -1,0 +1,1000 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<TabPane fx:id="tabPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" styleClass="tab" stylesheets="@style/tab.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kiraju.AdminController">
+  <tabs>
+      <Tab fx:id="mejaTab" text="Meja">
+         <content>
+            <SplitPane disable="true" dividerPositions="0.7" prefHeight="160.0" prefWidth="200.0">
+              <items>
+                  <ScrollPane prefHeight="617.0" prefWidth="836.0">
+                     <content>
+                        <GridPane>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Button fx:id="meja1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja1Action" text="1" />
+                              <Button fx:id="meja2" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja2Action" text="2" GridPane.columnIndex="1" />
+                              <Button fx:id="meja3" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja3Action" text="3" GridPane.columnIndex="2" />
+                              <Button fx:id="meja4" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja4Action" text="4" GridPane.columnIndex="3" />
+                              <Button fx:id="meja5" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja5Action" text="5" GridPane.columnIndex="4" />
+                              <Button fx:id="meja6" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja6Action" text="6" GridPane.columnIndex="5" />
+                              <Button fx:id="meja7" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja7Action" text="7" GridPane.columnIndex="6" />
+                              <Button fx:id="meja8" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja8Action" text="8" GridPane.columnIndex="7" />
+                              <Button fx:id="meja9" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja9Action" text="9" GridPane.columnIndex="8" />
+                              <Button fx:id="meja10" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja10Action" text="10" GridPane.columnIndex="9" />
+                              <Button fx:id="meja11" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja11Action" text="11" GridPane.rowIndex="1" />
+                              <Button fx:id="meja12" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja12Action" text="12" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Button fx:id="meja13" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja13Action" text="13" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Button fx:id="meja14" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja14Action" text="14" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <Button fx:id="meja15" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja15Action" text="15" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                              <Button fx:id="meja16" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja16Action" text="16" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                              <Button fx:id="meja17" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja17Action" text="17" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                              <Button fx:id="meja18" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja18Action" text="18" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+                              <Button fx:id="meja19" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja19Action" text="19" GridPane.columnIndex="8" GridPane.rowIndex="1" />
+                              <Button fx:id="meja20" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja20Action" text="20" GridPane.columnIndex="9" GridPane.rowIndex="1" />
+                              <Button fx:id="meja21" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja21Action" text="21" GridPane.rowIndex="2" />
+                              <Button fx:id="meja22" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja22Action" text="22" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Button fx:id="meja23" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja23Action" text="23" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <Button fx:id="meja24" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja24Action" text="24" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                              <Button fx:id="meja25" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja25Action" text="25" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                              <Button fx:id="meja26" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja26Action" text="26" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                              <Button fx:id="meja27" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja27Action" text="27" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+                              <Button fx:id="meja28" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja28Action" text="28" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+                              <Button fx:id="meja29" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja29Action" text="29" GridPane.columnIndex="8" GridPane.rowIndex="2" />
+                              <Button fx:id="meja30" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja30Action" text="30" GridPane.columnIndex="9" GridPane.rowIndex="2" />
+                              <Button fx:id="meja31" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja31Action" text="31" GridPane.rowIndex="3" />
+                              <Button fx:id="meja32" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja32Action" text="32" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Button fx:id="meja33" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja33Action" text="33" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                              <Button fx:id="meja34" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja34Action" text="34" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                              <Button fx:id="meja35" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja35Action" text="35" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                              <Button fx:id="meja36" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja36Action" text="36" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                              <Button fx:id="meja37" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja37Action" text="37" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+                              <Button fx:id="meja38" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja38Action" text="38" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+                              <Button fx:id="meja39" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja39Action" text="39" GridPane.columnIndex="8" GridPane.rowIndex="3" />
+                              <Button fx:id="meja40" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja40Action" text="40" GridPane.columnIndex="9" GridPane.rowIndex="3" />
+                              <Button fx:id="meja41" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja41Action" text="41" GridPane.rowIndex="4" />
+                              <Button fx:id="meja42" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja42Action" text="42" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <Button fx:id="meja43" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja43Action" text="43" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                              <Button fx:id="meja44" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja44Action" text="44" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                              <Button fx:id="meja45" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja45Action" text="45" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                              <Button fx:id="meja46" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja46Action" text="46" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                              <Button fx:id="meja47" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja47Action" text="47" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+                              <Button fx:id="meja48" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja48Action" text="48" GridPane.columnIndex="7" GridPane.rowIndex="4" />
+                              <Button fx:id="meja49" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja49Action" text="49" GridPane.columnIndex="8" GridPane.rowIndex="4" />
+                              <Button fx:id="meja50" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja50Action" text="50" GridPane.columnIndex="9" GridPane.rowIndex="4" />
+                              <Button fx:id="meja51" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja51Action" text="51" GridPane.rowIndex="5" />
+                              <Button fx:id="meja52" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja52Action" text="52" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <Button fx:id="meja53" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja53Action" text="53" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                              <Button fx:id="meja54" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja54Action" text="54" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                              <Button fx:id="meja55" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja55Action" text="55" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+                              <Button fx:id="meja56" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja56Action" text="56" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+                              <Button fx:id="meja57" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja57Action" text="57" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+                              <Button fx:id="meja58" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja58Action" text="58" GridPane.columnIndex="7" GridPane.rowIndex="5" />
+                              <Button fx:id="meja59" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja59Action" text="59" GridPane.columnIndex="8" GridPane.rowIndex="5" />
+                              <Button fx:id="meja60" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja60Action" text="60" GridPane.columnIndex="9" GridPane.rowIndex="5" />
+                              <Button fx:id="meja61" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja61Action" text="61" GridPane.rowIndex="6" />
+                              <Button fx:id="meja62" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja62Action" text="62" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <Button fx:id="meja63" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja63Action" text="63" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                              <Button fx:id="meja64" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja64Action" text="64" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                              <Button fx:id="meja65" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja65Action" text="65" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+                              <Button fx:id="meja66" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja66Action" text="66" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+                              <Button fx:id="meja67" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja67Action" text="67" GridPane.columnIndex="6" GridPane.rowIndex="6" />
+                              <Button fx:id="meja68" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja68Action" text="68" GridPane.columnIndex="7" GridPane.rowIndex="6" />
+                              <Button fx:id="meja69" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja69Action" text="69" GridPane.columnIndex="8" GridPane.rowIndex="6" />
+                              <Button fx:id="meja70" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja70Action" text="70" GridPane.columnIndex="9" GridPane.rowIndex="6" />
+                              <Button fx:id="meja71" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja71Action" text="71" GridPane.rowIndex="7" />
+                              <Button fx:id="meja72" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja72Action" text="72" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                              <Button fx:id="meja73" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja73Action" text="73" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                              <Button fx:id="meja74" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja74Action" text="74" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+                              <Button fx:id="meja75" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja75Action" text="75" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+                              <Button fx:id="meja76" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja76Action" text="76" GridPane.columnIndex="5" GridPane.rowIndex="7" />
+                              <Button fx:id="meja77" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja77Action" text="77" GridPane.columnIndex="6" GridPane.rowIndex="7" />
+                              <Button fx:id="meja78" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja78Action" text="78" GridPane.columnIndex="7" GridPane.rowIndex="7" />
+                              <Button fx:id="meja79" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja79Action" text="79" GridPane.columnIndex="8" GridPane.rowIndex="7" />
+                              <Button fx:id="meja80" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja80Action" text="80" GridPane.columnIndex="9" GridPane.rowIndex="7" />
+                              <Button fx:id="meja81" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja81Action" text="81" GridPane.rowIndex="8" />
+                              <Button fx:id="meja82" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja82Action" text="82" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                              <Button fx:id="meja83" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja83Action" text="83" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                              <Button fx:id="meja84" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja84Action" text="84" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+                              <Button fx:id="meja85" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja85Action" text="85" GridPane.columnIndex="4" GridPane.rowIndex="8" />
+                              <Button fx:id="meja86" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja86Action" text="86" GridPane.columnIndex="5" GridPane.rowIndex="8" />
+                              <Button fx:id="meja87" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja87Action" text="87" GridPane.columnIndex="6" GridPane.rowIndex="8" />
+                              <Button fx:id="meja88" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja88Action" text="88" GridPane.columnIndex="7" GridPane.rowIndex="8" />
+                              <Button fx:id="meja89" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja89Action" text="89" GridPane.columnIndex="8" GridPane.rowIndex="8" />
+                              <Button fx:id="meja90" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja90Action" text="90" GridPane.columnIndex="9" GridPane.rowIndex="8" />
+                              <Button fx:id="meja91" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja91Action" text="91" GridPane.rowIndex="9" />
+                              <Button fx:id="meja92" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja92Action" text="92" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                              <Button fx:id="meja93" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja93Action" text="93" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+                              <Button fx:id="meja94" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja94Action" text="94" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+                              <Button fx:id="meja95" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja95Action" text="95" GridPane.columnIndex="4" GridPane.rowIndex="9" />
+                              <Button fx:id="meja96" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja96Action" text="96" GridPane.columnIndex="5" GridPane.rowIndex="9" />
+                              <Button fx:id="meja97" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja97Action" text="97" GridPane.columnIndex="6" GridPane.rowIndex="9" />
+                              <Button fx:id="meja98" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja98Action" text="98" GridPane.columnIndex="7" GridPane.rowIndex="9" />
+                              <Button fx:id="meja99" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja99Action" text="99" GridPane.columnIndex="8" GridPane.rowIndex="9" />
+                              <Button fx:id="meja100" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#meja100Action" text="100" GridPane.columnIndex="9" GridPane.rowIndex="9" />
+                           </children>
+                        </GridPane>
+                     </content>
+                     <padding>
+                        <Insets bottom="3.0" left="13.0" right="13.0" top="3.0" />
+                     </padding>
+                  </ScrollPane>
+                  <VBox spacing="5.0">
+                     <children>
+                        <StackPane>
+                           <children>
+                              <Text fx:id="namaMeja" strokeType="OUTSIDE" strokeWidth="0.0" text="Meja">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <ButtonBar>
+                          <buttons>
+                            <Button mnemonicParsing="false" onAction="#pesanBtn" stylesheets="@style/bayarBtn.css" text="Pesan" />
+                              <Button mnemonicParsing="false" onAction="#mejaBatalBtn" stylesheets="@style/bayarBtn.css" text="Batal" />
+                              <Button fx:id="pindahBtn" mnemonicParsing="false" onAction="#pindahAction" stylesheets="@style/bayarBtn.css" text="Pindah" />
+                          </buttons>
+                        </ButtonBar>
+                        <TableView fx:id="listMenuMeja" VBox.vgrow="ALWAYS">
+                          <columns>
+                            <TableColumn fx:id="namaColumnMeja" maxWidth="1.7976931348623157E308" prefWidth="75.0" text="Nama" />
+                            <TableColumn fx:id="jumlahColumnMeja" maxWidth="-1.0" minWidth="60.0" prefWidth="60.0" text="Jumlah" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                        <GridPane maxWidth="1.7976931348623157E308" styleClass="background" stylesheets="@style/harga.css">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <StackPane alignment="CENTER_LEFT">
+                                 <children>
+                                    <Label text="Total:" />
+                                 </children>
+                              </StackPane>
+                              <StackPane alignment="CENTER_RIGHT" GridPane.columnIndex="1">
+                                 <children>
+                                    <Text fx:id="total" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </StackPane>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </GridPane>
+                        <ButtonBar>
+                          <buttons>
+                            <Button fx:id="printMeja" mnemonicParsing="false" onAction="#btnCetakMeja" stylesheets="@style/bayarBtn.css" text="Cetak" />
+                              <Button mnemonicParsing="false" onAction="#bayarBtn" stylesheets="@style/bayarBtn.css" text="Bayar" />
+                          </buttons>
+                        </ButtonBar>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+              </items>
+            </SplitPane>
+         </content>
+      </Tab>
+      <Tab fx:id="bungkusTab" text="Bungkus">
+        <content>
+            <SplitPane dividerPositions="0.7" prefHeight="467.0" prefWidth="1000.0">
+              <items>
+                  <VBox spacing="5.0">
+                     <children>
+                      <Button mnemonicParsing="false" onAction="#tambahBaruBungkusBtn" stylesheets="@style/bayarBtn.css" text="Tambah Baru" />
+                        <TableView fx:id="bungkusNamaTable" prefHeight="600.0" prefWidth="835.0">
+                          <columns>
+                            <TableColumn fx:id="noColumnBungkusNama" maxWidth="-1.0" minWidth="50.0" prefWidth="50.0" text="No." />
+                            <TableColumn fx:id="namaColumnBungkusNama" maxWidth="1.7976931348623157E308" prefWidth="75.0" text="Nama" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+                  <VBox spacing="5.0">
+                     <children>
+                        <StackPane>
+                           <children>
+                              <Text fx:id="namaBungkus" strokeType="OUTSIDE" strokeWidth="0.0" text="Nama">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <ButtonBar>
+                           <buttons>
+                              <Button mnemonicParsing="false" onAction="#pesanBungkusBtn" stylesheets="@style/bayarBtn.css" text="Pesan" />
+                              <Button mnemonicParsing="false" onAction="#bungkusBatalBtn" stylesheets="@style/bayarBtn.css" text="Batal" />
+                           </buttons>
+                        </ButtonBar>
+                        <TableView fx:id="bungkusMenuTable" VBox.vgrow="ALWAYS">
+                          <columns>
+                            <TableColumn fx:id="namaColumnBungkus" maxWidth="1.7976931348623157E308" prefWidth="75.0" text="Nama" />
+                            <TableColumn fx:id="jumlahColumnBungkus" maxWidth="-1.0" minWidth="60.0" prefWidth="60.0" text="Jumlah" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                        <GridPane styleClass="background" stylesheets="@style/harga.css">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <StackPane alignment="CENTER_LEFT">
+                                 <children>
+                                    <Label text="Total:" />
+                                 </children>
+                              </StackPane>
+                              <StackPane alignment="CENTER_RIGHT" GridPane.columnIndex="1">
+                                 <children>
+                                    <Text fx:id="totalBungkus" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </StackPane>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </GridPane>
+                        <ButtonBar>
+                          <buttons>
+                            <Button fx:id="printBungkus" mnemonicParsing="false" onAction="#btnCetakBungkus" stylesheets="@style/bayarBtn.css" text="Cetak" />
+                              <Button mnemonicParsing="false" onAction="#bungkusBayarBtn" stylesheets="@style/bayarBtn.css" text="Bayar" />
+                          </buttons>
+                        </ButtonBar>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+              </items>
+            </SplitPane>
+        </content>
+      </Tab>
+      <Tab fx:id="pemasukanTab" text="Pemasukan">
+         <content>
+            <VBox spacing="5.0">
+               <children>
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <StackPane alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0">
+                           <children>
+                              <DatePicker fx:id="pemasukanDate" onAction="#pemasukanPilihTanggal" />
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="CENTER_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1">
+                           <children>
+                              <ChoiceBox fx:id="pemasukanChoiceBox" prefWidth="150.0" />
+                           </children>
+                        </StackPane>
+                     </children>
+                  </GridPane>
+                  <TableView fx:id="pemasukanTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                      <TableColumn fx:id="noColumnPemasukan" prefWidth="75.0" text="No." />
+                      <TableColumn fx:id="waktuColumnPemasukan" prefWidth="75.0" text="Waktu" />
+                        <TableColumn fx:id="mejaColumnPemasukan" prefWidth="75.0" text="Meja" />
+                        <TableColumn fx:id="bungkusColumnPemasukan" prefWidth="75.0" text="Bungkus" />
+                        <TableColumn fx:id="statusColumnPemasukan" prefWidth="75.0" text="Status" />
+                        <TableColumn fx:id="totalColumnPemasukan" prefWidth="75.0" text="Total" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <GridPane styleClass="background" stylesheets="@style/harga.css">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <StackPane alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0">
+                           <children>
+                              <Label text="Bayar:" />
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="1">
+                           <children>
+                              <Label text="Batal:" />
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="2">
+                           <children>
+                              <Label text="Total:" />
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="CENTER_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1">
+                           <children>
+                              <Text fx:id="totalBayar" fill="LIME" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="CENTER_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <children>
+                              <Text fx:id="totalBatal" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="CENTER_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <children>
+                              <Text fx:id="totalSemua" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </GridPane>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+         </content>
+      </Tab>
+      <Tab fx:id="pengeluaranTab" text="Pengeluaran">
+        <content>
+            <SplitPane dividerPositions="0.7" prefHeight="617.0" prefWidth="1200.0">
+              <items>
+                  <VBox prefHeight="615.0" prefWidth="835.0" spacing="5.0">
+                     <children>
+                        <DatePicker fx:id="pengeluaranDate" onAction="#pengeluaranPilihTanggal" />
+                        <TableView fx:id="pengeluaranTable" VBox.vgrow="ALWAYS">
+                          <columns>
+                            <TableColumn fx:id="noColumnPengeluaran" maxWidth="-1.0" minWidth="75.0" prefWidth="75.0" text="No." />
+                            <TableColumn fx:id="namaColumnPengeluaran" maxWidth="1.7976931348623157E308" prefWidth="75.0" text="Nama" />
+                              <TableColumn fx:id="hargaColumnPengeluaran" maxWidth="-1.0" minWidth="250.0" prefWidth="250.0" text="Harga" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                        <GridPane styleClass="background" stylesheets="@style/harga.css">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <StackPane alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Total:" />
+                                 </children>
+                              </StackPane>
+                              <StackPane alignment="CENTER_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                 <children>
+                                    <Text fx:id="totalPengeluaran" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </StackPane>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </GridPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+                  <VBox spacing="5.0">
+                     <children>
+                        <VBox>
+                           <children>
+                              <Label text="Nama:" />
+                              <TextField fx:id="namaPengeluaranTF" />
+                           </children>
+                        </VBox>
+                        <VBox layoutX="15.0" layoutY="15.0">
+                           <children>
+                              <Label text="Harga:" />
+                              <TextField fx:id="hargaPengeluaranTF" />
+                           </children>
+                        </VBox>
+                        <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="122.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="224.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#pengeluaranDeleteAction" prefWidth="85.0" stylesheets="@style/bayarBtn.css" text="Hapus" />
+                              <StackPane alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1">
+                                 <children>
+                                    <ButtonBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="237.0">
+                                      <buttons>
+                                        <Button mnemonicParsing="false" onAction="#pengeluaranCancelAction" stylesheets="@style/bayarBtn.css" text="Batal" />
+                                          <Button mnemonicParsing="false" onAction="#pengeluaranSimpanAction" stylesheets="@style/bayarBtn.css" text="Simpan" />
+                                      </buttons>
+                                    </ButtonBar>
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </GridPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+              </items>
+            </SplitPane>
+        </content>
+      </Tab>
+    <Tab fx:id="menuTab" text="Daftar Menu">
+         <content>
+            <SplitPane dividerPositions="0.7" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+                <items>
+                  <VBox prefHeight="617.0" prefWidth="836.0" spacing="5.0">
+                     <children>
+                        <GridPane>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="550.0" minWidth="10.0" prefWidth="469.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="467.0" minWidth="10.0" prefWidth="463.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <StackPane>
+                                 <children>
+                                      <TextField fx:id="searchTextField" promptText="Cari Menu" />
+                                 </children>
+                              </StackPane>
+                              <StackPane alignment="CENTER_RIGHT" GridPane.columnIndex="1">
+                                 <children>
+                                      <ChoiceBox fx:id="jenisBox" prefWidth="150.0" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </GridPane>
+                          <TableView fx:id="menuTable" prefHeight="572.0" prefWidth="826.0">
+                            <columns>
+                              <TableColumn fx:id="noColumn" editable="false" maxWidth="-1.0" minWidth="50.0" prefWidth="50.0" sortable="false" text="No." />
+                              <TableColumn fx:id="namaColumn" maxWidth="1.7976931348623157E308" minWidth="344.99998474121094" prefWidth="805.9999847412109" text="Nama" />
+                                <TableColumn fx:id="hargaColumn" maxWidth="-1.0" minWidth="200.0" prefWidth="250.0" text="Harga" />
+                              <TableColumn fx:id="statusColumn" maxWidth="-1.0" minWidth="200.0" prefWidth="250.0" text="Status" />
+                            </columns>
+                             <columnResizePolicy>
+                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                             </columnResizePolicy>
+                          </TableView>
+                     </children>
+                  </VBox>
+                  <VBox spacing="5.0">
+                     <children>
+                        <VBox>
+                           <children>
+                                <Label text="Nama" />
+                                <TextField fx:id="namaTextField" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                                <Label text="Harga" />
+                                <TextField fx:id="hargaTextField" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                                <Label text="Jenis" />
+                                <ChoiceBox fx:id="jenisMenuBox" prefWidth="150.0" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label text="Status" />
+                              <ChoiceBox fx:id="menuStatusCB" prefWidth="150.0" />
+                           </children>
+                        </VBox>
+                          <ButtonBar prefHeight="40.0" prefWidth="200.0">
+                            <buttons>
+                              <Button mnemonicParsing="false" onAction="#handleCancelAction" stylesheets="@style/bayarBtn.css" text="Batal" />
+                                <Button mnemonicParsing="false" onAction="#handleSimpanAction" stylesheets="@style/bayarBtn.css" text="Simpan" />
+                            </buttons>
+                          </ButtonBar>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+                </items>
+              </SplitPane>
+         </content>
+    </Tab>
+    <Tab fx:id="jenisMenutab" text="Kategori Menu">
+         <content>
+            <SplitPane dividerPositions="0.7" prefHeight="160.0" prefWidth="200.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <TableView fx:id="jenisMenuTable" layoutX="283.0" layoutY="98.0" prefHeight="417.0" prefWidth="1046.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columns>
+                            <TableColumn fx:id="noColumnJenis" maxWidth="-1.0" minWidth="50.0" prefWidth="50.0" text="No." />
+                            <TableColumn fx:id="namaColumnJenis" maxWidth="1.7976931348623157E308" prefWidth="75.0" text="Nama" />
+                              <TableColumn fx:id="statusColumnJenis" maxWidth="-1.0" minWidth="200.0" prefWidth="250.0" text="Status" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+                  <VBox spacing="5.0">
+                     <children>
+                        <VBox>
+                           <children>
+                              <Label text="Nama" />
+                              <TextField fx:id="namaJenisTextField" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label text="Status" />
+                              <ChoiceBox fx:id="jenisStatusCB" prefWidth="150.0" />
+                           </children>
+                        </VBox>
+                        <ButtonBar prefHeight="40.0" prefWidth="200.0">
+                          <buttons>
+                            <Button mnemonicParsing="false" onAction="#jenisCancelAction" stylesheets="@style/bayarBtn.css" text="Batal" />
+                              <Button mnemonicParsing="false" onAction="#jenisSimpanAction" stylesheets="@style/bayarBtn.css" text="Simpan" />
+                          </buttons>
+                        </ButtonBar>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+              </items>
+            </SplitPane>
+         </content>
+    </Tab>
+      <Tab fx:id="adminMejaTab" text="Admin Meja">
+         <content>
+            <SplitPane dividerPositions="0.7" prefHeight="160.0" prefWidth="200.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <TableView fx:id="adminMejaTable" layoutX="231.0" layoutY="148.0" prefHeight="617.0" prefWidth="836.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columns>
+                            <TableColumn fx:id="noColumnAdminMeja" prefWidth="75.0" text="No." />
+                            <TableColumn fx:id="nomorColumnAdminMeja" prefWidth="75.0" text="Nama" />
+                              <TableColumn fx:id="statusColumnAdminMeja" prefWidth="75.0" text="Status" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+                  <VBox spacing="5.0">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <children>
+                        <VBox>
+                           <children>
+                              <Label text="Nama:" />
+                              <TextField fx:id="nomorAdminMejaTF" />
+                           </children>
+                        </VBox>
+                        <VBox layoutX="15.0" layoutY="15.0">
+                           <children>
+                              <Label text="Status:" />
+                              <ChoiceBox fx:id="statusAdminMejaCB" prefWidth="150.0" />
+                           </children>
+                        </VBox>
+                        <ButtonBar prefHeight="40.0" prefWidth="237.0">
+                           <buttons>
+                              <Button mnemonicParsing="false" onAction="#adminMejaBatalBtn" stylesheets="@style/bayarBtn.css" text="Batal" />
+                              <Button fx:id="adminMejaSimpanBtn" mnemonicParsing="false" onAction="#adminMejaSimpanAction" stylesheets="@style/bayarBtn.css" text="Simpan" />
+                           </buttons>
+                        </ButtonBar>
+                     </children>
+                  </VBox>
+              </items>
+            </SplitPane>
+         </content>
+      </Tab>
+      <Tab fx:id="grafikTab" text="Laporan">
+        <content>
+            <GridPane>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <VBox>
+                     <children>
+                        <AnchorPane>
+                           <children>
+                              <Label fx:id="grafikLabel" layoutX="14.0" layoutY="14.0" text="Bulan:" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
+                              <ChoiceBox fx:id="grafikBulanCB" layoutX="62.0" layoutY="9.0" prefWidth="150.0" />
+                           </children>
+                        </AnchorPane>
+                        <LineChart fx:id="chartBulan">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" fx:id="xAxisBulanan" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </LineChart>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="10.0" layoutY="10.0" GridPane.columnIndex="1">
+                     <children>
+                        <AnchorPane>
+                           <children>
+                              <Label fx:id="grafikLabel1" layoutX="14.0" layoutY="14.0" text="Tahun:" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
+                              <ChoiceBox fx:id="grafikTahunCB" layoutX="62.0" layoutY="9.0" prefWidth="150.0" />
+                           </children>
+                        </AnchorPane>
+                        <LineChart fx:id="chartTahun">
+                           <xAxis>
+                              <CategoryAxis side="BOTTOM" fx:id="xAxisTahunan" />
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis side="LEFT" />
+                           </yAxis>
+                        </LineChart>
+                     </children>
+                  </VBox>
+                  <GridPane GridPane.columnSpan="2" GridPane.rowIndex="1">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                     <children>
+                        <Separator prefWidth="200.0" GridPane.columnSpan="2" />
+                        <StackPane alignment="TOP_CENTER" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Laporan Transaksi">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <GridPane hgap="5.0" vgap="5.0" GridPane.rowIndex="2">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <StackPane alignment="CENTER_RIGHT">
+                                 <children>
+                                    <Label text="Pilih Tanggal:" />
+                                 </children>
+                              </StackPane>
+                              <StackPane alignment="BOTTOM_LEFT" GridPane.columnIndex="1">
+                                 <children>
+                                    <DatePicker fx:id="transaksiDariDate" />
+                                 </children>
+                              </StackPane>
+                              <StackPane GridPane.columnIndex="2">
+                                 <children>
+                                    <Label text="sampai" />
+                                 </children>
+                              </StackPane>
+                              <StackPane alignment="CENTER_RIGHT" GridPane.columnIndex="3">
+                                 <children>
+                                    <DatePicker fx:id="transaksiSampaiDate" />
+                                 </children>
+                              </StackPane>
+                              <StackPane alignment="CENTER_RIGHT" GridPane.rowIndex="1">
+                                 <children>
+                                    <Label text="Jenis Laporan:" />
+                                 </children>
+                              </StackPane>
+                              <StackPane alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <children>
+                                    <ChoiceBox fx:id="jenisLaporanCB" prefWidth="150.0" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </GridPane>
+                        <GridPane vgap="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="333.0" minWidth="10.0" prefWidth="120.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="483.0" minWidth="10.0" prefWidth="483.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#direktoriLaporanBtn" stylesheets="@style/bayarBtn.css" text="Pilih Direktori" />
+                              <Text fx:id="laporanDirectory" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" />
+                              <Button mnemonicParsing="false" onAction="#downloadLaporan" stylesheets="@style/bayarBtn.css" text="Download" GridPane.rowIndex="1" />
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </GridPane>
+                     </children>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                        <RowConstraints />
+                     </rowConstraints>
+                  </GridPane>
+               </children>
+            </GridPane>
+        </content>
+      </Tab>
+      <Tab fx:id="backupRestoreTab" text="Backup &amp; Restore">
+         <content>
+            <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                     <children>
+                        <VBox prefHeight="305.0" prefWidth="1200.0" spacing="5.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Backup Database">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <GridPane>
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="592.0" minWidth="10.0" prefWidth="114.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="1081.0" minWidth="10.0" prefWidth="1081.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#direktoriBackupBtn" stylesheets="@style/bayarBtn.css" text="Pilih Direktori" />
+                                    <Text fx:id="backupDirectory" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" />
+                                 </children>
+                              </GridPane>
+                              <Button mnemonicParsing="false" onAction="#backupAction" stylesheets="@style/bayarBtn.css" text="Backup" />
+                           </children>
+                           <padding>
+                              <Insets left="5.0" top="5.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                     <children>
+                        <VBox prefHeight="305.0" prefWidth="1200.0" spacing="5.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Restore Database">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <GridPane>
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="592.0" minWidth="10.0" prefWidth="118.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="1115.0" minWidth="10.0" prefWidth="1077.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#direktoriRestoreBtn" stylesheets="@style/bayarBtn.css" text="Pilih Direktori" />
+                                    <Text fx:id="restoreDirectory" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" />
+                                 </children>
+                              </GridPane>
+                              <Button mnemonicParsing="false" onAction="#restoreAction" stylesheets="@style/bayarBtn.css" text="Restore" />
+                           </children>
+                           <padding>
+                              <Insets left="5.0" top="5.0" />
+                           </padding>
+                        </VBox>
+                     </children></AnchorPane>
+              </items>
+            </SplitPane>
+         </content>
+      </Tab>
+      <Tab fx:id="usersTab" text="User">
+        <content>
+            <SplitPane dividerPositions="0.7" prefHeight="467.0" prefWidth="1000.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <TableView fx:id="usersTable" layoutX="232.0" layoutY="93.0" prefHeight="465.0" prefWidth="695.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columns>
+                            <TableColumn fx:id="noColumnUsers" maxWidth="-1.0" minWidth="50.0" prefWidth="50.0" text="No." />
+                            <TableColumn fx:id="namaColumnUsers" maxWidth="1.7976931348623157E308" prefWidth="75.0" text="Nama" />
+                              <TableColumn fx:id="posisiColumnUsers" maxWidth="-1.0" minWidth="200.0" prefWidth="200.0" text="Posisi" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+                  <VBox maxWidth="1.7976931348623157E308" prefHeight="158.0" prefWidth="345.0">
+                     <children>
+                        <GridPane maxWidth="1.7976931348623157E308" prefHeight="153.0" prefWidth="345.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="142.0" minWidth="10.0" prefWidth="82.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="213.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Nama:" />
+                              <Label text="Username:" GridPane.rowIndex="1" />
+                              <Label text="Password:" GridPane.rowIndex="2" />
+                              <Label text="Posisi:" GridPane.rowIndex="3" />
+                              <TextField fx:id="namaUsersTF" GridPane.columnIndex="1" />
+                              <TextField fx:id="userNameUsersTF" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="passwordUsersTF" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <ChoiceBox fx:id="posisiUsers" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Label text="Status:" GridPane.rowIndex="4" />
+                              <ChoiceBox fx:id="userStatusCB" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                           </children>
+                        </GridPane>
+                        <ButtonBar prefHeight="40.0" prefWidth="200.0">
+                          <buttons>
+                            <Button mnemonicParsing="false" onAction="#usersBatalBtn" stylesheets="@style/bayarBtn.css" text="Batal" />
+                              <Button mnemonicParsing="false" onAction="#usersSimpanBtn" stylesheets="@style/bayarBtn.css" text="Simpan" />
+                          </buttons>
+                        </ButtonBar>
+                     </children>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                  </VBox>
+              </items>
+            </SplitPane>
+        </content>
+      </Tab>
+      <Tab fx:id="aboutTab" text="Tentang Kiraju">
+        <content>
+            <VBox prefHeight="617.0" prefWidth="1200.0">
+               <children>
+                  <Label text="Kiraju Cafe &amp; Resto adalah aplikasi kasir untuk cafe, restoran, rumah makan, dan sejenisnya. Aplikasi ini dibuat di sebuah bandar di Aceh di suatu kampung yang Mulia oleh seseorang yang sudah mulai bosan jadi karyawan." wrapText="true" />
+                  <Label wrapText="true" />
+                  <Label text="Aplikasi ini gratis alias bisa didapatkan secara cuma-cuma di www.kiraju.com. Namun kami juga menyediakan versi berbayar dengan beberapa kelebihan sebagai berikut:" wrapText="true" />
+                  <Label text="1. Nama cafe/restoran Anda pada struk kasir. Pada versi gratis, terpampang nama aplikasi ini yang bertujuan untuk kepentingan promosi." wrapText="true" />
+                  <Label text="2. Manajemen user. User terdiri dari tiga tingkatan, yaitu: Kasir, Admin, dan Super User (pemilik). Pada versi gratis, tombol masuk akan dimatikan." wrapText="true" />
+                  <Label text="3. Layanan bantuan dan pemeliharaan selama 1 tahun." wrapText="true" />
+                  <Label text="4. Pemasangan/instalasi dan edukasi cara pemakaian." wrapText="true" />
+                  <Label wrapText="true" />
+                  <Label text="Untuk mendapatkan versi berbayar, hubungi kami: marketing@kiraju.com atau 0812-8811-842." wrapText="true" />
+                  <Label wrapText="true" />
+                  <Label wrapText="true" />
+                  <Label text="Salam," wrapText="true" />
+                  <Label text="oki_singkil" wrapText="true" />
+                  <Label />
+                  <Label text="Banda Aceh, 6 Ramadhan 1438 H" />
+               </children>
+               <padding>
+                  <Insets bottom="14.0" left="14.0" right="14.0" top="14.0" />
+               </padding>
+            </VBox>
+        </content>
+      </Tab>
+  </tabs>
+</TabPane>

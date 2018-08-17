@@ -5,40 +5,65 @@
  */
 package kiraju;
 
+import java.io.IOException;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
+import javafx.scene.control.TabPane;
+import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import kiraju.model.Users;
+import kiraju.util.HibernateUtil;
+import kiraju.util.JDBCConnection;
+import org.apache.log4j.Logger;
 
 /**
  *
  * @author arvita
  */
 public class Kiraju extends Application {
+    private final static Logger LOGGER = Logger.getLogger(Kiraju.class);
+    private Stage stage;
+    private BorderPane root;
+    private AdminController adminController;
     
     @Override
-    public void start(Stage primaryStage) {
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
+    public void init() throws Exception {
+        try {
+            String currentDir = System.getProperty("user.dir");
+            System.setProperty("derby.system.home", currentDir);
+            if(LOGGER.isDebugEnabled()){
+                LOGGER.debug("derby.system.home = " + System.getProperty("derby.system.home"));
+                LOGGER.debug("user.home = "+ System.getProperty("user.home"));
+                LOGGER.debug("user.dir = "+ System.getProperty("user.dir"));
             }
-        });
-        
-        StackPane root = new StackPane();
-        root.getChildren().add(btn);
-        
-        Scene scene = new Scene(root, 300, 250);
-        
-        primaryStage.setTitle("Hello World!");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        } catch (Exception e) {
+            LOGGER.error("failed to set derby.system.home", e);
+        }
+        JDBCConnection.createDatabase();
+    }
+    
+    @Override
+    public void start(Stage stage) throws Exception {
+        this.stage = stage;
+        this.stage.getIcons().add(new Image(this.getClass().getResource("img/kiraju_logo_thumb.png").toString()));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("RootLayout.fxml"));
+        root = loader.load();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        RootLayoutController controller = loader.getController();
+        controller.setMainApp(this);
+        stage.show();
+        showInti();
+    }
+    
+    @Override
+    public void stop() throws Exception {
+        HibernateUtil.getSessionFactory().close();
+        JDBCConnection.databaseShutdown();
+        super.stop();
     }
 
     /**
@@ -47,5 +72,30 @@ public class Kiraju extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
+    public Stage getStage() {
+        return stage;
+    }
+
+    private void showInti() {
+        try {
+            // Load person overview
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("Admin.fxml"));
+            TabPane inti = (TabPane) loader.load();
+            
+            //Set person overview into the center of root layout
+            root.setCenter(inti);
+            
+            //give the controller access to the main page
+            adminController = loader.getController();
+            adminController.setPrimaryStage(stage);
+        } catch (IOException e) {
+            LOGGER.error("failed to load Admin.fxml", e);
+        }
+    }
+
+    public void setLoginUser(Users loginUser) {
+        adminController.setLoginUser(loginUser);
+    }
 }
