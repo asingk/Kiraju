@@ -66,12 +66,7 @@ public class BayarController implements Initializable{
     private final ITransaksi iTransaksi = new TransaksiModel();
     private final IPelanggan iPelanggan = new PelangganModel();
     private final IMenuItem iMenuItem = new MenuItemModel();
-//    private int transaksiId;
-//    private Integer totalHargaPesan;
-//    private Users loginUser;
     private boolean okClicked;
-//    private Integer pesanGlobalDiskon;
-//    private Integer pesanGlobalPajak;
     private Transaksi transaksi;
     private Short status;
 
@@ -82,7 +77,6 @@ public class BayarController implements Initializable{
         TextFields.bindAutoCompletion(bayarPelangganComboBox.getEditor(), (AutoCompletionBinding.ISuggestionRequest t) -> {
             return iPelanggan.searchPelangganById(t.getUserText());
         });
-//        bayarBtn.disableProperty().bind(Bindings.isEmpty(uang.textProperty()).or(Bindings.lessThan(uang.textProperty(), totalHarga.getText())));
     }
 
     void setDialogStage(Stage dialogStage) {
@@ -95,11 +89,6 @@ public class BayarController implements Initializable{
     }
 
     void initValue(Transaksi transaksi, short status, ObservableList<PesanProperty> pesanMenuItemOrderedObsList) {
-//        transaksiId = transaksi.getId();
-//        totalHargaPesan = transaksi.getTotal();
-//        loginUser = transaksi.getUserEnd();
-//        pesanGlobalDiskon = transaksi.getDiskonTotal();
-//        pesanGlobalPajak = transaksi.getPajakTotal();
         this.transaksi = transaksi;
         this.status = status;
         this.pesanMenuItemOrderedObsList = pesanMenuItemOrderedObsList;
@@ -127,7 +116,7 @@ public class BayarController implements Initializable{
     private void okBtn(ActionEvent actionEvent) {
         transaksi.setStatus(CommonConstant.TRANSAKSI_BAYAR);
         MetodePembayaran metodePembayaran = new MetodePembayaran();
-        metodePembayaran.setId(iMetodePembayaran.getIdByName(metode.getValue()));
+        metodePembayaran.setId(1);
         transaksi.setMetodePembayaranId(metodePembayaran);
         if(null != bayarPelangganComboBox.getValue() && !bayarPelangganComboBox.getEditor().getText().isEmpty() && bayarPelangganComboBox.getEditor().getText().contains("-")){
             String pelanggan = bayarPelangganComboBox.getValue();

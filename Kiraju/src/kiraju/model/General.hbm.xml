@@ -1,21 +1,20 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Nov 1, 2017 11:35:47 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="kiraju.model.General" table="GENERAL" schema="APP" optimistic-lock="version">
-        <id name="id" type="short">
-            <column name="ID" />
-            <generator class="assigned" />
-        </id>
-        <property name="installDt" type="date">
-            <column name="INSTALL_DT" length="10" />
-        </property>
-        <property name="modeCafe" type="java.lang.Boolean">
-            <column name="MODE_CAFE" />
-        </property>
-        <property name="printerCode" type="string">
-            <column name="PRINTER_CODE" length="20" />
-        </property>
-    </class>
+  <class name="kiraju.model.General" optimistic-lock="version" schema="APP" table="GENERAL">
+    <id name="id" type="short">
+      <column name="ID"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="installDt" type="date">
+      <column length="10" name="INSTALL_DT"/>
+    </property>
+    <property name="modeCafe" type="java.lang.Boolean">
+      <column name="MODE_CAFE"/>
+    </property>
+    <property name="printerCode" type="string">
+      <column length="20" name="PRINTER_CODE"/>
+    </property>
+  </class>
 </hibernate-mapping>

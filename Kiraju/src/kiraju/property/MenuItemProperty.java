@@ -27,12 +27,16 @@ public class MenuItemProperty {
     private final StringProperty code = new SimpleStringProperty();
     private final BooleanProperty stokFlag = new SimpleBooleanProperty();
     private final StringProperty stok = new SimpleStringProperty();
-    private final IntegerProperty modal = new SimpleIntegerProperty();
-    private final IntegerProperty untung = new SimpleIntegerProperty();
-    private final IntegerProperty untungCode = new SimpleIntegerProperty();
-    private final IntegerProperty tambahan = new SimpleIntegerProperty();
-    private final IntegerProperty tambahanCode = new SimpleIntegerProperty();
+//    private final IntegerProperty modal = new SimpleIntegerProperty();
+//    private final IntegerProperty untung = new SimpleIntegerProperty();
+//    private final IntegerProperty untungCode = new SimpleIntegerProperty();
+//    private final IntegerProperty tambahan = new SimpleIntegerProperty();
+//    private final IntegerProperty tambahanCode = new SimpleIntegerProperty();
     private final StringProperty hargaJual = new SimpleStringProperty();
+    //20171229 - kirajulite
+    private final StringProperty status = new SimpleStringProperty();
+    private final IntegerProperty jenisId = new SimpleIntegerProperty();
+    private final StringProperty jenisNama = new SimpleStringProperty();
 
 //    public Integer getId() {
 //        return id.get();
@@ -93,41 +97,41 @@ public class MenuItemProperty {
         return stok;
     }
 
-    public Integer getModal() {
-        return modal.get();
-    }
+//    public Integer getModal() {
+//        return modal.get();
+//    }
+//
+//    public void setModal(Integer modal) {
+//        this.modal.set(modal);
+//    }
+//    
+//    public IntegerProperty modalProperty() {
+//        return modal;
+//    }
+//
+//    public Integer getUntung() {
+//        return untung.get();
+//    }
+//
+//    public void setUntung(Integer untung) {
+//        this.untung.set(untung);
+//    }
+//    
+//    public IntegerProperty untungProperty() {
+//        return untung;
+//    }
 
-    public void setModal(Integer modal) {
-        this.modal.set(modal);
-    }
-    
-    public IntegerProperty modalProperty() {
-        return modal;
-    }
-
-    public Integer getUntung() {
-        return untung.get();
-    }
-
-    public void setUntung(Integer untung) {
-        this.untung.set(untung);
-    }
-    
-    public IntegerProperty untungProperty() {
-        return untung;
-    }
-
-    public Integer getTambahan() {
-        return tambahan.get();
-    }
-
-    public void setTambahan(Integer tambahan) {
-        this.tambahan.set(tambahan);
-    }
-    
-    public IntegerProperty tambahanProperty() {
-        return tambahan;
-    }
+//    public Integer getTambahan() {
+//        return tambahan.get();
+//    }
+//
+//    public void setTambahan(Integer tambahan) {
+//        this.tambahan.set(tambahan);
+//    }
+//    
+//    public IntegerProperty tambahanProperty() {
+//        return tambahan;
+//    }
 
     public String getHargaJual() {
         return hargaJual.get();
@@ -141,29 +145,29 @@ public class MenuItemProperty {
         return hargaJual;
     }
 
-    public Integer getUntungCode() {
-        return untungCode.get();
-    }
+//    public Integer getUntungCode() {
+//        return untungCode.get();
+//    }
+//
+//    public void setUntungCode(Integer untungCode) {
+//        this.untungCode.set(untungCode);
+//    }
+//    
+//    public IntegerProperty untungCodeProp() {
+//        return untungCode;
+//    }
 
-    public void setUntungCode(Integer untungCode) {
-        this.untungCode.set(untungCode);
-    }
-    
-    public IntegerProperty untungCodeProp() {
-        return untungCode;
-    }
-
-    public Integer getTambahanCode() {
-        return tambahanCode.get();
-    }
-
-    public void setTambahanCode(Integer tambahanCode) {
-        this.tambahanCode.set(tambahanCode);
-    }
-    
-    public IntegerProperty tambahanCode() {
-        return tambahanCode;
-    }
+//    public Integer getTambahanCode() {
+//        return tambahanCode.get();
+//    }
+//
+//    public void setTambahanCode(Integer tambahanCode) {
+//        this.tambahanCode.set(tambahanCode);
+//    }
+//    
+//    public IntegerProperty tambahanCode() {
+//        return tambahanCode;
+//    }
 
     public Boolean getStokFlag() {
         return stokFlag.get();
@@ -175,5 +179,55 @@ public class MenuItemProperty {
     
     public BooleanProperty stokFlagProperty() {
         return stokFlag;
+    }
+    
+    public Boolean getStatus() {
+        Boolean statusBoolean = status.get().equalsIgnoreCase("Ya") ? Boolean.TRUE : Boolean.FALSE;
+        return statusBoolean;
+    }
+
+    public void setStatus(Boolean status) {
+        String statusString = status ? "Ya" : "Tidak";
+        this.status.set(statusString);
+    }
+    
+    public StringProperty statusProperty() {
+        return status;
+    }
+    
+    /**
+     * @return the jenisId
+     */
+    public int getJenisId() {
+        return jenisId.get();
+    }
+
+    /**
+     * @param jenisId the jenisId to set
+     */
+    public void setJenisId(int jenisId) {
+        this.jenisId.set(jenisId);
+    }
+    
+    public IntegerProperty jenisIdProperty() {
+        return jenisId;
+    }
+
+    /**
+     * @return the jenisNama
+     */
+    public String getJenisNama() {
+        return jenisNama.get();
+    }
+
+    /**
+     * @param jenisNama the jenisNama to set
+     */
+    public void setJenisNama(String jenisNama) {
+        this.jenisNama.set(jenisNama);
+    }
+
+    public StringProperty jenisNamaProperty() {
+        return jenisNama;
     }
 }

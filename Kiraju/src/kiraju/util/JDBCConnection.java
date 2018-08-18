@@ -33,7 +33,7 @@ public class JDBCConnection {
     private final static Logger LOGGER = Logger.getLogger(JDBCConnection.class);
     //for development
     private static final String DRIVER = "org.apache.derby.jdbc.ClientDriver";
-    private static final String URL = "jdbc:derby://localhost:1527/kiraju";
+    private static final String URL = "jdbc:derby://localhost:1527/kiraju_lite";
     //for production
 //    private static final String DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
 //    private static final String URL = "jdbc:derby:kiraju";
@@ -147,7 +147,7 @@ public class JDBCConnection {
 
     private static void createTable(final Connection connection) {
        //path to the resource included in the application jar file
-       final String resourcePathDDL = "/kiraju2/sql/kiraju_ddl.sql"; 
+       final String resourcePathDDL = "/kiraju/sql/kiraju_ddl.sql"; 
        //get the default encoding of the JVM
        final String fileEncoding = "UTF-8";
        
@@ -187,20 +187,21 @@ public class JDBCConnection {
             properties.put("user", USER);
             properties.put("password", PWD);
             properties.put("create", "true");
-            LocalDate installDate = null;
+//            LocalDate installDate = null;
+            LocalDate batasDate = null;
             try (Connection conn = DriverManager.getConnection(URL, properties)) {
                 String query = "SELECT INSTALL_DT FROM APP.GENERAL";
                 PreparedStatement ps = conn.prepareStatement(query);
                 try (ResultSet rs = ps.executeQuery()) {
                     while (rs.next()) {
                         java.sql.Date sqlDate = rs.getDate("INSTALL_DT");
-                        installDate = sqlDate.toLocalDate();
+                        LocalDate installDate = sqlDate.toLocalDate();
 //                        installDate = LocalDate.of(2017, 4, 20);
 //                        System.out.println("installDate : " + installDate);
+                        batasDate = installDate.plusMonths(1);
                     }
                 }
             }
-            LocalDate batasDate = installDate.plusMonths(1);
             return LocalDate.now().isBefore(batasDate);
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
             LOGGER.error("Error in check install date", ex);

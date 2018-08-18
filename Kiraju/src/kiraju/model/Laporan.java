@@ -11,9 +11,7 @@ import java.util.Date;
  *
  * @author arvita
  */
-public class Laporan {
-//    private final NumberFormat numberFormat = NumberFormat.getInstance(new Locale("id", "ID"));
-    
+public class Laporan {    
     private Date tgl;
     private Integer pemasukan;
     private Integer pengeluaran;
@@ -21,9 +19,9 @@ public class Laporan {
     private String daftarMenu;
     private String jenisMenu;
     private Integer jumlah;
-    private Integer modal;
+//    private Integer modal;
     private Integer untung;
-    private Integer tambahan;
+//    private Integer tambahan;
     private Integer diskon;
     private Integer pajak;
     private Integer harga;
@@ -44,10 +42,6 @@ public class Laporan {
     public void setPemasukan(Integer pemasukan) {
         this.pemasukan = pemasukan;
     }
-    
-//    public String getPemasukanNumberFormat() {
-//        return numberFormat.format(pemasukan);
-//    }
 
     public Integer getPengeluaran() {
         return pengeluaran;
@@ -56,10 +50,6 @@ public class Laporan {
     public void setPengeluaran(Integer pengeluaran) {
         this.pengeluaran = pengeluaran;
     }
-    
-//    public String getPengeluaranNumberFormat() {
-//        return numberFormat.format(pengeluaran);
-//    }
 
     public String getDaftarMenu() {
         return daftarMenu;
@@ -85,14 +75,14 @@ public class Laporan {
         this.jumlah = jumlah;
     }
 
-    public Integer getModal() {
-        return modal;
-    }
-
-    public void setModal(Integer modal) {
-        this.modal = modal;
-    }
-
+//    public Integer getModal() {
+//        return modal;
+//    }
+//
+//    public void setModal(Integer modal) {
+//        this.modal = modal;
+//    }
+//
     public Integer getUntung() {
         return untung;
     }
@@ -100,14 +90,14 @@ public class Laporan {
     public void setUntung(Integer untung) {
         this.untung = untung;
     }
-
-    public Integer getTambahan() {
-        return tambahan;
-    }
-
-    public void setTambahan(Integer tambahan) {
-        this.tambahan = tambahan;
-    }
+//
+//    public Integer getTambahan() {
+//        return tambahan;
+//    }
+//
+//    public void setTambahan(Integer tambahan) {
+//        this.tambahan = tambahan;
+//    }
 
     public Integer getDiskon() {
         return diskon;

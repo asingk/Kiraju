@@ -11,7 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import kiraju.interfaces.IPesan;
 import kiraju.model.Diskon;
-import kiraju.model.Menu;
+//import kiraju.model.Menu;
 import kiraju.model.MenuItem;
 import kiraju.model.Pajak;
 import kiraju.model.Pelanggan;
@@ -53,14 +53,6 @@ public class PesanModel implements IPesan{
 
     @Override
     public int insert(Pesan pesan) {
-//        Pesan pesan = new Pesan();
-//        pesan.setJumlah(pesanProperty.getJumlah());
-//        Transaksi transaksi = new Transaksi();
-//        transaksi.setId(pesanProperty.getTransaksiId());
-//        pesan.setTransaksiId(transaksi);
-//        Menu menu = new Menu();
-//        menu.setId(pesanProperty.getMenuId());
-//        pesan.setMenuItemId(menu);    //TODO set menu item id
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx;
         try {
@@ -80,11 +72,16 @@ public class PesanModel implements IPesan{
         Transaction tx;
         try {
             tx = session.beginTransaction();
-            Query query =  session.createQuery("update Pesan set jumlah = :jumlah, modal = :modal, untung = :untung, tambahan = :tambahan where id = :id");
+            //20171222 - kiraju3
+//            String hql = "update Pesan set jumlah = :jumlah, modal = :modal, untung = :untung, tambahan = :tambahan where id = :id";
+            String hql = "update Pesan set jumlah = :jumlah, harga = :harga where id = :id";
+            Query query =  session.createQuery(hql);
             query.setParameter("jumlah", pesan.getJumlah());
-            query.setParameter("modal", pesan.getModal());
-            query.setParameter("untung", pesan.getUntung());
-            query.setParameter("tambahan", pesan.getTambahan());
+            //20171222 - kiraju3
+//            query.setParameter("modal", pesan.getModal());
+//            query.setParameter("untung", pesan.getUntung());
+//            query.setParameter("tambahan", pesan.getTambahan());
+            query.setParameter("harga", pesan.getHarga());
             query.setParameter("id", pesan.getId());
             query.executeUpdate();
             tx.commit();
@@ -101,7 +98,7 @@ public class PesanModel implements IPesan{
         Transaction tx;
         try {
             tx = session.beginTransaction();
-            Query query = session.createQuery("from Pesan p join p.transaksiId t left join t.diskonId d left join t.pajakId pj join p.menuItemCode mi join mi.menuId m where p.transaksiId = :transaksiId order by p.id");
+            Query query = session.createQuery("from Pesan p join p.transaksiId t left join t.diskonId d left join t.pajakId pj join p.menuItemCode mi where p.transaksiId = :transaksiId order by p.id");
             Transaksi transaksiBefore = new Transaksi();
             transaksiBefore.setId(transaksiId);
             query.setParameter("transaksiId", transaksiBefore);
@@ -112,22 +109,21 @@ public class PesanModel implements IPesan{
                     Pesan pesan = (Pesan) row[0];
                     Transaksi transaksi = (Transaksi) row[1];
                     MenuItem menuItem = (MenuItem) row[4];
-                    Menu menu = (Menu) row[5];
+//                    Menu menu = (Menu) row[5];
                     Diskon diskon = (Diskon) row[2];
                     Pajak pajak = (Pajak) row[3];
                     pesanProperty.setId(pesan.getId());
                     pesanProperty.setTransaksiId(transaksiId);
                     pesanProperty.setJumlah(pesan.getJumlah());
-//                    pesanProperty.setMenuItemId(menuItem.getId());
                     pesanProperty.setMenuItemNama(menuItem.getNama());
                     pesanProperty.setHarga(menuItem.getHargaTotal());
                     pesanProperty.setTotalHarga(menuItem.getHargaTotal() * pesan.getJumlah());
-                    pesanProperty.setNama(menu.getNama() + " " + menuItem.getNama());
+//                    pesanProperty.setNama(menu.getNama() + " " + menuItem.getNama());
+                    pesanProperty.setNama(menuItem.getNama());
                     pesanProperty.setCode(menuItem.getCode());
-                    pesanProperty.setMenuId(menu.getId());
-                    pesanProperty.setMenuNama(menu.getNama());
+//                    pesanProperty.setMenuId(menu.getId());
+//                    pesanProperty.setMenuNama(menu.getNama());
                     pesanProperty.setNamaPemesan(transaksi.getNamaPemesan());
-//                    pesanProperty.setMejaId(transaksi.getMejaId().getId());
                     if(null != diskon){
                         pesanProperty.setDiskonId(diskon.getId());
                         pesanProperty.setDiskonNama(diskon.getNama());
@@ -136,7 +132,7 @@ public class PesanModel implements IPesan{
                         pesanProperty.setPajakId(pajak.getId());
                         pesanProperty.setPajakNama(pajak.getNama());
                     }
-                    pesanProperty.setTotalModal(pesan.getModal() * pesan.getJumlah());
+//                    pesanProperty.setTotalModal(pesan.getModal() * pesan.getJumlah());
                     menuMejaObsList.add(pesanProperty);
                 }
             }
@@ -167,81 +163,6 @@ public class PesanModel implements IPesan{
             session.close();
         }
     }
-
-//    @Override
-//    public void insertAll(List<PesanProperty> pesanPropList, int transaksiId) {
-//        Pesan pesan = new Pesan();
-////        pesan.setJumlah(pesanProperty.getJumlah());
-//        Transaksi transaksi = new Transaksi();
-////        transaksi.setId(pesanProperty.getTransaksiId());
-////        pesan.setTransaksiId(transaksi);
-////        Menu menu = new Menu();
-////        menu.setId(pesanProperty.getMenuId());
-//        MenuItem menuItem = new MenuItem();
-////        pesan.setMenuItemId(menu);
-//        Session session = HibernateUtil.getSessionFactory().openSession();
-////        Transaction tx;
-////        ScrollableResults pesanCursor = session.createQuery("FROM PESAN").scroll();
-//        try {
-//            Transaction tx = session.beginTransaction();
-//            for(int i = 0; i < pesanPropList.size(); i++){
-//                pesan.setJumlah(pesanPropList.get(i).getJumlah());
-//                transaksi.setId(transaksiId);
-//                pesan.setTransaksiId(transaksi);
-//                menuItem.setId(pesanPropList.get(i).getMenuItemId());
-//                pesan.setMenuItemId(menuItem);
-//                pesan.setModal(pesanPropList.get(i).getModal());
-//                Integer untung;
-//                if(pesanPropList.get(i).getUntungCode()==CommonConstant.RUPIAH_CODE) {
-//                    untung = pesanPropList.get(i).getUntung();
-//                }else{
-//                    float untungPersen = (float) pesanPropList.get(i).getUntung()/100;
-//                    untung = Math.round(untungPersen*pesanPropList.get(i).getModal());
-//                }
-//                pesan.setUntung(untung);
-//                Integer tambahan;
-//                if(pesanPropList.get(i).getTambahanCode()==CommonConstant.RUPIAH_CODE) {
-//                    tambahan = pesanPropList.get(i).getTambahan();
-//                }else{
-//                    float tambahanPersen = (float) pesanPropList.get(i).getTambahan()/100;
-//                    tambahan = Math.round(tambahanPersen*(pesanPropList.get(i).getModal()+untung));
-//                }
-//                pesan.setTambahan(tambahan);
-//                
-//                session.save(pesan);
-//                if(i % 20 == 0){
-//                    session.flush();
-//                    session.clear();
-//                }
-//            }
-////            session.save(pesan);
-//            tx.commit();
-//        } catch (HibernateException e) {
-//            LOGGER.error("failed to insert to database", e);
-//        } finally {
-//            session.close();
-//        }
-//    }
-
-//    @Override
-//    public void deleteByMenuIdAndTransaksiId(int transaksiId, int menuId) {
-//        Session session = HibernateUtil.getSessionFactory().openSession();
-//        try {
-//            Transaction tx = session.beginTransaction();
-//            Query query =  session.createQuery("delete from Pesan where transaksiId = :transaksiId and menuItemId in (select id from MenuItem where menuId = :menuId)");
-//            Transaksi transaksi = new Transaksi();
-//            transaksi.setId(transaksiId);
-//            Menu menu = new Menu();
-//            menu.setId(menuId);
-//            query.setParameter("transaksiId", transaksi);
-//            query.setParameter("menuId", menu);
-//            query.executeUpdate();
-//            tx.commit();
-//        } catch (HibernateException e) {
-//            LOGGER.error("failed to delete to database", e);
-//        }
-//        session.close();
-//    }
 
     @Override
     public void deleteById(Pesan pesan) {
@@ -283,9 +204,6 @@ public class PesanModel implements IPesan{
             Query query = session.createQuery("from Pesan p join p.menuItemCode mi where p.transaksiId = :transaksi and mi.code = :menuItemCode");
             query.setParameter("transaksi", transaksi);
             query.setParameter("menuItemCode", menuItem.getCode());
-//            Criteria criteria = session.createCriteria(MenuItem.class);
-//            criteria.add(Restrictions.eq("menuItemId", pesan.getMenuItemId()));
-//            criteria.add(Restrictions.eq("transaksiId", pesan.getTransaksiId()));
             resultList = query.list();
             tx.commit();
         } catch (HibernateException e) {

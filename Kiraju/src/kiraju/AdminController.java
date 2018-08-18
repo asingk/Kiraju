@@ -75,7 +75,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -98,7 +97,7 @@ import kiraju.model.Laporan;
 import kiraju.implement.JenisMenuModel;
 import kiraju.implement.MejaModel;
 import kiraju.implement.MenuItemModel;
-import kiraju.implement.MenuModel;
+//import kiraju.implement.MenuModel;
 import kiraju.implement.MetodePembayaranModel;
 import kiraju.implement.PajakModel;
 import kiraju.implement.PelangganModel;
@@ -114,7 +113,7 @@ import kiraju.interfaces.IDiskon;
 import kiraju.interfaces.IGeneral;
 import kiraju.interfaces.IJenisMenu;
 import kiraju.interfaces.IMeja;
-import kiraju.interfaces.IMenu;
+//import kiraju.interfaces.IMenu;
 import kiraju.interfaces.IMenuItem;
 import kiraju.interfaces.IMetodePembayaran;
 import kiraju.interfaces.IPajak;
@@ -131,7 +130,7 @@ import kiraju.model.Diskon;
 import kiraju.model.General;
 import kiraju.model.JenisMenu;
 import kiraju.model.Meja;
-import kiraju.model.Menu;
+//import kiraju.model.Menu;
 import kiraju.model.MenuItem;
 import kiraju.model.MetodePembayaran;
 import kiraju.model.Pajak;
@@ -148,7 +147,7 @@ import kiraju.property.DiskonPajakProperty;
 import kiraju.property.JenisMenuProperty;
 import kiraju.property.MejaProperty;
 import kiraju.property.MenuItemProperty;
-import kiraju.property.MenuProperty;
+//import kiraju.property.MenuProperty;
 import kiraju.property.MetodePembayaranProperty;
 import kiraju.property.PelangganProperty;
 import kiraju.property.PengeluaranProperty;
@@ -175,8 +174,8 @@ import org.controlsfx.control.textfield.TextFields;
  */
 public class AdminController implements Initializable {
     private final static Logger LOGGER = Logger.getLogger(AdminController.class);
-    @FXML
-    private TableView<MenuProperty> menuTable;
+//    @FXML
+//    private TableView<MenuProperty> menuTable;
     @FXML
     private TableView<JenisMenuProperty> jenisMenuTable;
     @FXML
@@ -193,8 +192,8 @@ public class AdminController implements Initializable {
     private TableView<PengeluaranProperty> pengeluaranTable;
     @FXML
     private TableView<MejaProperty> adminMejaTable;
-    @FXML
-    private TableView<MenuProperty> pesanMenuTable;
+//    @FXML
+//    private TableView<MenuProperty> pesanMenuTable;
     @FXML
     private TableView<MenuItemProperty> pesanMenuItemTable;
     @FXML
@@ -221,30 +220,24 @@ public class AdminController implements Initializable {
     private TableView<MetodePembayaranProperty> metodePembayaranTable;
     @FXML
     private TableView<TransaksiProperty> pemasukanMetodePembayaranTable;
-    @FXML
-    private TableView<MenuProperty> mejaMenuTable;
+//    @FXML
+//    private TableView<MenuProperty> mejaMenuTable;
     @FXML
     private TableView<MenuItemProperty> mejaMenuItemTable;
-    @FXML
-    private TableColumn<MenuProperty, MenuProperty> noColumn;
 //    @FXML
-//    private TableColumn<MenuProperty, String> kodeColumn;
-    @FXML
-    private TableColumn<MenuProperty, String> namaColumn;
+//    private TableColumn<MenuProperty, MenuProperty> noColumn;
 //    @FXML
-//    private TableColumn<MenuProperty, String> hargaColumn;
-    @FXML
-    private TableColumn<MenuProperty, String> statusColumn;
+//    private TableColumn<MenuProperty, String> namaColumn;
+//    @FXML
+//    private TableColumn<MenuProperty, String> statusColumn;
     @FXML
     private TableColumn<JenisMenuProperty, JenisMenuProperty> noColumnJenis;
-//    @FXML
-//    private TableColumn<JenisMenuProperty, String> kodeColumnJenis;
     @FXML
     private TableColumn<JenisMenuProperty, String> namaColumnJenis;
     @FXML
     private TableColumn<JenisMenuProperty, String> statusColumnJenis;
-    @FXML
-    private TableColumn<PesanProperty, String> menuNamaColumnMeja;
+//    @FXML
+//    private TableColumn<PesanProperty, String> menuNamaColumnMeja;
     @FXML
     private TableColumn<PesanProperty, String> menuItemNamaColumnMeja;
     @FXML
@@ -260,9 +253,7 @@ public class AdminController implements Initializable {
     @FXML
     private TableColumn<TransaksiProperty, String> namaColumnBungkusNama;
 //    @FXML
-//    private TableColumn<PesanProperty, String> kodeColumnBungkus;
-    @FXML
-    private TableColumn<PesanProperty, String> menuColumnBungkus;
+//    private TableColumn<PesanProperty, String> menuColumnBungkus;
     @FXML
     private TableColumn<PesanProperty, String> itemColumnBungkus;
     @FXML
@@ -271,10 +262,6 @@ public class AdminController implements Initializable {
     private TableColumn<TransaksiProperty, TransaksiProperty> noColumnPemasukan;
     @FXML
     private TableColumn<TransaksiProperty, String> waktuColumnPemasukan;
-//    @FXML
-//    private TableColumn<TransaksiProperty, Integer> mejaColumnPemasukan;
-//    @FXML
-//    private TableColumn<TransaksiProperty, String> pelangganColumnPemasukan;
     @FXML
     private TableColumn<TransaksiProperty, String> statusColumnPemasukan;
     @FXML
@@ -293,20 +280,16 @@ public class AdminController implements Initializable {
     private TableColumn<MejaProperty, String> statusColumnAdminMeja;
     @FXML
     private TableColumn<MejaProperty, String> nomorColumnAdminMeja;
-    @FXML
-    private TableColumn<MenuProperty, String> namaColumnPesan;
 //    @FXML
-//    private TableColumn<MenuProperty, String> kodeColumnPesan;
-    @FXML
-    private TableColumn<MenuProperty, MenuProperty> noColumnPesan;
+//    private TableColumn<MenuProperty, String> namaColumnPesan;
+//    @FXML
+//    private TableColumn<MenuProperty, MenuProperty> noColumnPesan;
     @FXML
     private TableColumn<MenuItemProperty, MenuItemProperty> noColumnMenuItemPesan;
     @FXML
     private TableColumn<MenuItemProperty, String> namaColumnMenuItemPesan;
 //    @FXML
-//    private TableColumn<PesanProperty, String> kodeColumnOrderedPesan;
-    @FXML
-    private TableColumn<PesanProperty, String> menuColumnOrderedPesan;
+//    private TableColumn<PesanProperty, String> menuColumnOrderedPesan;
     @FXML
     private TableColumn<PesanProperty, String> itemColumnOrderedPesan;
     @FXML
@@ -319,8 +302,8 @@ public class AdminController implements Initializable {
     private TableColumn<MenuItemProperty, String> hargaColumnMenuItem;
     @FXML
     private TableColumn<MenuItemProperty, String> stokColumnMenuItem;
-//    @FXML
-//    private TableColumn<PelangganProperty, PelangganProperty> noColumnPelanggan;
+    @FXML
+    private TableColumn<MenuItemProperty, String> statusColumnMenuItem;
     @FXML
     private TableColumn<PelangganProperty, String> idColumnPelanggan;
     @FXML
@@ -386,9 +369,7 @@ public class AdminController implements Initializable {
     @FXML
     private TableColumn<DiskonPajakProperty, String> aktifColumnPajak;
 //    @FXML
-//    private TableColumn<PesanProperty, String> pemasukanDetailKodeClmn;
-    @FXML
-    private TableColumn<PesanProperty, String> pemasukanDetailMenuClmn;
+//    private TableColumn<PesanProperty, String> pemasukanDetailMenuClmn;
     @FXML
     private TableColumn<PesanProperty, String> pemasukanDetailItemClmn;
     @FXML
@@ -403,24 +384,24 @@ public class AdminController implements Initializable {
     private TableColumn<TransaksiProperty, String> pemasukanMetodePembayaranClm;
     @FXML
     private TableColumn<TransaksiProperty, String> pemasukanMetodePembayaranTotalClm;
-    @FXML
-    private TableColumn<MenuProperty, MenuProperty> noMenuColumnMeja;
-    @FXML
-    private TableColumn<MenuProperty, String> namaMenuColumnMeja;
+//    @FXML
+//    private TableColumn<MenuProperty, MenuProperty> noMenuColumnMeja;
+//    @FXML
+//    private TableColumn<MenuProperty, String> namaMenuColumnMeja;
     @FXML
     private TableColumn<MenuItemProperty, MenuItemProperty> noColumnMenuItemMeja;
     @FXML
     private TableColumn<MenuItemProperty, String> namaColumnMenuItemMeja;
     @FXML
     private TextField namaTextField;
-//    @FXML
-//    private TextField kodeTextField;
     @FXML
     private TextField searchTextField;
     @FXML
+    private TextField pesanSearchTF;
+    @FXML
+    private TextField mejaSearchTF;
+    @FXML
     private TextField namaJenisTextField;
-//    @FXML
-//    private TextField kodeJenisTextField;
     @FXML
     private TextField namaUsersTF;
     @FXML
@@ -433,20 +414,18 @@ public class AdminController implements Initializable {
     private TextField hargaPengeluaranTF;
     @FXML
     private TextField nomorAdminMejaTF;
-//    @FXML
-//    private TextField searchPesanTF;
     @FXML
     private TextField stokTambahTF;
     @FXML
     private TextField menuItemKodeTF;
     @FXML
     private TextField menuItemNamaTF;
-    @FXML
-    private TextField menuItemModalTF;
-    @FXML
-    private TextField menuItemUntungTF;
-    @FXML
-    private TextField menuItemTambahanTF;
+//    @FXML
+//    private TextField menuItemModalTF;
+//    @FXML
+//    private TextField menuItemUntungTF;
+//    @FXML
+//    private TextField menuItemTambahanTF;
     @FXML
     private TextField menuItemHargaJualTF;
     @FXML
@@ -455,8 +434,6 @@ public class AdminController implements Initializable {
     private TextField detilPelangganIdTF;
     @FXML
     private TextField detilPelangganNamaTF;
-//    @FXML
-//    private TextField detilPelangganAlamatTF;
     @FXML
     private TextField detilPelangganTelpTF;
     @FXML
@@ -515,10 +492,10 @@ public class AdminController implements Initializable {
     private ChoiceBox<String> jenisLaporanCB;
     @FXML
     private ChoiceBox<Choice> jenisBoxPesan;
-    @FXML
-    private ChoiceBox<String> menuItemUntungCB;
-    @FXML
-    private ChoiceBox<String> menuItemTambahanCB;
+//    @FXML
+//    private ChoiceBox<String> menuItemUntungCB;
+//    @FXML
+//    private ChoiceBox<String> menuItemTambahanCB;
     @FXML
     private ChoiceBox<String> stokOpnameBulanCB;
     @FXML
@@ -591,16 +568,8 @@ public class AdminController implements Initializable {
     private Text totalBayar;
     @FXML
     private Text totalBatal;
-//    @FXML
-//    private Text totalSemua;
     @FXML
     private Text totalPengeluaran;
-//    @FXML
-//    private Text backupDirectory;
-//    @FXML
-//    private Text restoreDirectory;
-//    @FXML
-//    private Text laporanDirectory;
     @FXML
     private Text totalPesanOrdered;
     @FXML
@@ -609,12 +578,6 @@ public class AdminController implements Initializable {
     private Text pemasukanDetailPajak;
     @FXML
     private Text pemasukanDetailTotal;
-//    @FXML
-//    private Text kodeJenisMenu;
-//    @FXML
-//    private Text kodeMenu;
-//    @FXML
-//    private Text menuItemHargaJual;
     @FXML
     private Text riwayatPelangganTotal;
     @FXML
@@ -856,10 +819,10 @@ public class AdminController implements Initializable {
     private Button mejaUbahBtn;
     @FXML
     private Button mejaHapusBtn;
-    @FXML
-    private Button menuItemSimpanBtn;
-    @FXML
-    private Button menuItemBatalBtn;
+//    @FXML
+//    private Button menuItemSimpanBtn;
+//    @FXML
+//    private Button menuItemBatalBtn;
     @FXML
     private Button stokOpnameHapusBtn;
     @FXML
@@ -888,10 +851,10 @@ public class AdminController implements Initializable {
     private Button pengeluaranBatalBtn;
     @FXML
     private Button pengeluaranHapusBtn;
-    @FXML
-    private Button menuSimpanBtn;
-    @FXML
-    private Button menuBatalBtn;
+//    @FXML
+//    private Button menuSimpanBtn;
+//    @FXML
+//    private Button menuBatalBtn;
     @FXML
     private Button jenisMenuSimpanBtn;
     @FXML
@@ -948,16 +911,12 @@ public class AdminController implements Initializable {
     private LineChart<String, Number> chartBulan;
     @FXML
     private LineChart<String, Number> chartTahun;
-//    @FXML
-//    private LineChart<String, Number> chartMenuBulan;
     @FXML
     private PieChart pelangganTop10;
     @FXML
     private CategoryAxis xAxisBulanan;
     @FXML
     private CategoryAxis xAxisTahunan;
-//    @FXML
-//    private CategoryAxis xAxisMenuBulanan;
     @FXML
     private CheckBox stokCheckBox;
     @FXML
@@ -976,8 +935,8 @@ public class AdminController implements Initializable {
     private CheckBox menuStatusCheckBox;
     @FXML
     private CheckBox pengaturanModeCafeCheckBox;
-    @FXML
-    private ComboBox<String> searchmenuItemComboBox;
+//    @FXML
+//    private ComboBox<String> searchmenuItemComboBox;
     @FXML
     private ComboBox<String> stokOpnameItemKodeComboBox;
     @FXML
@@ -1003,7 +962,7 @@ public class AdminController implements Initializable {
     
     private Stage primaryStage;
     private Users loginUser;
-    private ObservableList<MenuProperty> menuPropObsList;
+//    private ObservableList<MenuProperty> menuPropObsList;
     private ObservableList<JenisMenuProperty> jenisMenuPropList;
     private ObservableList<String> choicesString = FXCollections.observableArrayList();
     private ObservableList<String> choicesList = FXCollections.observableArrayList();
@@ -1017,17 +976,15 @@ public class AdminController implements Initializable {
     private ObservableList<TransaksiProperty> pemasukanObsList = FXCollections.observableArrayList();
     private ObservableList<PengeluaranProperty> pengeluaranObsList = FXCollections.observableArrayList();
     private ObservableList<MejaProperty> adminMejaObsList = FXCollections.observableArrayList();
-//    private ObservableList<MenuProperty> pesanMenuPropObsList;
-//    private ObservableList<PesanProperty> pesanMenuItemObsList;
     private ObservableList<PesanProperty> pesanMenuItemOrderedObsList = FXCollections.observableArrayList();
     private ObservableList<MenuItemProperty> menuItemPropObsList;
+    private ObservableList<MenuItemProperty> pesanMenuItemPropObsList;
+    private ObservableList<MenuItemProperty> mejaMenuItemPropObsList;
     private ObservableList<PelangganProperty> daftarPelangganPropObsList;
     private ObservableList<TransaksiProperty> riwayatPelangganPropObsList = FXCollections.observableArrayList();
-//    private Map<String,Integer> map1 = new HashMap<>();
     private Map<String,String> map3 = new HashMap<>();
-//    private ObservableMap<String ,Integer> choicesMap = FXCollections.observableMap(map1);
     private ObservableMap<String, String> usersChoiceObsMap = FXCollections.observableMap(map3);
-    private final IMenu iMenu = new MenuModel();
+//    private final IMenu iMenu = new MenuModel();
     private final IJenisMenu iJenis = new JenisMenuModel();
     private final IMeja iMeja = new MejaModel();
     private final ITransaksi iTransaksi = new TransaksiModel();
@@ -1049,10 +1006,8 @@ public class AdminController implements Initializable {
     private TransaksiProperty selectedNamaBungkus;
     private Integer totalHargaMeja = 0;
     private Integer totalModalMeja = 0;
-//    private Integer totalHargaBungkus = 0;
     private Integer totalHargaPesan = 0;
     private Integer totalModalPesan = 0;
-//    private int bulanBaruMenu = 0;
     private final NumberFormat numberFormat = NumberFormat.getInstance(new Locale("id", "ID"));
     private final String datePattern = "dd/MM/yyyy";
     private int transaksiId = 0;
@@ -1080,6 +1035,7 @@ public class AdminController implements Initializable {
         List superuser;
         List admin;
         List kasir;
+        
         if(general.getModeCafe()){
             superuser = Arrays.asList(pesanTab, bungkusTab, mejaTab, pemasukanTab, pengeluaranTab, absensiTab, menuTab, jenisMenutab, diskonPajakTab, stokOpnameTab, pelangganTab, metodePembayaranTab, grafikTab, adminMejaTab, pengaturanTab, backupRestoreTab, zakatTab, usersTab);
             admin = Arrays.asList(pesanTab, bungkusTab, mejaTab, pemasukanTab, pengeluaranTab, absensiTab, menuTab, jenisMenutab, diskonPajakTab, stokOpnameTab, pelangganTab, metodePembayaranTab, grafikTab, adminMejaTab, pengaturanTab, backupRestoreTab, zakatTab);
@@ -1089,6 +1045,17 @@ public class AdminController implements Initializable {
             admin = Arrays.asList(pesanTab, bungkusTab, pemasukanTab, pengeluaranTab, absensiTab, menuTab, jenisMenutab, diskonPajakTab, stokOpnameTab, pelangganTab, metodePembayaranTab, grafikTab, pengaturanTab, backupRestoreTab, zakatTab);
             kasir = Arrays.asList(pesanTab, bungkusTab, pemasukanTab);
         }
+        
+        //@20171223 - kiraju3
+//        if(general.getModeCafe()){
+//            superuser = Arrays.asList(pesanTab, bungkusTab, mejaTab, pemasukanTab, pengeluaranTab, menuTab, jenisMenutab, grafikTab, adminMejaTab, backupRestoreTab, usersTab);
+//            admin = Arrays.asList(pesanTab, bungkusTab, mejaTab, pemasukanTab, pengeluaranTab, menuTab, jenisMenutab, grafikTab, adminMejaTab, backupRestoreTab);
+//            kasir = Arrays.asList(pesanTab, bungkusTab, mejaTab, pemasukanTab);
+//        }else{
+//            superuser = Arrays.asList(pesanTab, bungkusTab, pemasukanTab, pengeluaranTab, menuTab, jenisMenutab, grafikTab, backupRestoreTab, usersTab);
+//            admin = Arrays.asList(pesanTab, bungkusTab, pemasukanTab, pengeluaranTab, menuTab, jenisMenutab, grafikTab, backupRestoreTab);
+//            kasir = Arrays.asList(pesanTab, bungkusTab, pemasukanTab);
+//        }
         
         this.loginUser = loginUser;
         pemasukanObsList.clear();
@@ -1117,7 +1084,6 @@ public class AdminController implements Initializable {
             default:
                 if(!JDBCConnection.checkInstallDate() && !CommonConstant.ISPREMIUM){
                     tabPane.getTabs().addAll(superuser);
-//                    tabPane.getTabs().remove(aboutTab);
                     usersTab.setDisable(true);
                     pesanTab.setDisable(true);
                     bungkusTab.setDisable(true);
@@ -1147,48 +1113,43 @@ public class AdminController implements Initializable {
         }
     }
     
-    @FXML
-    private void handleSimpanAction(ActionEvent event) {
-        TextField[] textFields = {namaTextField};
-        String[] namaTextFields = {"Nama"};
-        List<ChoiceBox<Choice>> choiceBoxs = new ArrayList<>();
-        choiceBoxs.add(jenisMenuBox);
-//        choiceBoxs.add(menuStatusCB);
-        String[] namaChoiceBoxs = {"Jenis"};
-        if(iValidation.isTextFieldInputValid(textFields, namaTextFields, choiceBoxs, namaChoiceBoxs, primaryStage)) {
-            MenuProperty selectedMenuProp = menuTable.getSelectionModel().getSelectedItem();
-            Menu menu = new Menu();
-            menu.setNama(namaTextField.getText());
-//            menu.setCode(kodeTextField.getText());
-//            menu.setDeletedFlag(menuStatusCB.getValue().equalsIgnoreCase("Aktif") ? (short) 0 : (short) 1);
-            menu.setStatus(menuStatusCheckBox.isSelected());
-            JenisMenu jenisMenu = new JenisMenu();
-            jenisMenu.setId(jenisMenuBox.getValue().getId());
-            menu.setJenisMenuId(jenisMenu);
-            if(null != selectedMenuProp){
-                menu.setId(selectedMenuProp.getId());
-                if(!iMenu.update(menu, primaryStage)) {
-                    return;
-                }
-            }else{
-                if(!iMenu.insert(menu, primaryStage)) {
-                    return;
-                }
-            }
-            handleCancelAction(event);
-            setMenuTable(jenisBox.getValue().getId());
-        }
-    }
+//    @FXML
+//    private void handleSimpanAction(ActionEvent event) {
+//        TextField[] textFields = {namaTextField};
+//        String[] namaTextFields = {"Nama"};
+//        List<ChoiceBox<Choice>> choiceBoxs = new ArrayList<>();
+//        choiceBoxs.add(jenisMenuBox);
+//        String[] namaChoiceBoxs = {"Jenis"};
+//        if(iValidation.isTextFieldInputValid(textFields, namaTextFields, choiceBoxs, namaChoiceBoxs, primaryStage)) {
+//            MenuProperty selectedMenuProp = menuTable.getSelectionModel().getSelectedItem();
+//            Menu menu = new Menu();
+//            menu.setNama(namaTextField.getText());
+//            menu.setStatus(menuStatusCheckBox.isSelected());
+//            JenisMenu jenisMenu = new JenisMenu();
+//            jenisMenu.setId(jenisMenuBox.getValue().getId());
+//            menu.setJenisMenuId(jenisMenu);
+//            if(null != selectedMenuProp){
+//                menu.setId(selectedMenuProp.getId());
+//                if(!iMenu.update(menu, primaryStage)) {
+//                    return;
+//                }
+//            }else{
+//                if(!iMenu.insert(menu, primaryStage)) {
+//                    return;
+//                }
+//            }
+//            handleCancelAction(event);
+//            setMenuTable(jenisBox.getValue().getId());
+//        }
+//    }
     
-    @FXML
-    private void handleCancelAction(ActionEvent event){
-        menuTable.getSelectionModel().clearSelection();
-        namaTextField.setText("");
-//        kodeTextField.setText("");
-        jenisMenuBox.setValue(null);
-//        menuStatusCB.setValue(null);
-        menuStatusCheckBox.setSelected(true);
-    }
+//    @FXML
+//    private void handleCancelAction(ActionEvent event){
+//        menuTable.getSelectionModel().clearSelection();
+//        namaTextField.setText("");
+//        jenisMenuBox.setValue(null);
+//        menuStatusCheckBox.setSelected(true);
+//    }
         
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -1206,7 +1167,6 @@ public class AdminController implements Initializable {
         setPemasukan();
         displayChart();
         setPengeluaran();
-//        setBackupAndRestore();
         setPelanggan();
         setStokOpname();
         setDiskonPajak();
@@ -1217,75 +1177,47 @@ public class AdminController implements Initializable {
         pengaturan();
     }    
     
-    private void displayEdit(MenuProperty menuProp){
-        menuItemUntungCB.getSelectionModel().selectFirst();
-        menuItemTambahanCB.getSelectionModel().selectFirst();
-        if(null != menuProp){
-            namaTextField.setText(menuProp.getNama());
-//            kodeJenisMenu.setText(menuProp.getJenisCode());
-//            kodeTextField.setText(menuProp.getCode());
-            jenisMenuBox.setValue(new Choice(menuProp.getJenisId(), menuProp.getJenisNama()));
-//            menuStatusCB.setValue(menuProp.deletedFlagProperty().get());
-            menuStatusCheckBox.setSelected(menuProp.getStatus());
-            
-            //Menu Item
-//            kodeMenu.setText(menuProp.getCode());
-            menuItemPropObsList = iMenuItem.getPropertyByMenuId(menuProp.getId());
-            menuItemKodeTF.setDisable(false);
-            menuItemNamaTF.setDisable(false);
-            menuItemModalTF.setDisable(false);
-            menuItemUntungTF.setDisable(false);
-            menuItemTambahanTF.setDisable(false);
-            menuItemModalTF.setText("");
-            menuItemUntungTF.setText("");
-            menuItemTambahanTF.setText("");
-            stokCheckBox.setDisable(false);
-            menuItemBatalBtn.setDisable(false);
-//            menuItemSimpanBtn.setDisable(false);
-        }else{
-            namaTextField.setText("");
-//            kodeJenisMenu.setText("");
-//            kodeTextField.setText("");
-            jenisMenuBox.setValue(null);
-//            menuStatusCB.setValue(null);
-            menuStatusCheckBox.setSelected(true);
-            
-            //Menu Item
-//            kodeMenu.setText("");
-            menuItemPropObsList.clear();
-            menuItemKodeTF.setDisable(true);
-            menuItemNamaTF.setDisable(true);
-            menuItemModalTF.setDisable(true);
-            menuItemUntungTF.setDisable(true);
-            menuItemTambahanTF.setDisable(true);
-            stokCheckBox.setDisable(true);
-            menuItemBatalBtn.setDisable(true);
-//            menuItemSimpanBtn.setDisable(true);
-        }  
-        menuItemTable.setItems(menuItemPropObsList);
-    }
-
-//    private void getChoiceList() {
-//        choicesMap.clear();
-//        choicesString.clear();
-//        choicesList.clear();
-//        choicesMap.put("Semua", 0);
-//        choicesString.add("Semua");
-//        System.out.println("getChoiceList");
-//        List resultList = iJenis.getAllActive();
-//        if(null != resultList){
-//            for(Object o : resultList){
-//                JenisMenu jenisMenu = (JenisMenu) o;
-//                choicesMap.put(jenisMenu.getNama(), jenisMenu.getId());
-//                choicesString.add(jenisMenu.getNama());
-//                choicesList.add(jenisMenu.getNama());
-//            }
-//        }
+//    private void displayEdit(MenuProperty menuProp){
+////        menuItemUntungCB.getSelectionModel().selectFirst();
+////        menuItemTambahanCB.getSelectionModel().selectFirst();
+//        if(null != menuProp){
+//            namaTextField.setText(menuProp.getNama());
+//            jenisMenuBox.setValue(new Choice(menuProp.getJenisId(), menuProp.getJenisNama()));
+//            menuStatusCheckBox.setSelected(menuProp.getStatus());
+//            
+//            //Menu Item
+//            menuItemPropObsList = iMenuItem.getPropertyByMenuId(menuProp.getId());
+//            menuItemKodeTF.setDisable(false);
+//            menuItemNamaTF.setDisable(false);
+////            menuItemModalTF.setDisable(false);
+////            menuItemUntungTF.setDisable(false);
+////            menuItemTambahanTF.setDisable(false);
+////            menuItemModalTF.setText("");
+////            menuItemUntungTF.setText("");
+////            menuItemTambahanTF.setText("");
+//            stokCheckBox.setDisable(false);
+//            menuItemBatalBtn.setDisable(false);
+//        }else{
+//            namaTextField.setText("");
+//            jenisMenuBox.setValue(null);
+//            menuStatusCheckBox.setSelected(true);
+//            
+//            //Menu Item
+//            menuItemPropObsList.clear();
+//            menuItemKodeTF.setDisable(true);
+//            menuItemNamaTF.setDisable(true);
+////            menuItemModalTF.setDisable(true);
+////            menuItemUntungTF.setDisable(true);
+////            menuItemTambahanTF.setDisable(true);
+//            stokCheckBox.setDisable(true);
+//            menuItemBatalBtn.setDisable(true);
+//        }  
+//        menuItemTable.setItems(menuItemPropObsList);
 //    }
 
     private void displayFilteredData() {
         
-        FilteredList<MenuProperty> filteredData = new FilteredList<>(menuPropObsList, p -> true);
+        FilteredList<MenuItemProperty> filteredData = new FilteredList<>(menuItemPropObsList, p -> true);
         
         searchTextField.textProperty().addListener((observable, oldValue, newValue) -> {
 			filteredData.setPredicate(person -> {
@@ -1297,45 +1229,36 @@ public class AdminController implements Initializable {
                             // Compare first name and last name of every person with filter text.
                             String lowerCaseFilter = newValue.toLowerCase();
 
-                            if (person.getNama().toLowerCase().contains(lowerCaseFilter)) {
+                            if (person.getCode().toLowerCase().contains(lowerCaseFilter)) {
                                 return true; // Filter matches first name.
                             } 
-//                            else if (person.getNama().toLowerCase().contains(lowerCaseFilter)) {
-//                                return true; // Filter matches last name.
-//                            }
+                            else if (person.getNama().toLowerCase().contains(lowerCaseFilter)) {
+                                return true; // Filter matches last name.
+                            }
                             return false; // Does not match.
 			});
 		});
         
-        SortedList<MenuProperty> sortedData = new SortedList<>(filteredData);
-        sortedData.comparatorProperty().bind(menuTable.comparatorProperty());
-        menuTable.setItems(sortedData);
+        SortedList<MenuItemProperty> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(menuItemTable.comparatorProperty());
+        menuItemTable.setItems(sortedData);
     }
 
     private void displayEditJenis(JenisMenuProperty jenisMenuProp) {
         if(null != jenisMenuProp){
             namaJenisTextField.setText(jenisMenuProp.getNama());
-//            kodeJenisTextField.setText(jenisMenuProp.getKode());
-//            jenisStatusCB.setValue(jenisMenuProp.deletedFlagProperty().get());
             jenisMenuCheckBox.setSelected(jenisMenuProp.getStatus());
         }
     }
     
     @FXML
     private void jenisSimpanAction(ActionEvent event){
-//        TextField[] textFields = {namaJenisTextField, kodeJenisTextField};
-//        String[] namaTextFields = {"Nama", "Kode"};
         TextField[] textFields = {namaJenisTextField};
         String[] namaTextFields = {"Nama"};
-//        List<ChoiceBox<String>> choiceBoxs = new ArrayList<>();
-//        choiceBoxs.add(jenisStatusCB);
-//        String[] namaChoiceBoxs = {"Status"};
         if(iValidation.isTextFieldInputValid(textFields, namaTextFields, primaryStage)){
             JenisMenuProperty selectedJenisMenuProp = jenisMenuTable.getSelectionModel().getSelectedItem();
             JenisMenu jenisMenu = new JenisMenu();
             jenisMenu.setNama(namaJenisTextField.getText());
-//            jenisMenu.setCode(kodeJenisTextField.getText());
-//            jenisMenu.setDeletedFlag(jenisStatusCB.getValue().equalsIgnoreCase("Aktif") ? (short) 0 : (short) 1);
             jenisMenu.setStatus(jenisMenuCheckBox.isSelected());
             if(null != selectedJenisMenuProp){
                 jenisMenu.setId(selectedJenisMenuProp.getId());
@@ -1354,19 +1277,12 @@ public class AdminController implements Initializable {
     private void jenisCancelAction(ActionEvent event){
         jenisMenuTable.getSelectionModel().clearSelection();
         namaJenisTextField.setText("");
-//        kodeJenisTextField.setText("");
-//        jenisStatusCB.setValue(null);
         jenisMenuCheckBox.setSelected(true);
     }
     
     private void tabActive(){
         tabPane.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Tab> observable, Tab oldValue, Tab newValue) -> {
             if(tabPane.getTabs().contains(menuTab) && newValue.equals(menuTab)){
-//                choicesMap.clear();
-//                choicesString.clear();
-//                choicesList.clear();
-//                getChoiceList();
-//                System.out.println("menuTab");
                 ObservableList<Choice> jenisMenu = iJenis.getAllActiveChoice();
                 jenisBox.getItems().clear();
                 jenisBox.getItems().add(new Choice(0, "Semua"));
@@ -1382,7 +1298,6 @@ public class AdminController implements Initializable {
             }else if(tabPane.getTabs().contains(grafikTab) && grafikTab.equals(newValue)){
                 grafikBulanCB.getSelectionModel().clearSelection();
                 grafikBulanCB.getSelectionModel().select(LocalDate.now().getMonthValue()-1);
-//                grafikTahunCB.getSelectionModel().clearSelection();
                 grafikTahunCB.setItems(iTransaksi.getYear());
                 grafikTahunCB.getSelectionModel().selectFirst();
             }else if(tabPane.getTabs().contains(bungkusTab) && newValue == bungkusTab){
@@ -1390,10 +1305,6 @@ public class AdminController implements Initializable {
                 bungkusObsList = iTransaksi.getBungkus();
                 bungkusNamaTable.setItems(bungkusObsList);
                 displayOrderBungkus(null);
-            }else if(tabPane.getTabs().contains(pesanTab) && newValue == pesanTab){
-//                pesanDiskonCB.setItems(iDiskon.getAllActive());
-//                pesanPajakCB.setItems(iPajak.getAllActive());
-//                displayOrderPesan();
             }else if(tabPane.getTabs().contains(absensiTab) && newValue.equals(absensiTab)){
                 setAbsensiValue();
             }
@@ -1402,11 +1313,9 @@ public class AdminController implements Initializable {
                 pesanDiskonCB.setItems(iDiskon.getAllActive());
                 pesanPajakCB.getItems().clear();
                 pesanPajakCB.setItems(iPajak.getAllActive());
-//                displayOrderPesan();
                 pesanDiskonCB.getSelectionModel().selectFirst();
                 pesanPajakCB.getSelectionModel().selectFirst();
             }else if(tabPane.getTabs().contains(jenisMenutab) && oldValue.equals(jenisMenutab)) {
-//                getChoiceList();
                 setPesanCB();
                 setMejaCB();
                 
@@ -1414,7 +1323,6 @@ public class AdminController implements Initializable {
                 jenisBox.getSelectionModel().selectFirst(); 
                 
             }else if(tabPane.getTabs().contains(menuTab) && oldValue.equals(menuTab)) {
-//                getChoiceList();
                 setPesanCB();
                 setMejaCB();
             }else if(tabPane.getTabs().contains(bungkusTab) && oldValue.equals(bungkusTab)) {
@@ -1428,7 +1336,7 @@ public class AdminController implements Initializable {
         namaMeja.setText("Meja " + nomorMeja);
         mejaActive = mejaId;
         
-        mejaMenuAction();
+//        mejaMenuAction();
         mejaViewPane.setVisible(false);
         mejaDetailPane.setVisible(true);
         
@@ -1934,26 +1842,6 @@ public class AdminController implements Initializable {
     private void meja100Action(ActionEvent actionEvent){
         displayOrder((short)100);
     }
-    
-//    @FXML
-//    private void meja101Action(ActionEvent actionEvent){
-//        displayOrder((short)101);
-//    }
-//
-//    @FXML
-//    private void meja102Action(ActionEvent actionEvent){
-//        displayOrder((short)102);
-//    }
-//    
-//    @FXML
-//    private void meja103Action(ActionEvent actionEvent){
-//        displayOrder((short)103);
-//    }
-//    
-//    @FXML
-//    private void meja104Action(ActionEvent actionEvent){
-//        displayOrder((short)104);
-//    }
 
     private void getMejaStatus() {
         List resultList = iMeja.getAll();
@@ -2287,139 +2175,97 @@ public class AdminController implements Initializable {
         }
         meja.setText(nomor);
     }
-    
-//    @FXML
-//    private void pesanBtn(ActionEvent actionEvent){
-//        if(mejaActive > 0){
-//            try {
-//                FXMLLoader loader = new FXMLLoader();
-//                loader.setLocation(AdminController.class.getResource("Pesan.fxml"));
-//                AnchorPane page = (AnchorPane) loader.load();
-//
-//                Stage dialogStage = new Stage();
-//                dialogStage.setTitle("Pesan");
-//                dialogStage.initModality(Modality.WINDOW_MODAL);
-//                dialogStage.initOwner(primaryStage);
-//
-//                Scene scene = new Scene(page);
-//                dialogStage.setScene(scene);
-//
-//                PesanController controller = loader.getController();
-//                controller.setDialogStage(dialogStage);
-////                if(menuMejaObsList != null && menuMejaObsList.size() > 0){
-////                    controller.setTransaksiId(menuMejaObsList.get(0).getTransaksiId());
-////                }else{
-////                    controller.setTransaksiId(iTransaksi.insertByMeja(mejaActive, loginUser.getId()));
-////                }
-//
-//                dialogStage.showAndWait();
-//
-////                if(controller.getPesanPropObsList() != null && controller.getPesanPropObsList().size() > 0){
-//                    getMejaStatus();
-//                    displayOrderedMeja();
-////                }
-//               
-//            } catch (IOException ex) {
-//                LOGGER.error("failed to load Pesan.fxml", ex);
-//            }
-//        }else{
-//            Alert alert = new Alert(Alert.AlertType.WARNING);
-//            alert.initOwner(primaryStage);
-//            alert.setTitle("No Selection");
-//            alert.setHeaderText("Tidak ada meja yang dipilih");
-//            alert.setContentText("Silahkan pilih meja terlebih dahulu");
-//            
-//            alert.showAndWait();
-//        }
-//    }
 
     private void setDaftarMenu() {
         
-        noColumn.setCellValueFactory((TableColumn.CellDataFeatures<MenuProperty, MenuProperty> p) -> new ReadOnlyObjectWrapper(p.getValue()));
-        noColumn.setCellFactory((TableColumn<MenuProperty, MenuProperty> param) -> new TableCell<MenuProperty, MenuProperty>() {
-            @Override protected void updateItem(MenuProperty item, boolean empty) {
-                super.updateItem(item, empty);
-                if (this.getTableRow() != null && item != null) {
-                    setText(this.getTableRow().getIndex()+1+"");
-                } else {
-                    setText("");
-                }
-            }
-        });
-        noColumn.setSortable(false);
-        namaColumn.setCellValueFactory(cellData -> cellData.getValue().namaProperty());
-        statusColumn.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
+//        noColumn.setCellValueFactory((TableColumn.CellDataFeatures<MenuProperty, MenuProperty> p) -> new ReadOnlyObjectWrapper(p.getValue()));
+//        noColumn.setCellFactory((TableColumn<MenuProperty, MenuProperty> param) -> new TableCell<MenuProperty, MenuProperty>() {
+//            @Override protected void updateItem(MenuProperty item, boolean empty) {
+//                super.updateItem(item, empty);
+//                if (this.getTableRow() != null && item != null) {
+//                    setText(this.getTableRow().getIndex()+1+"");
+//                } else {
+//                    setText("");
+//                }
+//            }
+//        });
+//        noColumn.setSortable(false);
+//        namaColumn.setCellValueFactory(cellData -> cellData.getValue().namaProperty());
+//        statusColumn.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
         
         //set kategori choice box
-        
         jenisBox.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Choice> observable, Choice oldValue, Choice newValue) -> {
             if(null != newValue){
                 setMenuTable(newValue.getId());
             }
         });
-//        ObservableList<Choice> jenisMenu = iJenis.getAllActiveChoice();
-//        jenisBox.setItems(jenisMenu);
-//        jenisBox.getSelectionModel().selectFirst(); 
-//        setMenuTable(0);
-//        jenisMenuBox.setItems(jenisMenu);
-        menuTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> displayEdit(newValue));        
-        menuSimpanBtn.disableProperty().bind(Bindings.isEmpty(namaTextField.textProperty()));
-        menuBatalBtn.disableProperty().bind(Bindings.isEmpty(namaTextField.textProperty()));
+//        menuTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> displayEdit(newValue));        
+//        menuSimpanBtn.disableProperty().bind(Bindings.isEmpty(namaTextField.textProperty()));
+//        menuBatalBtn.disableProperty().bind(Bindings.isEmpty(namaTextField.textProperty()));
         
         //Menu Item
         kodeColumnMenuItem.setCellValueFactory(cellData -> cellData.getValue().codeProperty());
         namaColumnMenuItem.setCellValueFactory(cellData -> cellData.getValue().namaProperty());
         hargaColumnMenuItem.setCellValueFactory(cellData -> cellData.getValue().hargaJualProperty());
         stokColumnMenuItem.setCellValueFactory(cellData -> cellData.getValue().stokProperty());
+        statusColumnMenuItem.setCellValueFactory(cellData -> cellData.getValue().statusProperty());     //20171229 - kirajulite
         menuItemTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> displayMenuItemEdit(newValue));
-        menuItemUntungCB.getItems().addAll(CommonConstant.RUPIAH_SIMBOL, CommonConstant.PERSEN_SIMBOL);
-        menuItemTambahanCB.getItems().addAll(CommonConstant.RUPIAH_SIMBOL, CommonConstant.PERSEN_SIMBOL);
-        menuItemModalTF.textProperty().addListener(((observable, oldValue, newValue) -> {
-            Integer modal = null != newValue && !newValue.isEmpty() ? Integer.valueOf(newValue) : 0;
-            Integer untungBefore = null != menuItemUntungTF.getText() && !menuItemUntungTF.getText().isEmpty() ? Integer.valueOf(menuItemUntungTF.getText()) : 0;
-            Integer tambahanBefore = null != menuItemTambahanTF.getText() && !menuItemTambahanTF.getText().isEmpty() ? Integer.valueOf(menuItemTambahanTF.getText()) : 0;
-            sumHargaJual(modal, untungBefore, tambahanBefore);
-        }));
-        menuItemUntungTF.textProperty().addListener(((observable, oldValue, newValue) -> {
-            Integer modal = null != menuItemModalTF.getText() && !menuItemModalTF.getText().isEmpty() ? Integer.valueOf(menuItemModalTF.getText()) : 0;
-            Integer untungBefore = null != newValue && !newValue.isEmpty() ? Integer.valueOf(newValue) : 0;
-            Integer tambahanBefore = null != menuItemTambahanTF.getText() && !menuItemTambahanTF.getText().isEmpty() ? Integer.valueOf(menuItemTambahanTF.getText()) : 0;
-            sumHargaJual(modal, untungBefore, tambahanBefore);
-        }));
-        menuItemTambahanTF.textProperty().addListener(((observable, oldValue, newValue) -> {
-            Integer modal = null != menuItemModalTF.getText() && !menuItemModalTF.getText().isEmpty() ? Integer.valueOf(menuItemModalTF.getText()) : 0;
-            Integer untungBefore = null != menuItemUntungTF.getText() && !menuItemUntungTF.getText().isEmpty() ? Integer.valueOf(menuItemUntungTF.getText()) : 0;
-            Integer tambahanBefore = null != newValue && !newValue.isEmpty() ? Integer.valueOf(newValue) : 0;
-            sumHargaJual(modal, untungBefore, tambahanBefore);
-        }));
-        menuItemUntungCB.getSelectionModel().selectedIndexProperty().addListener(((observable, oldValue, newValue) -> {
-            Integer modal = null != menuItemModalTF.getText() && !menuItemModalTF.getText().isEmpty() ? Integer.valueOf(menuItemModalTF.getText()) : 0;
-            Integer untungBefore = null != menuItemUntungTF.getText() && !menuItemUntungTF.getText().isEmpty() ? Integer.valueOf(menuItemUntungTF.getText()) : 0;
-            Integer tambahanBefore = null != menuItemTambahanTF.getText() && !menuItemTambahanTF.getText().isEmpty() ? Integer.valueOf(menuItemTambahanTF.getText()) : 0;
-            sumHargaJual(modal, untungBefore, tambahanBefore);
-        }));
-        menuItemTambahanCB.getSelectionModel().selectedIndexProperty().addListener(((observable, oldValue, newValue) -> {
-            Integer modal = null != menuItemModalTF.getText() && !menuItemModalTF.getText().isEmpty() ? Integer.valueOf(menuItemModalTF.getText()) : 0;
-            Integer untungBefore = null != menuItemUntungTF.getText() && !menuItemUntungTF.getText().isEmpty() ? Integer.valueOf(menuItemUntungTF.getText()) : 0;
-            Integer tambahanBefore = null != menuItemTambahanTF.getText() && !menuItemTambahanTF.getText().isEmpty() ? Integer.valueOf(menuItemTambahanTF.getText()) : 0;
-            sumHargaJual(modal, untungBefore, tambahanBefore);
-        }));
+//        menuItemUntungCB.getItems().addAll(CommonConstant.RUPIAH_SIMBOL, CommonConstant.PERSEN_SIMBOL);
+//        menuItemTambahanCB.getItems().addAll(CommonConstant.RUPIAH_SIMBOL, CommonConstant.PERSEN_SIMBOL);
+//        menuItemModalTF.textProperty().addListener(((observable, oldValue, newValue) -> {
+//            Integer modal = null != newValue && !newValue.isEmpty() ? Integer.valueOf(newValue) : 0;
+//            Integer untungBefore = null != menuItemUntungTF.getText() && !menuItemUntungTF.getText().isEmpty() ? Integer.valueOf(menuItemUntungTF.getText()) : 0;
+//            Integer tambahanBefore = null != menuItemTambahanTF.getText() && !menuItemTambahanTF.getText().isEmpty() ? Integer.valueOf(menuItemTambahanTF.getText()) : 0;
+//            Integer tambahanBefore = 0;
+//            sumHargaJual(modal, untungBefore, tambahanBefore);
+//        }));
+//        menuItemUntungTF.textProperty().addListener(((observable, oldValue, newValue) -> {
+//            Integer modal = null != menuItemModalTF.getText() && !menuItemModalTF.getText().isEmpty() ? Integer.valueOf(menuItemModalTF.getText()) : 0;
+//            Integer untungBefore = null != newValue && !newValue.isEmpty() ? Integer.valueOf(newValue) : 0;
+//            Integer tambahanBefore = null != menuItemTambahanTF.getText() && !menuItemTambahanTF.getText().isEmpty() ? Integer.valueOf(menuItemTambahanTF.getText()) : 0;
+//            Integer tambahanBefore = 0;
+//            sumHargaJual(modal, untungBefore, tambahanBefore);
+//        }));
+//        menuItemTambahanTF.textProperty().addListener(((observable, oldValue, newValue) -> {
+//            Integer modal = null != menuItemModalTF.getText() && !menuItemModalTF.getText().isEmpty() ? Integer.valueOf(menuItemModalTF.getText()) : 0;
+//            Integer untungBefore = null != menuItemUntungTF.getText() && !menuItemUntungTF.getText().isEmpty() ? Integer.valueOf(menuItemUntungTF.getText()) : 0;
+//            Integer tambahanBefore = null != newValue && !newValue.isEmpty() ? Integer.valueOf(newValue) : 0;
+//            sumHargaJual(modal, untungBefore, tambahanBefore);
+//        }));
+//        menuItemUntungCB.getSelectionModel().selectedIndexProperty().addListener(((observable, oldValue, newValue) -> {
+//            Integer modal = null != menuItemModalTF.getText() && !menuItemModalTF.getText().isEmpty() ? Integer.valueOf(menuItemModalTF.getText()) : 0;
+//            Integer untungBefore = null != menuItemUntungTF.getText() && !menuItemUntungTF.getText().isEmpty() ? Integer.valueOf(menuItemUntungTF.getText()) : 0;
+//            Integer tambahanBefore = null != menuItemTambahanTF.getText() && !menuItemTambahanTF.getText().isEmpty() ? Integer.valueOf(menuItemTambahanTF.getText()) : 0;
+//            Integer tambahanBefore = 0;
+//            sumHargaJual(modal, untungBefore, tambahanBefore);
+//        }));
+//        menuItemTambahanCB.getSelectionModel().selectedIndexProperty().addListener(((observable, oldValue, newValue) -> {
+//            Integer modal = null != menuItemModalTF.getText() && !menuItemModalTF.getText().isEmpty() ? Integer.valueOf(menuItemModalTF.getText()) : 0;
+//            Integer untungBefore = null != menuItemUntungTF.getText() && !menuItemUntungTF.getText().isEmpty() ? Integer.valueOf(menuItemUntungTF.getText()) : 0;
+//            Integer tambahanBefore = null != menuItemTambahanTF.getText() && !menuItemTambahanTF.getText().isEmpty() ? Integer.valueOf(menuItemTambahanTF.getText()) : 0;
+//            sumHargaJual(modal, untungBefore, tambahanBefore);
+//        }));
         
-        menuItemSimpanBtn.disableProperty().bind(Bindings.isEmpty(menuItemKodeTF.textProperty()).or(Bindings.isEmpty(menuItemNamaTF.textProperty()).or(Bindings.isEmpty(menuItemModalTF.textProperty())).or(Bindings.isEmpty(menuItemUntungTF.textProperty()))));
-//        menuItemBatalBtn.disableProperty().bind(Bindings.isEmpty(menuItemKodeTF.textProperty()).or(Bindings.isEmpty(menuItemNamaTF.textProperty()).or(Bindings.isEmpty(menuItemModalTF.textProperty())).or(Bindings.isEmpty(menuItemUntungTF.textProperty())).or(Bindings.isEmpty(menuItemTambahanTF.textProperty()))));
-    }
+//        menuItemSimpanBtn.disableProperty().bind(Bindings.isEmpty(menuItemKodeTF.textProperty()).or(Bindings.isEmpty(menuItemNamaTF.textProperty()).or(Bindings.isEmpty(menuItemModalTF.textProperty())).or(Bindings.isEmpty(menuItemUntungTF.textProperty()))));
+//        menuItemSimpanBtn.disableProperty().bind(Bindings.isEmpty(menuItemHargaJualTF.textProperty()));
+        
+        menuItemNamaTF.textProperty().addListener((observable, oldValue, newValue) -> {
+            if(null == menuItemTable.getSelectionModel().getSelectedItem())
+            menuItemKodeTF.setText(newValue.toUpperCase().replace(" ", ""));
+        });
+    }   
+    
     
     private void setMenuTable(int jenis) {
-        if(menuPropObsList != null){
-            menuPropObsList.clear();
+        if(menuItemPropObsList != null){
+            menuItemPropObsList.clear();
             searchTextField.clear();
         }
-        menuPropObsList = iMenu.getAllProperty(jenis);
+        menuItemPropObsList = iMenuItem.getAllProperty(jenis);
         displayFilteredData();   
     }
 
     private void setJenisMenu() {
-//        kodeColumnJenis.setCellValueFactory(cellData -> cellData.getValue().kodeProperty());
         noColumnJenis.setCellValueFactory((TableColumn.CellDataFeatures<JenisMenuProperty, JenisMenuProperty> p) -> new ReadOnlyObjectWrapper(p.getValue()));
         noColumnJenis.setCellFactory((TableColumn<JenisMenuProperty, JenisMenuProperty> param) -> new TableCell<JenisMenuProperty, JenisMenuProperty>() {
             @Override protected void updateItem(JenisMenuProperty item, boolean empty) {
@@ -2436,9 +2282,6 @@ public class AdminController implements Initializable {
         statusColumnJenis.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
         setJenisMenuTable();
         jenisMenuTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> displayEditJenis(newValue));
-//        jenisStatusCB.getItems().addAll("Aktif", "Tidak Aktif");
-        
-        
         jenisMenuSimpanBtn.disableProperty().bind(Bindings.isEmpty(namaJenisTextField.textProperty()));
         jenisMenuBatalBtn.disableProperty().bind(Bindings.isEmpty(namaJenisTextField.textProperty()));
     }
@@ -2467,7 +2310,8 @@ public class AdminController implements Initializable {
         noColumnUsers.setSortable(false);
         namaColumnUsers.setCellValueFactory(cellData -> cellData.getValue().namaProperty());
         posisiColumnUsers.setCellValueFactory(cellData -> cellData.getValue().posisiNamaProperty());
-        posisiUsers.getItems().addAll("Administrator", "Kasir", "Staf");
+//        posisiUsers.getItems().addAll("Administrator", "Kasir", "Staf");
+        posisiUsers.getItems().addAll("Administrator", "Kasir");
         setUsersTable();
         usersTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             usersDetail(newValue);
@@ -2496,46 +2340,23 @@ public class AdminController implements Initializable {
         if(iValidation.isTextFieldInputValid3(textFields, namaTextFields, choiceBoxs, namaChoiceBoxs, primaryStage)) {
             UsersProperty selectedUsersProp = usersTable.getSelectionModel().getSelectedItem();
             Users users = new Users();
-//            Posisi posisi = new Posisi();
-//            short posisiId = 0;
-//            if(null != posisiUsers.getValue()){
-            
-//            }
             users.setNama(namaUsersTF.getText());
             users.setUsername(userNameUsersTF.getText());
             users.setPassword(passwordUsersTF.getText());
-//            posisi.setId(posisiId);
             int posisiId = iPosisi.getIdByName(posisiUsers.getValue());
             users.setPosisiId(new Posisi(posisiId));
-//            users.setDeletedFlag(userStatusCB.getValue().equalsIgnoreCase("Aktif") ? (short) 0 : (short) 1);
             users.setStatus(usersStatusCheckBox.isSelected());
             if(null != selectedUsersProp){
                 users.setId(selectedUsersProp.getId());
                 if(!iUsers.update(users, primaryStage)) {
                     return;
                 }
-//                if(iUsers.update(users, primaryStage)){
-//                    selectedUsersProp.setNama(namaUsersTF.getText());
-//                    selectedUsersProp.setUserName(userNameUsersTF.getText());
-//                    selectedUsersProp.setPassword(passwordUsersTF.getText());
-//                    selectedUsersProp.setPosisiId(posisiId);
-//                    selectedUsersProp.setPosisiNama(posisiUsers.getValue());
-//                }
             }else{
-//                selectedUsersProp = new UsersProperty();
                 users.setId(usersIdTF.getText());
                 users.setStatusAbsensi(Boolean.FALSE);
                 if(!iUsers.insert(users, primaryStage)) {
                     return;
                 }
-//                short id = iUsers.insert(users, primaryStage);
-//                selectedUsersProp.setId(id);
-//                selectedUsersProp.setNama(namaUsersTF.getText());
-//                selectedUsersProp.setUserName(userNameUsersTF.getText());
-//                selectedUsersProp.setPassword(passwordUsersTF.getText());
-//                selectedUsersProp.setPosisiId(posisiId);
-//                selectedUsersProp.setPosisiNama(posisiUsers.getValue());
-//                usersObsList.add(selectedUsersProp);
             }
             usersBatalBtn(event);
             setUsersTable();
@@ -2547,37 +2368,8 @@ public class AdminController implements Initializable {
         usersTable.getSelectionModel().clearSelection();
         usersDetail(null);
     }
-    
-//    @FXML
-//    private void usersHapusAction(ActionEvent event) {
-//        UsersProperty selectedUsersProp = usersTable.getSelectionModel().getSelectedItem();
-//        if(null != selectedUsersProp){
-//            Alert alertConfirm = new Alert(Alert.AlertType.CONFIRMATION);
-//            alertConfirm.setTitle("Konfirmasi");
-//            alertConfirm.setHeaderText("Anda Yakin?");
-//
-//            Optional<ButtonType> result = alertConfirm.showAndWait();
-//            if (result.get() == ButtonType.OK){
-//                iUsers.delete(selectedUsersProp.getId());
-//                usersObsList.remove(selectedUsersProp);
-//                usersTable.getSelectionModel().clearSelection();
-//                usersBatalBtn(event);
-//            }
-//        }else{
-//            //Nothing selected.
-//            Alert alert = new Alert(Alert.AlertType.WARNING);
-//            alert.initOwner(primaryStage);
-//            alert.setTitle("No Selection");
-//            alert.setHeaderText("Tidak ada user yang dipilih");
-//            alert.setContentText("Silahkan pilih user terlebih dahulu");
-//            
-//            alert.showAndWait();
-//        }
-//    }
 
     private void setBungkus() {
-//        bungkusObsList.clear();
-//        bungkusObsList = iTransaksi.getBungkus();
         noColumnBungkusNama.setCellValueFactory((TableColumn.CellDataFeatures<TransaksiProperty, TransaksiProperty> p) -> new ReadOnlyObjectWrapper(p.getValue()));
         noColumnBungkusNama.setCellFactory((TableColumn<TransaksiProperty, TransaksiProperty> param) -> new TableCell<TransaksiProperty, TransaksiProperty>() {
             @Override protected void updateItem(TransaksiProperty item, boolean empty) {
@@ -2591,7 +2383,6 @@ public class AdminController implements Initializable {
         });
         noColumnBungkusNama.setSortable(false);
         namaColumnBungkusNama.setCellValueFactory(cellData -> cellData.getValue().namaPemesanProperty());
-//        bungkusNamaTable.setItems(bungkusObsList);
         bungkusNamaTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if(null != newValue){
                 displayOrderBungkus(newValue);
@@ -2599,73 +2390,16 @@ public class AdminController implements Initializable {
         });
         
         //display ordered
-//        kodeColumnBungkus.setCellValueFactory(cellDate -> cellDate.getValue().codeProperty());
-        menuColumnBungkus.setCellValueFactory(cellData -> cellData.getValue().menuNamaProperty());
+//        menuColumnBungkus.setCellValueFactory(cellData -> cellData.getValue().menuNamaProperty());
         itemColumnBungkus.setCellValueFactory(cellData -> cellData.getValue().menuItemNamaProperty());
         jumlahColumnBungkus.setCellValueFactory(cellData -> cellData.getValue().jumlahProperty().asObject());
     }
-    
-//    @FXML
-//    private void pesanBungkusBtn(ActionEvent event) {
-//        try {
-//            selectedNamaBungkus = bungkusNamaTable.getSelectionModel().getSelectedItem();
-//            if(null != selectedNamaBungkus) {
-//                dataEntryMenu(selectedNamaBungkus);
-//            }else{
-//                Alert alert = new Alert(Alert.AlertType.WARNING);
-//                alert.initOwner(primaryStage);
-//                alert.setTitle("No Selection");
-//                alert.setHeaderText("Tidak ada pemesan yang dipilih");
-//                alert.setContentText("Silahkan pilih pemesan terlebih dahulu");
-//
-//                alert.showAndWait();
-//            }
-//        } catch (IOException ex) {
-//            LOGGER.error("", ex);
-//            }
-//    }
-    
-//    @FXML
-//    private void tambahBaruBungkusBtn(ActionEvent actionEvent){
-//        try {
-//            FXMLLoader loader = new FXMLLoader();
-//            loader.setLocation(AdminController.class.getResource("NamaPemesanBungkus.fxml"));
-//            VBox page = (VBox) loader.load();
-//            Stage dialogStage = new Stage();
-//            dialogStage.setTitle("Masukkan Nama Pemesan");
-//            dialogStage.initModality(Modality.WINDOW_MODAL);
-//            dialogStage.initOwner(primaryStage);
-//            Scene scene = new Scene(page);
-//            dialogStage.setScene(scene);
-//            NamaPemesanBungkusController controller = loader.getController();
-//            controller.setDialogStage(dialogStage);
-//            controller.setLoginUser(loginUser);
-//
-//            dialogStage.showAndWait();
-// 
-//            if(controller.isOkClicked() == true){
-//                TransaksiProperty transaksiProperty = new TransaksiProperty();
-//                transaksiProperty.setId(controller.getId());
-//                dataEntryMenu(transaksiProperty);
-//                bungkusObsList.clear();
-//                bungkusObsList = iTransaksi.getBungkus();
-//                bungkusNamaTable.setItems(bungkusObsList);
-//                bungkusNamaTable.getSelectionModel().selectLast();
-//            }
-//        } catch (IOException e) {
-//            LOGGER.error("failed to load NamaPemesanBungkus.fxml", e);
-//        }
-//    }
 
     private void displayOrderBungkus(TransaksiProperty tp) {
         menuBungkusObsList.clear();
-//        totalHargaBungkus = 0;
         if(null != tp){
             menuBungkusObsList = iPesan.getDetailByTransaksiId(tp.getId());
             namaBungkus.setText(tp.getNamaPemesan());
-//            for(int i=0; i<menuBungkusObsList.size(); i++){
-//                totalHargaBungkus += menuBungkusObsList.get(i).getTotalHarga();
-//            }
             bungkusDetailDiskonNama.setText(menuBungkusObsList.get(0).getDiskonNama());
             bungkusDetailPajakNama.setText(menuBungkusObsList.get(0).getPajakNama());
             totalBungkus.setText(numberFormat.format(tp.getTotal()));
@@ -2683,29 +2417,7 @@ public class AdminController implements Initializable {
             bungkusBatalBtn.setDisable(true);
             bungkusUbahBtn.setDisable(true);
         }
-//        namaColumnBungkus.setCellValueFactory(cellData -> cellData.getValue().namaProperty());
-//        jumlahColumnBungkus.setCellValueFactory(cellData -> cellData.getValue().jumlahProperty().asObject());
         bungkusMenuTable.setItems(menuBungkusObsList);
-    }
-
-    private void dataEntryMenu(TransaksiProperty transaksiProperty) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(AdminController.class.getResource("Pesan.fxml"));
-        AnchorPane page = (AnchorPane) loader.load();
-        Stage dialogStage = new Stage();
-        dialogStage.setTitle("Pesan");
-        dialogStage.initModality(Modality.WINDOW_MODAL);
-        dialogStage.initOwner(primaryStage);
-        Scene scene = new Scene(page);
-        dialogStage.setScene(scene);
-        PesanController controller = loader.getController();
-        controller.setDialogStage(dialogStage);
-//        controller.setTransaksiId(transaksiProperty.getId());
-        dialogStage.showAndWait();
-        bungkusNamaTable.getSelectionModel().clearSelection();
-//        if(controller.getPesanPropObsList() != null && controller.getPesanPropObsList().size() > 0){
-            bungkusNamaTable.getSelectionModel().select(transaksiProperty);
-//        }
     }
     
     @FXML
@@ -2798,8 +2510,6 @@ public class AdminController implements Initializable {
             newMeja.setStatus(CommonConstant.MEJA_TERISI);
             iMeja.update(newMeja);
             mejaActive = id;
-//            getMejaStatus();
-//            displayOrder(mejaActive);
             namaMeja.setText("Meja " + letter);
             displayOrderedMeja();
         });
@@ -2844,43 +2554,6 @@ public class AdminController implements Initializable {
             JasperPrintManager.printReport(print, false);
         }
     }
-    
-//    @FXML
-//    private void btnCetakBungkus(ActionEvent actionEvent) throws JRException, ClassNotFoundException, SQLException, IOException {
-//        selectedNamaBungkus = bungkusNamaTable.getSelectionModel().getSelectedItem();
-//        if(selectedNamaBungkus != null){
-//            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-//            alert.setTitle("Konfirmasi");
-//            alert.setHeaderText("Anda Yakin?");
-//            Optional<ButtonType> result = alert.showAndWait();
-//            if (result.get() == ButtonType.OK){
-//                InputStream logoStream = this.getClass().getResourceAsStream("img/logo_kedai.png");
-//                InputStream reportStream = this.getClass().getResourceAsStream("reports/print_A7_logo.jasper");
-//                HashMap<String, Object> parameters = new HashMap<>();
-//                parameters.put("logoImage", ImageIO.read(new ByteArrayInputStream(JRLoader.loadBytes(logoStream))));
-//                parameters.put("title", CommonConstant.KEDAI_NAMA);
-//                parameters.put("subtitle", CommonConstant.KEDAI_SUB_NAMA);
-//                parameters.put("alamat1", CommonConstant.KEDAI_ALAMAT1);
-//                parameters.put("alamat2", CommonConstant.KEDAI_ALAMAT2);
-//                parameters.put("alamat3", CommonConstant.KEDAI_ALAMAT3);
-//                parameters.put("waktu", new Date());
-//                parameters.put("meja", namaBungkus.getText());
-//                parameters.put("kasir", loginUser.getNama());
-//                parameters.put("total", numberFormat.format(selectedNamaBungkus.getTotal()));
-//                JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(menuBungkusObsList);
-//                JasperPrint print = JasperFillManager.fillReport(reportStream, parameters, beanCollectionDataSource);
-//                JasperPrintManager.printReport(print, false);
-//            }
-//        }else{
-//            Alert alert = new Alert(Alert.AlertType.WARNING);
-//            alert.initOwner(primaryStage);
-//            alert.setTitle("No Selection");
-//            alert.setHeaderText("Tidak ada pemesan yang dipilih");
-//            alert.setContentText("Silahkan pilih pemesan terlebih dahulu");
-//            
-//            alert.showAndWait();
-//        }
-//    }
     
     @FXML
     private void mejaBayarAction(ActionEvent actionEvent) {
@@ -2941,58 +2614,6 @@ public class AdminController implements Initializable {
             LOGGER.error("failed to load Bayar.fxml", ex);
         }
     }
-
-//    private void bayarDialog(Integer tunai) {
-//            try {
-//                FXMLLoader loader = new FXMLLoader();
-//                loader.setLocation(AdminController.class.getResource("BayarDialog.fxml"));
-//                AnchorPane page = (AnchorPane) loader.load();
-//
-//                Stage dialogStage = new Stage();
-//                dialogStage.setTitle("Bayar");
-//                dialogStage.initModality(Modality.WINDOW_MODAL);
-//                dialogStage.initOwner(primaryStage);
-//
-//                Scene scene = new Scene(page);
-//                dialogStage.setScene(scene);
-//
-//                BayarDialogController controller = loader.getController();
-//                controller.setDialogStage(dialogStage);
-//                controller.initValue(menuMejaObsList, tunai, loginUser);
-//
-//                dialogStage.showAndWait();
-//                
-//                if(controller.isOkClicked()){
-//                    InputStream logoStream = this.getClass().getResourceAsStream("img/logo_kedai.jpg");
-//                    InputStream reportStream = this.getClass().getResourceAsStream("reports/bayar_A7_logo.jasper");                
-//                    HashMap<String, Object> parameters = new HashMap<>();
-//                    parameters.put("logoImage", ImageIO.read(new ByteArrayInputStream(JRLoader.loadBytes(logoStream))));
-//                    parameters.put("title", CommonConstant.KEDAI_NAMA);
-//                    parameters.put("subtitle", CommonConstant.KEDAI_SUB_NAMA);
-//                    parameters.put("alamat1", CommonConstant.KEDAI_ALAMAT1);
-//                    parameters.put("alamat2", CommonConstant.KEDAI_ALAMAT2);
-//                    parameters.put("alamat3", CommonConstant.KEDAI_ALAMAT3);
-//                    parameters.put("waktu", new Date());
-//                    parameters.put("meja", "Meja " + iMeja.getNomorById(mejaActive));
-//                    parameters.put("kasir", loginUser.getNama());
-//                    parameters.put("total", numberFormat.format(totalHargaMeja));
-//                    parameters.put("tunai", numberFormat.format(tunai));
-//                    parameters.put("kembali", numberFormat.format(tunai-totalHargaMeja));
-//                    parameters.put("syukran1", CommonConstant.KEDAI_SYUKRAN_1);
-//                    parameters.put("syukran2", CommonConstant.KEDAI_SYUKRAN_2);
-//                    JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(menuMejaObsList);
-//                    JasperPrint print = JasperFillManager.fillReport(reportStream, parameters, beanCollectionDataSource);
-//                    JasperPrintManager.printReport(print, false);
-//                    getMejaStatus();
-//                    displayOrder((short) 0);
-//                }
-//                
-//            } catch (IOException e) {
-//                LOGGER.error("failed to load BayarDialog.fxml", e);
-//            } catch (JRException ex) {
-//                LOGGER.error("failed to print report", ex);
-//        }
-//    }
     
     @FXML
     private void bungkusBayarBtn(ActionEvent actionEvent) {
@@ -3016,14 +2637,9 @@ public class AdminController implements Initializable {
                 Transaksi transaksi = new Transaksi();
                 transaksi.setId(selectedNamaBungkus.getId());
                 transaksi.setTotal(selectedNamaBungkus.getTotal());
-//                transaksi.setDiskonId(new Diskon(pesanDiskonCB.getValue().getId()));
-//                transaksi.setPajakId(new Pajak(pesanPajakCB.getValue().getId()));
-//                transaksi.setDiskonTotal(pesanGlobalDiskon);
-//                transaksi.setPajakTotal(pesanGlobalPajak);
                 transaksi.setUserEnd(loginUser);
                 transaksi.setMejaId(new Meja((short) 0));
                 controller.initValue(transaksi, CommonConstant.TRANSAKSI_TERSIMPAN, menuBungkusObsList);
-//                controller.initValue(selectedNamaBungkus.getId(), hargaGrandTotal, loginUser, pesanGlobalDiskon, pesanGlobalPajak);
 
                 dialogStage.showAndWait();
 
@@ -3045,59 +2661,6 @@ public class AdminController implements Initializable {
             LOGGER.error("failed to load Bayar.fxml", ex);
         }
     }
-    
-//    private void bungkusBayarDialog(Integer tunai) {
-//            try {
-//                FXMLLoader loader = new FXMLLoader();
-//                loader.setLocation(AdminController.class.getResource("BayarDialog.fxml"));
-//                AnchorPane page = (AnchorPane) loader.load();
-//
-//                Stage dialogStage = new Stage();
-//                dialogStage.setTitle("Bayar");
-//                dialogStage.initModality(Modality.WINDOW_MODAL);
-//                dialogStage.initOwner(primaryStage);
-//
-//                Scene scene = new Scene(page);
-//                dialogStage.setScene(scene);
-//
-//                BayarDialogController controller = loader.getController();
-//                controller.setDialogStage(dialogStage);
-//                controller.initValue(menuBungkusObsList, tunai, loginUser);
-//                
-//                dialogStage.showAndWait();
-//                
-//                if(controller.isOkClicked()){
-//                    InputStream logoStream = this.getClass().getResourceAsStream("img/logo_kedai.png");
-//                    InputStream reportStream = this.getClass().getResourceAsStream("reports/bayar_A7_logo.jasper");
-//                    HashMap<String, Object> parameters = new HashMap<String, Object>();
-//                    parameters.put("logoImage", ImageIO.read(new ByteArrayInputStream(JRLoader.loadBytes(logoStream))));
-//                    parameters.put("title", CommonConstant.KEDAI_NAMA);
-//                    parameters.put("subtitle", CommonConstant.KEDAI_SUB_NAMA);
-//                    parameters.put("alamat1", CommonConstant.KEDAI_ALAMAT1);
-//                    parameters.put("alamat2", CommonConstant.KEDAI_ALAMAT2);
-//                    parameters.put("alamat3", CommonConstant.KEDAI_ALAMAT3);
-//                    parameters.put("waktu", new Date());
-//                    parameters.put("meja", selectedNamaBungkus.getNamaPemesan());
-//                    parameters.put("kasir", loginUser.getNama());
-//                    parameters.put("total", numberFormat.format(totalHargaBungkus));
-//                    parameters.put("tunai", numberFormat.format(tunai));
-//                    parameters.put("kembali", numberFormat.format(tunai-totalHargaBungkus));
-//                    parameters.put("syukran1", CommonConstant.KEDAI_SYUKRAN_1);
-//                    parameters.put("syukran2", CommonConstant.KEDAI_SYUKRAN_2);
-//                    JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(menuBungkusObsList);
-//                    JasperPrint print = JasperFillManager.fillReport(reportStream, parameters, beanCollectionDataSource);
-//                    JasperPrintManager.printReport(print, false);
-//                    bungkusNamaTable.getSelectionModel().clearSelection();
-//                    bungkusObsList.remove(selectedNamaBungkus);
-//                    displayOrderBungkus(new TransaksiProperty());
-//                }
-//                
-//            } catch (IOException e) {
-//                LOGGER.error("failed to load BayarDialog.fxml", e);
-//            } catch (JRException ex) {
-//                LOGGER.error("failed to print report", ex);
-//            }
-//    }
 
     private void setPemasukan() {
         pemasukanDate.setValue(LocalDate.now());
@@ -3145,8 +2708,6 @@ public class AdminController implements Initializable {
         });
         noColumnPemasukan.setSortable(false);
         waktuColumnPemasukan.setCellValueFactory(cellData -> cellData.getValue().waktuProperty());
-//        mejaColumnPemasukan.setCellValueFactory(cellData -> cellData.getValue().mejaproperty().asObject());
-//        pelangganColumnPemasukan.setCellValueFactory(cellData -> cellData.getValue().namaPemesanProperty());
         statusColumnPemasukan.setCellValueFactory(cellData -> cellData.getValue().statusTransaksiproperty());
         totalColumnPemasukan.setCellValueFactory(cellData -> cellData.getValue().totalProperty());
         metodePembayaranColumnPemasukan.setCellValueFactory(cellData -> cellData.getValue().metodePembayaranNamaProperty());
@@ -3160,8 +2721,7 @@ public class AdminController implements Initializable {
         pemasukanMetodePembayaranTotalClm.setCellValueFactory(cellData -> cellData.getValue().totalProperty());
         
         //displayDetail
-//        pemasukanDetailKodeClmn.setCellValueFactory(cellData -> cellData.getValue().codeProperty());
-        pemasukanDetailMenuClmn.setCellValueFactory(cellData -> cellData.getValue().menuNamaProperty());
+//        pemasukanDetailMenuClmn.setCellValueFactory(cellData -> cellData.getValue().menuNamaProperty());
         pemasukanDetailItemClmn.setCellValueFactory(cellData -> cellData.getValue().menuItemNamaProperty());
         pemasukanDetailJumlahClmn.setCellValueFactory(cellData -> cellData.getValue().jumlahProperty().asObject());
     }
@@ -3181,7 +2741,6 @@ public class AdminController implements Initializable {
                 usersChoicesString.add(users.getNama());
             });
         }
-        
     }
 
     private void setPemasukanTable(String userId) {
@@ -3196,10 +2755,8 @@ public class AdminController implements Initializable {
                 pemasukanTotalBatal += transaksiProperty.getTotal();
             }
         }
-//        Integer pemasukanTotalSemua = pemasukanTotalBayar + pemasukanTotalBatal;
         totalBayar.setText(numberFormat.format(pemasukanTotalBayar));
         totalBatal.setText(numberFormat.format(pemasukanTotalBatal));
-//        totalSemua.setText(numberFormat.format(pemasukanTotalSemua));
         pemasukanTable.setItems(pemasukanObsList);
         
         //metodePembayaranTable
@@ -3212,7 +2769,6 @@ public class AdminController implements Initializable {
     }
 
     private void displayChart() {
-//        grafikBulanCB.setItems(grafikBulanChoice);
         grafikBulanCB.getItems().addAll(CommonConstant.NAMA_BULAN);
         grafikBulanCB.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
             if(null != newValue && newValue.intValue() >= 0){
@@ -3226,111 +2782,9 @@ public class AdminController implements Initializable {
                 grafikTahunan(newValue);
             }
         });
-        jenisLaporanCB.getItems().addAll("Penjualan Harian", "Penjualan Produk", "Absensi");
+//        jenisLaporanCB.getItems().addAll("Penjualan Harian", "Penjualan Produk", "Absensi");
+        jenisLaporanCB.getItems().addAll("Penjualan Harian", "Penjualan Produk");   //remove Absensi @20171222 - kiraju3
         jenisLaporanCB.getSelectionModel().selectFirst();
-//        laporanTabPane.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Tab> observable, Tab oldValue, Tab newValue) -> {
-//            if(laporanTabPane.getTabs().contains(grafikBulananTab) && newValue.equals(grafikBulananTab)){
-//                grafikBulanSelected();
-//            }else if(laporanTabPane.getTabs().contains(grafikTahunanTab) && newValue.equals(grafikTahunanTab)){
-//                grafikTahunSelected();
-//            }
-//        });
-//        grafikBulanSelected();
-//        if(grafikBulanChoice == null){
-//            grafikBulanChoice = FXCollections.observableArrayList();
-//            for(int m = 1; m <= LocalDate.now().getMonthValue(); m++){
-//                switch (m) {
-//                    case CommonConstant.BULAN_JANUARI:
-//                        grafikBulanChoice.add("JANUARI");
-//                        break;
-//                    case CommonConstant.BULAN_FEBRUARI:
-//                        grafikBulanChoice.add("FEBRUARI");
-//                        break;
-//                    case CommonConstant.BULAN_MARET:
-//                        grafikBulanChoice.add("MARET");
-//                        break;
-//                    case CommonConstant.BULAN_APRIL:
-//                        grafikBulanChoice.add("APRIL");
-//                        break;
-//                    case CommonConstant.BULAN_MEI:
-//                        grafikBulanChoice.add("MEI");
-//                        break;
-//                    case CommonConstant.BULAN_JUNI:
-//                        grafikBulanChoice.add("JUNI");
-//                        break;
-//                    case CommonConstant.BULAN_JULI:
-//                        grafikBulanChoice.add("JULI");
-//                        break;
-//                    case CommonConstant.BULAN_AGUSTUS:
-//                        grafikBulanChoice.add("AGUSTUS");
-//                        break;
-//                    case CommonConstant.BULAN_SEPTEMBER:
-//                        grafikBulanChoice.add("SEPTEMBER");
-//                        break;
-//                    case CommonConstant.BULAN_NOVEMBER:
-//                        grafikBulanChoice.add("NOVEMBER");
-//                        break;
-//                    case CommonConstant.BULAN_DESEMBER:
-//                        grafikBulanChoice.add("DESEMBER");
-//                        break;
-//                    default:
-//                        break;
-//                }
-//            }
-//        }
-//        
-//        grafikBulanCB.setItems(grafikBulanChoice);
-//        grafikBulanCB.getSelectionModel().selectLast();
-//        grafikBulanCB.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
-//            int bulanBaru = newValue.intValue() + 1;
-//            grafikBulanan(bulanBaru);
-//        });
-//        grafikBulanan(LocalDate.now().getMonthValue());
-        
-        //grafik tahunan
-//        grafikTahunCB.setItems(iTransaksi.getYear());
-//        grafikTahunCB.getSelectionModel().selectLast();
-//        grafikTahunCB.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-//            if(newValue != null){
-//                grafikTahunan(newValue);
-//            }
-//        });
-//        grafikTahunan(LocalDate.now().getYear());
-        
-        //grafik menu
-//        grafikBulanMenuCB.setItems(grafikBulanChoice);
-//        grafikBulanMenuCB.getSelectionModel().selectLast();
-//        grafikBulanMenuCB.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
-//            int bulanBaru = newValue.intValue() + 1;
-//            System.out.println("start grafik menu 1");
-//            long start = System.currentTimeMillis();
-//            grafikMenuBulanan(bulanBaru, choicesMap.get(grafikBulanJenisMenuCB.getValue()));
-//            long end = System.currentTimeMillis();
-//            long duration = (end - start);
-//            System.out.println("grafik menu 1 = " + duration);
-//        });
-//        grafikBulanJenisMenuCB.setItems(choicesList);
-//        grafikBulanJenisMenuCB.getSelectionModel().select(0);
-//        grafikBulanJenisMenuCB.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-//            System.out.println("start grafik menu 2");
-//            long start = System.currentTimeMillis();
-//            grafikMenuBulanan(bulanBaruMenu, choicesMap.get(newValue));
-//            long end = System.currentTimeMillis();
-//            long duration = (end - start);
-//            System.out.println("grafik menu 2 = " + duration);
-//        });
-//        System.out.println("start grafik menu 3");
-//        long start = System.currentTimeMillis();
-//        grafikMenuBulanan(LocalDate.now().getMonthValue(), choicesMap.get(grafikBulanJenisMenuCB.getValue()));
-//        long end = System.currentTimeMillis();
-//        long duration = (end - start);
-//        System.out.println("grafik menu 3 = " + duration);
-        
-        //Laporan PDF
-//        jenisLaporanCB.setItems(null);
-//        jenisLaporanCB.getItems().addAll("Keuangan", "Penjualan");
-//        jenisLaporanCB.getSelectionModel().selectFirst();
-//        laporanDirectory.setText(System.getProperty("user.home"));
         transaksiDariDate.setValue(LocalDate.now());
         transaksiDariDate.setConverter(new StringConverter<LocalDate>(){
             DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(datePattern);
@@ -3621,56 +3075,6 @@ public class AdminController implements Initializable {
         }
     }
 
-//    private void grafikMenuBulanan(int bulan, Short jenisMenu) {
-//        bulanBaruMenu = bulan;
-//        Locale locale = new Locale("id", "ID");
-//        String monthIndo = new DateFormatSymbols(locale).getMonths()[bulan-1];
-//        chartMenuBulan.getData().clear();   
-//        chartMenuBulan.setTitle("Total Penjualan Per Menu "+ monthIndo);
-//        xAxisMenuBulanan.setLabel("Tanggal");
-//        YearMonth yearMonth = YearMonth.of(LocalDate.now().getYear(), bulan);
-//        long start = System.currentTimeMillis();
-//        List<List> resultList = iMenu.getChartByMonthAndJenisMenu(bulan, jenisMenu);
-//        long end = System.currentTimeMillis();
-//        long duration = (end-start);
-//        System.out.println("grafikMenuBulanan 1 duration = " + duration);
-//        start = System.currentTimeMillis();
-//        for(List parent : resultList){
-//            XYChart.Series<String, Number> series = new XYChart.Series();
-//            String menuNama = "";
-//            for(int i = 1; i <= yearMonth.lengthOfMonth(); i++){
-//                XYChart.Data<String, Number> data = new XYChart.Data(Integer.toString(i), 0);
-//                for(int j = 0; j < parent.size(); j++){
-//                    Object[] row = (Object[]) parent.get(j);
-//                    Integer hari = (Integer) row[0];
-//                    Short jumlah = (Short) row[1];
-//                    if(i == hari){
-//                        data.setYValue(jumlah.intValue());
-//                        menuNama = (String) row[3];
-//                        data.setExtraValue(menuNama);
-//                        break;
-//                    }
-//                }
-//                series.getData().add(data);
-//            }
-//            series.setName(menuNama);
-//            chartMenuBulan.getData().add(series);
-//        }
-//        end = System.currentTimeMillis();
-//        duration = (end-start);
-//        System.out.println("grafikMenuBulanan 2 duration = " + duration);
-//        
-//        start = System.currentTimeMillis();
-//        for (XYChart.Series<String, Number> s : chartMenuBulan.getData()) {
-//            for (XYChart.Data<String, Number> d : s.getData()) {
-//                Tooltip.install(d.getNode(), new Tooltip(d.getExtraValue()+"\n"+"Tanggal " + d.getXValue() + "\n" + "Jumlah: " + d.getYValue()));
-//            }
-//        }
-//        end = System.currentTimeMillis();
-//        duration = (end-start);
-//        System.out.println("grafikMenuBulanan 3 duration = " + duration);
-//    }
-
     private void adminMeja() {
         noColumnAdminMeja.setCellValueFactory(callData -> callData.getValue().idProperty().asObject());
         nomorColumnAdminMeja.setCellValueFactory(cellData -> cellData.getValue().nomorProperty());
@@ -3700,9 +3104,6 @@ public class AdminController implements Initializable {
     private void adminMejaSimpanAction(ActionEvent actionEvent) {
         TextField[] textFields = {nomorAdminMejaTF};
         String[] namaTextFields = {"Nama"};
-//        List<ChoiceBox> choiceBoxs = new ArrayList<>();
-//        choiceBoxs.add(statusAdminMejaCB);
-//        String[] namaChoiceBoxs = {"Status"};
         if(iValidation.isTextFieldInputValid(textFields, namaTextFields, primaryStage)){
             MejaProperty selectedMejaProp = adminMejaTable.getSelectionModel().getSelectedItem();
             if(null != selectedMejaProp){
@@ -3747,24 +3148,6 @@ public class AdminController implements Initializable {
         adminMejaTable.getSelectionModel().clearSelection();
     }
     
-//    @FXML
-//    private void direktoriBackupBtn(ActionEvent event) {
-//        DirectoryChooser directoryChooser = new DirectoryChooser();
-//        directoryChooser.setTitle("Pilih Direktori/Folder");
-//        directoryChooser.setInitialDirectory(new File(System.getProperty("user.home")));
-//        
-//        File dirTarget = directoryChooser.showDialog(primaryStage);
-//        if(dirTarget != null){
-//            backupDirectory.setText(dirTarget.getAbsolutePath());
-//            directoryChooser.setInitialDirectory(new File(dirTarget.getAbsolutePath()));
-//        }
-//    }
-
-//    private void setBackupAndRestore() {
-//        backupDirectory.setText(System.getProperty("user.home"));
-//        restoreDirectory.setText(System.getProperty("user.home"));
-//    }
-    
     @FXML
     private void backupAction(ActionEvent actionEvent) {
         DirectoryChooser directoryChooser = new DirectoryChooser();
@@ -3787,18 +3170,6 @@ public class AdminController implements Initializable {
         }
     }
     
-//    @FXML
-//    private void direktoriRestoreBtn(ActionEvent event) {
-//        DirectoryChooser directoryChooser = new DirectoryChooser();
-//        directoryChooser.setTitle("Pilih Direktori/Folder");
-//        directoryChooser.setInitialDirectory(new File(System.getProperty("user.home")));
-//        File dirTarget = directoryChooser.showDialog(primaryStage);
-//        if(dirTarget != null){
-//            restoreDirectory.setText(dirTarget.getAbsolutePath());
-//            directoryChooser.setInitialDirectory(new File(dirTarget.getAbsolutePath()));
-//        }
-//    }
-    
     @FXML
     private void restoreAction(ActionEvent actionEvent) {
         Alert alertConfirm = new Alert(Alert.AlertType.CONFIRMATION);
@@ -3812,7 +3183,6 @@ public class AdminController implements Initializable {
             directoryChooser.setInitialDirectory(new File(System.getProperty("user.home")));
             File dirTarget = directoryChooser.showDialog(primaryStage);
             if(dirTarget != null){
-//                String backupDir = dirTarget.getAbsolutePath();
                 JDBCConnection.databaseRestore(dirTarget.getAbsolutePath());
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Informasi");
@@ -3824,17 +3194,6 @@ public class AdminController implements Initializable {
         }
     }
     
-//    @FXML
-//    private void direktoriLaporanBtn(ActionEvent event) {
-//        DirectoryChooser directoryChooser = new DirectoryChooser();
-//        directoryChooser.setTitle("Pilih Direktori/Folder");
-//        directoryChooser.setInitialDirectory(new File(System.getProperty("user.home")));
-//        File dirTarget = directoryChooser.showDialog(primaryStage);
-//        if(dirTarget != null){
-//
-//        }
-//    }
-    
     @FXML
     private void downloadLaporan(ActionEvent event) {
         DirectoryChooser directoryChooser = new DirectoryChooser();
@@ -3842,7 +3201,6 @@ public class AdminController implements Initializable {
         directoryChooser.setInitialDirectory(new File(System.getProperty("user.home")));
         File dirTarget = directoryChooser.showDialog(primaryStage);
         if(dirTarget != null){
-//            directoryChooser.setInitialDirectory(new File(dirTarget.getAbsolutePath()));
             try {
                 if(jenisLaporanCB.getSelectionModel().isSelected(0)){
                     List<Laporan> dataList = iTransaksi.getLaporan(transaksiDariDate.getValue(), transaksiSampaiDate.getValue());
@@ -3945,29 +3303,29 @@ public class AdminController implements Initializable {
                 LOGGER.error("failed to fill report to file", e);
             }
         }
-        
     }
 
     private void setPesan() {
         //set table
-        noColumnPesan.setCellValueFactory((TableColumn.CellDataFeatures<MenuProperty, MenuProperty> p) -> new ReadOnlyObjectWrapper(p.getValue()));
-        noColumnPesan.setCellFactory((TableColumn<MenuProperty, MenuProperty> param) -> new TableCell<MenuProperty, MenuProperty>() {
-            @Override protected void updateItem(MenuProperty item, boolean empty) {
-                super.updateItem(item, empty);
-                if (this.getTableRow() != null && item != null) {
-                    setText(this.getTableRow().getIndex()+1+"");
-                } else {
-                    setText("");
-                }
-            }
-        });
-        noColumnPesan.setSortable(false);
-        namaColumnPesan.setCellValueFactory(cellData -> cellData.getValue().namaProperty());
+//        noColumnPesan.setCellValueFactory((TableColumn.CellDataFeatures<MenuProperty, MenuProperty> p) -> new ReadOnlyObjectWrapper(p.getValue()));
+//        noColumnPesan.setCellFactory((TableColumn<MenuProperty, MenuProperty> param) -> new TableCell<MenuProperty, MenuProperty>() {
+//            @Override protected void updateItem(MenuProperty item, boolean empty) {
+//                super.updateItem(item, empty);
+//                if (this.getTableRow() != null && item != null) {
+//                    setText(this.getTableRow().getIndex()+1+"");
+//                } else {
+//                    setText("");
+//                }
+//            }
+//        });
+//        noColumnPesan.setSortable(false);
+//        namaColumnPesan.setCellValueFactory(cellData -> cellData.getValue().namaProperty());
         
         //set BoxChoice
         jenisBoxPesan.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Choice> observable, Choice oldValue, Choice newValue) -> {
             if(null != newValue){
-                pesanMenuTable.setItems(iMenu.getActiveProperty(newValue.getId()));
+//                pesanMenuItemTable.setItems(iMenuItem.getActiveProperty(newValue.getId()));
+                setPesanMenuTable(newValue.getId());
             }
         });
         setPesanCB();
@@ -3986,13 +3344,13 @@ public class AdminController implements Initializable {
         noColumnMenuItemPesan.setSortable(false);
         namaColumnMenuItemPesan.setCellValueFactory(cellData -> cellData.getValue().namaProperty());
         
-        pesanMenuTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if(null != newValue) {
-                pesanItemBtn.setDisable(false);
-            }else{
-                pesanItemBtn.setDisable(true);
-            }
-        });
+//        pesanMenuTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+//            if(null != newValue) {
+//                pesanItemBtn.setDisable(false);
+//            }else{
+//                pesanItemBtn.setDisable(true);
+//            }
+//        });
         
         pesanMenuItemTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if(null != newValue) {
@@ -4003,40 +3361,40 @@ public class AdminController implements Initializable {
         });
 
         //barcode reader
-        pesanOrderedTable.addEventFilter(KeyEvent.KEY_TYPED, (KeyEvent event) -> {
-            keyTyped(event);
-        });
+//        pesanOrderedTable.addEventFilter(KeyEvent.KEY_TYPED, (KeyEvent event) -> {
+//            keyTyped(event);
+//        });
         
-        TextFields.bindAutoCompletion(searchmenuItemComboBox.getEditor(), (AutoCompletionBinding.ISuggestionRequest t) -> {
-            return iMenuItem.searchMenuItemByCode(t.getUserText());
-        });
-        searchmenuItemComboBox.getSelectionModel().selectedItemProperty().addListener(((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
-            if(null != newValue) {
-                int iend = newValue.indexOf("-");
-                if(iend != -1) {
-                    String subString = newValue.substring(0, iend);
-                    String code = subString.trim();
-                    searchmenuItemComboBox.getEditor().setText(null);
-
-                    TextInputDialog dialog = new TextInputDialog("1");
-                    dialog.setTitle(newValue);
-                    dialog.setHeaderText("Jumlah");
-                    dialog.setContentText("Masukkan jumlah barang yang dipesan:");
-
-                    Optional<String> result = dialog.showAndWait();
-                    // The Java 8 way to get the response value (with lambda expression).
-                    result.ifPresent((String jumlah) -> {
-                        
-                        addNewOrder(code, Integer.valueOf(jumlah));
-                        
-                    });
-                }
-            }
-        }));
+        //searchByCode
+//        TextFields.bindAutoCompletion(searchmenuItemComboBox.getEditor(), (AutoCompletionBinding.ISuggestionRequest t) -> {
+//            return iMenuItem.searchMenuItemByCode(t.getUserText());
+//        });
+//        searchmenuItemComboBox.getSelectionModel().selectedItemProperty().addListener(((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+//            if(null != newValue) {
+//                int iend = newValue.indexOf("-");
+//                if(iend != -1) {
+//                    String subString = newValue.substring(0, iend);
+//                    String code = subString.trim();
+//                    searchmenuItemComboBox.getEditor().setText(null);
+//
+//                    TextInputDialog dialog = new TextInputDialog("1");
+//                    dialog.setTitle(newValue);
+//                    dialog.setHeaderText("Jumlah");
+//                    dialog.setContentText("Masukkan jumlah barang yang dipesan:");
+//
+//                    Optional<String> result = dialog.showAndWait();
+//                    // The Java 8 way to get the response value (with lambda expression).
+//                    result.ifPresent((String jumlah) -> {
+//                        
+//                        addNewOrder(code, Integer.valueOf(jumlah));
+//                        
+//                    });
+//                }
+//            }
+//        }));
         
         //display ordered
-//        kodeColumnOrderedPesan.setCellValueFactory(cellData -> cellData.getValue().codeProperty());
-        menuColumnOrderedPesan.setCellValueFactory(cellData -> cellData.getValue().menuNamaProperty());
+//        menuColumnOrderedPesan.setCellValueFactory(cellData -> cellData.getValue().menuNamaProperty());
         itemColumnOrderedPesan.setCellValueFactory(cellData -> cellData.getValue().menuItemNamaProperty());
         jumlahColumnOrderedPesan.setCellValueFactory(cellData -> cellData.getValue().jumlahProperty().asObject());
         
@@ -4077,86 +3435,24 @@ public class AdminController implements Initializable {
         jenisBoxPesan.getSelectionModel().selectFirst();
     }
     
-//    private void setPesanMenuTable(short jenis) {
-//        if(pesanMenuPropObsList != null){
-//            pesanMenuPropObsList.clear();
-//            searchPesanTF.clear();
+//    @FXML
+//    private void pilihBtnPesan(ActionEvent actionEvent){
+//        MenuProperty selectedMenuProp = pesanMenuTable.getSelectionModel().getSelectedItem();
+//        
+//        if(null != selectedMenuProp){
+//            pesanMenuItemTable.setItems(iMenuItem.getPropertyByMenuId(selectedMenuProp.getId()));
+//            pesanMenuBox.setVisible(false);
+//            pesanMenuItemBox.setVisible(true);
+//        }else{
+//            Alert alert = new Alert(Alert.AlertType.WARNING);
+//            alert.initOwner(primaryStage);
+//            alert.setTitle("No Selection");
+//            alert.setHeaderText("Tidak ada menu yang dipilih");
+//            alert.setContentText("Silahkan pilih menu terlebih dahulu");
+//            
+//            alert.showAndWait();
 //        }
-//        pesanMenuPropObsList = iMenu.getActiveProperty(jenis);
-//        displayFilteredDataPesan();
 //    }
-
-//    private void displayFilteredDataPesan() {
-//        FilteredList<MenuProperty> filteredData = new FilteredList<>(pesanMenuPropObsList, p -> true);
-//        
-//        searchPesanTF.textProperty().addListener((observable, oldValue, newValue) -> {
-//			filteredData.setPredicate(person -> {
-//                            // If filter text is empty, display all persons.
-//                            if (newValue == null || newValue.isEmpty()) {
-//                                return true;
-//                            }
-//
-//                            // Compare first name and last name of every person with filter text.
-//                            String lowerCaseFilter = newValue.toLowerCase();
-//
-//                            if (person.getNama().toLowerCase().contains(lowerCaseFilter)) {
-//                                return true; // Filter matches first name.
-//                            } 
-////                            else if (person.getNama().toLowerCase().contains(lowerCaseFilter)) {
-////                                return true; // Filter matches last name.
-////                            }
-//                            return false; // Does not match.
-//			});
-//		});
-//        
-//        SortedList<MenuProperty> sortedData = new SortedList<>(filteredData);
-//        sortedData.comparatorProperty().bind(pesanMenuTable.comparatorProperty());
-//        pesanMenuTable.setItems(sortedData);
-//    }
-    
-    @FXML
-    private void pilihBtnPesan(ActionEvent actionEvent){
-        MenuProperty selectedMenuProp = pesanMenuTable.getSelectionModel().getSelectedItem();
-        
-        if(null != selectedMenuProp){
-//            try {
-//                FXMLLoader loader = new FXMLLoader();
-//                loader.setLocation(AdminController.class.getResource("Pesan.fxml"));
-//                BorderPane page = (BorderPane) loader.load();
-//
-//                Stage dialogStage = new Stage();
-//                dialogStage.setTitle("Pesan");
-//                dialogStage.initModality(Modality.WINDOW_MODAL);
-//                dialogStage.initOwner(primaryStage);
-//
-//                Scene scene = new Scene(page);
-//                dialogStage.setScene(scene);
-//
-//                PesanController controller = loader.getController();
-//                controller.setDialogStage(dialogStage);
-//                controller.setData(selectedMenuProp, transaksiId, loginUser.getId());
-//
-//                dialogStage.showAndWait();
-//
-//                transaksiId = controller.getTransaksiId();
-//                displayOrderPesan();
-//               
-//            } catch (IOException ex) {
-//                LOGGER.error("failed to load Pesan.fxml", ex);
-//            }
-            pesanMenuItemTable.setItems(iMenuItem.getPropertyByMenuId(selectedMenuProp.getId()));
-            pesanMenuBox.setVisible(false);
-            pesanMenuItemBox.setVisible(true);
-        }else{
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.initOwner(primaryStage);
-            alert.setTitle("No Selection");
-            alert.setHeaderText("Tidak ada menu yang dipilih");
-            alert.setContentText("Silahkan pilih menu terlebih dahulu");
-            
-            alert.showAndWait();
-        }
-    }
 
     private void displayOrderPesan() {
         pesanMenuItemOrderedObsList.clear();
@@ -4167,7 +3463,7 @@ public class AdminController implements Initializable {
             if(null != pesanMenuItemOrderedObsList && !pesanMenuItemOrderedObsList.isEmpty()) {
                 for(int i=0; i<pesanMenuItemOrderedObsList.size(); i++){
                     totalHargaPesan += pesanMenuItemOrderedObsList.get(i).getTotalHarga();
-                    totalModalPesan += pesanMenuItemOrderedObsList.get(i).getTotalModal();
+//                    totalModalPesan += pesanMenuItemOrderedObsList.get(i).getTotalModal();
                 }
                 pesanDiskonCB.setValue(new Choice(pesanMenuItemOrderedObsList.get(0).getDiskonId(), pesanMenuItemOrderedObsList.get(0).getDiskonNama()));
                 pesanPajakCB.setValue(new Choice(pesanMenuItemOrderedObsList.get(0).getPajakId(), pesanMenuItemOrderedObsList.get(0).getPajakNama()));
@@ -4187,13 +3483,10 @@ public class AdminController implements Initializable {
             pesanBayarBtn.setDisable(true);
         }
         
-//        namaColumnOrderedPesan.setCellValueFactory(cellData -> cellData.getValue().namaProperty());
-//        jumlahColumnOrderedPesan.setCellValueFactory(cellData -> cellData.getValue().jumlahProperty().asObject());
         pesanOrderedTable.setItems(pesanMenuItemOrderedObsList);
         Integer diskonId = pesanDiskonCB.getSelectionModel().getSelectedItem().getId();
         Integer pajakId = pesanPajakCB.getSelectionModel().getSelectedItem().getId();
         setGrandTotalPesan(totalHargaPesan, diskonId, pajakId);
-//        totalPesanOrdered.setText(numberFormat.format(totalHargaPesan));
     }
     
     @FXML
@@ -4344,9 +3637,6 @@ public class AdminController implements Initializable {
             Transaksi transaksi = new Transaksi();
             transaksi.setId(transaksiId);
             pesan.setTransaksiId(transaksi);
-//            MenuItem menuItem = new MenuItem();
-//            menuItem.setId(selectedPesanProp.getMenuItemId());
-//            pesan.setMenuItemId(menuItem);
             pesan.setMenuItemCode(new  MenuItem(selectedPesanProp.getCode()));
             iPesan.deleteById(pesan);
             
@@ -4409,16 +3699,10 @@ public class AdminController implements Initializable {
 
     private void displayMenuItemEdit(MenuItemProperty newValue) {
         if(null != newValue){
-//            MenuItem menuItem = iMenuItem.getById(newValue.getId());
             menuItemKodeTF.setText(newValue.getCode());
             menuItemKodeTF.setDisable(true);
             menuItemNamaTF.setText(newValue.getNama());
-            menuItemModalTF.setText(newValue.getModal().toString());
-            menuItemUntungCB.getSelectionModel().select(newValue.getUntungCode()-1);
-            menuItemUntungTF.setText(newValue.getUntung().toString());
-            menuItemTambahanCB.getSelectionModel().select(newValue.getTambahanCode()-1);
-            menuItemTambahanTF.setText(newValue.getTambahan().toString());
-            menuItemHargaJualTF.setText(newValue.getHargaJual());
+            menuItemHargaJualTF.setText(newValue.getHargaJual().replace(".", ""));
             stokCheckBox.setSelected(newValue.getStokFlag());
             if(newValue.getStokFlag()) {
                 stokTambahTF.setDisable(false);
@@ -4426,17 +3710,20 @@ public class AdminController implements Initializable {
                 stokTambahTF.setDisable(true);
             }
             
+            jenisMenuBox.setValue(new Choice(newValue.getJenisId(), newValue.getJenisNama()));
+            menuStatusCheckBox.setSelected(newValue.getStatus());
+            
         }else{
             menuItemKodeTF.setText("");
             menuItemKodeTF.setDisable(false);
             menuItemNamaTF.setText("");
-            menuItemModalTF.setText("");
-            menuItemUntungTF.setText("");
-            menuItemTambahanTF.setText("");
-            menuItemHargaJualTF.setText("0");
+            menuItemHargaJualTF.setText("");
             stokCheckBox.setSelected(false);
             stokTambahTF.setText("0");
             stokTambahTF.setDisable(true);
+            
+            jenisMenuBox.setValue(null);
+            menuStatusCheckBox.setSelected(true);
         }
         
     }
@@ -4450,62 +3737,65 @@ public class AdminController implements Initializable {
         }
     }
 
-    private void sumHargaJual(Integer modal, Integer untungBefore, Integer tambahanBefore) {
-        float untungPersen = (float) untungBefore/100;
-        float tambahanPersen = (float) tambahanBefore/100;
-        System.out.println("untungPersen = " + untungPersen);
-        Integer untung = menuItemUntungCB.getSelectionModel().isSelected(0) ? untungBefore : Math.round(untungPersen*modal);
-        Integer tambahan = menuItemTambahanCB.getSelectionModel().isSelected(0) ? tambahanBefore : Math.round(tambahanPersen*(modal+untung));
-        Integer hargaJual = modal + untung + tambahan;
-        menuItemHargaJualTF.setText(numberFormat.format(hargaJual));
-//        menuItemHargaJual.setText(numberFormat.format(hargaJual));
-    }
+    //20171222 - kiraju3
+//    private void sumHargaJual(Integer modal, Integer untungBefore, Integer tambahanBefore) {
+//        float untungPersen = (float) untungBefore/100;
+//        float tambahanPersen = (float) tambahanBefore/100;
+//        System.out.println("untungPersen = " + untungPersen);
+//        Integer untung = menuItemUntungCB.getSelectionModel().isSelected(0) ? untungBefore : Math.round(untungPersen*modal);
+//        Integer tambahan = menuItemTambahanCB.getSelectionModel().isSelected(0) ? tambahanBefore : Math.round(tambahanPersen*(modal+untung));
+//        Integer hargaJual = modal + untung + tambahan;
+//        menuItemHargaJualTF.setText(numberFormat.format(hargaJual));
+//    }
     
     @FXML
-    private void batalBtnMenuItem(ActionEvent event) {
+    private void menuItemBatalAction(ActionEvent event) {
         menuItemTable.getSelectionModel().clearSelection();
         displayMenuItemEdit(null);
     }
     
     @FXML
-    private void simpanBtnMenuItem(ActionEvent event) {
-        MenuProperty selectedMenu = menuTable.getSelectionModel().getSelectedItem();
-        MenuItemProperty selectedMenuItem = menuItemTable.getSelectionModel().getSelectedItem();
-        MenuItem menuItem = new MenuItem();
+    private void menuItemSimpanAction(ActionEvent event) {
+        TextField[] textFields = {menuItemNamaTF, menuItemKodeTF, menuItemHargaJualTF};
+        String[] namaTextFields = {"Nama", "Kode", "Harga"};
+        List<ChoiceBox<Choice>> choiceBoxs = new ArrayList<>();
+        choiceBoxs.add(jenisMenuBox);
+        String[] namaChoiceBoxs = {"Kategori"};
+        if(iValidation.isTextFieldInputValid(textFields, namaTextFields, choiceBoxs, namaChoiceBoxs, primaryStage)) {
+            MenuItemProperty selectedMenuItem = menuItemTable.getSelectionModel().getSelectedItem();
+            MenuItem menuItem = new MenuItem();
 
-        menuItem.setNama(menuItemNamaTF.getText());
-        Menu menu = new Menu();
-        menu.setId(selectedMenu.getId());
-        menuItem.setMenuId(menu);
-        menuItem.setModal(Integer.valueOf(menuItemModalTF.getText()));
-        menuItem.setUntungCode(menuItemUntungCB.getSelectionModel().getSelectedIndex()+1);
-        menuItem.setUntung(Integer.valueOf(menuItemUntungTF.getText()));
-        menuItem.setTambahanCode(menuItemTambahanCB.getSelectionModel().getSelectedIndex()+1);
-        menuItem.setTambahan(null != menuItemTambahanTF.getText() && !menuItemTambahanTF.getText().isEmpty() ? Integer.valueOf(menuItemTambahanTF.getText()) : 0);
-        menuItem.setHargaTotal(Integer.valueOf(menuItemHargaJualTF.getText().replace(".", "")));
-        menuItem.setStokFlag(stokCheckBox.isSelected());
-        if(stokCheckBox.isSelected()){
-            Integer stokTambah = Integer.valueOf(null != stokTambahTF.getText() ? stokTambahTF.getText() : "0");
-            Integer stok = 0;
-            if(null != selectedMenuItem && null != selectedMenuItem.getStok()){
-                stok = Integer.valueOf(selectedMenuItem.getStok());
+            menuItem.setNama(menuItemNamaTF.getText());
+            menuItem.setStatus(menuStatusCheckBox.isSelected());
+            JenisMenu jenisMenu = new JenisMenu();
+            jenisMenu.setId(jenisMenuBox.getValue().getId());
+            menuItem.setJenisMenuId(jenisMenu);
+            menuItem.setHargaTotal(Integer.valueOf(menuItemHargaJualTF.getText()));     //added @20171222 - kiraju3
+            menuItem.setStokFlag(stokCheckBox.isSelected());
+            if(stokCheckBox.isSelected()){
+                Integer stokTambah = Integer.valueOf(null != stokTambahTF.getText() ? stokTambahTF.getText() : "0");
+                Integer stok = 0;
+                if(null != selectedMenuItem && null != selectedMenuItem.getStok()){
+                    stok = Integer.valueOf(selectedMenuItem.getStok());
+                }
+                menuItem.setStok(stokTambah + stok);
+            }else{
+                menuItem.setStok(0);
             }
-            menuItem.setStok(stokTambah + stok);
-        }else{
-            menuItem.setStok(0);
-        }
-        if(null != selectedMenuItem){
-            menuItem.setCode(selectedMenuItem.getCode());
-            iMenuItem.update(menuItem);
-        }else{
-            menuItem.setCode(menuItemKodeTF.getText().toUpperCase());
-            if(!iMenuItem.insert(menuItem, primaryStage)){
-                return;
+            if(null != selectedMenuItem){
+                menuItem.setCode(selectedMenuItem.getCode());
+                iMenuItem.update(menuItem);
+            }else{
+                menuItem.setCode(menuItemKodeTF.getText().toUpperCase());
+                if(!iMenuItem.insert(menuItem, primaryStage)){
+                    return;
+                }
             }
-//            iMenuItem.insert(menuItem, primaryStage);
+    //        displayEdit(menuTable.getSelectionModel().getSelectedItem());
+            menuItemBatalAction(event);
+            setMenuTable(jenisBox.getValue().getId());
         }
-        displayEdit(menuTable.getSelectionModel().getSelectedItem());
-        batalBtnMenuItem(event);
+        
     }
 
     private void setPelanggan() {
@@ -4649,7 +3939,6 @@ public class AdminController implements Initializable {
         pelanggan.setNama(detilPelangganNamaTF.getText());
         pelanggan.setAlamat(detilPelangganAlamat.getText());
         pelanggan.setNoTelp(detilPelangganTelpTF.getText());
-//        pelanggan.setIdCard(detilPelangganIdTF.getText());
         pelanggan.setStatus(pelangganCheckBox.isSelected());
         pelanggan.setDtStart(new Date());
         iPelanggan.insertOrUpdate(pelanggan);
@@ -4796,24 +4085,6 @@ public class AdminController implements Initializable {
     }
     
     @FXML
-    private void tambahBaruBtnStokOpname(ActionEvent actionEvent) {
-        int stokOpnameId = iStokOpname.insert(new StokOpname());
-        loadStokOpnamePage(new StokOpname(stokOpnameId));
-        stokOpnameTable.getSelectionModel().selectLast();
-    }
-    
-    @FXML
-    private void editBtnStokOpname(ActionEvent event) {
-        StokOpnameProperty stokOpnameProperty = stokOpnameTable.getSelectionModel().getSelectedItem();
-        int selectedIndex = stokOpnameTable.getSelectionModel().getSelectedIndex();
-        StokOpname stokOpname = new StokOpname();
-        stokOpname.setId(stokOpnameProperty.getId());
-        stokOpname.setNama(stokOpnameProperty.getNama());
-        loadStokOpnamePage(stokOpname);
-        stokOpnameTable.getSelectionModel().select(selectedIndex);
-    }
-    
-    @FXML
     private void deleteBtnStokOpname() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Konfirmasi");
@@ -4828,34 +4099,6 @@ public class AdminController implements Initializable {
             stokOpname.setUserId(new Users(stokOpnameProperty.getUserId()));
             iStokOpname.delete(stokOpname);
             setStokOpnameTable(LocalDate.now().getYear(), LocalDate.now().getMonthValue());
-        }
-    }
-
-    private void loadStokOpnamePage(StokOpname stokOpname) {
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(AdminController.class.getResource("StokOpname.fxml"));
-            BorderPane page = (BorderPane) loader.load();
-
-            Stage dialogStage = new Stage();
-            dialogStage.setTitle("Stok Opname");
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.initOwner(primaryStage);
-
-            Scene scene = new Scene(page);
-            dialogStage.setScene(scene);
-
-            StokOpnameController controller = loader.getController();
-            controller.setDialogStage(dialogStage);
-            controller.iniValue(stokOpname.getId(), stokOpname.getNama(), loginUser);
-
-            dialogStage.showAndWait();
-
-            setStokOpnameTable(LocalDate.now().getYear(), LocalDate.now().getMonthValue());
-            
-
-        } catch (IOException ex) {
-            LOGGER.error("failed to load Pesan.fxml", ex);
         }
     }
 
@@ -4996,7 +4239,9 @@ public class AdminController implements Initializable {
                 pesanGlobalDiskon = diskon.getBilangan();
             }else{
                 float untungPersen = (float) diskon.getBilangan()/100;
-                pesanGlobalDiskon = Math.round(untungPersen*totalHargaPesan);
+                int uang = Math.round(untungPersen*totalHargaPesan);
+                float bagi = (float) uang/100;
+                pesanGlobalDiskon = Math.round(bagi)*100;
             }
         }
         
@@ -5008,7 +4253,9 @@ public class AdminController implements Initializable {
                 pesanGlobalPajak = pajak.getBilangan();
             }else{
                 float pajakPersen = (float) pajak.getBilangan()/100;
-                pesanGlobalPajak = Math.round(pajakPersen*(totalHargaPesan-pesanGlobalDiskon));
+                int uang = Math.round(pajakPersen*(totalHargaPesan-pesanGlobalDiskon));
+                float bagi = (float) uang/100;
+                pesanGlobalPajak = Math.round(bagi)*100;
             }
         }
         
@@ -5161,23 +4408,26 @@ public class AdminController implements Initializable {
             }
             Transaksi transaksi = new Transaksi(transaksiId);
             Pesan pesan = new Pesan();
-            pesan.setModal(menuItem.getModal());
-            Integer untung;
-            if(Objects.equals(menuItem.getUntungCode(), CommonConstant.RUPIAH_CODE)) {
-                untung = menuItem.getUntung();
-            }else{
-                float untungPersen = (float) menuItem.getUntung()/100;
-                untung = Math.round(untungPersen*menuItem.getModal());
-            }
-            pesan.setUntung(untung);
-            Integer tambahan;
-            if(Objects.equals(menuItem.getTambahanCode(), CommonConstant.RUPIAH_CODE)) {
-                tambahan = menuItem.getTambahan();
-            }else{
-                float tambahanPersen = (float) menuItem.getTambahan()/100;
-                tambahan = Math.round(tambahanPersen*(menuItem.getModal()+untung));
-            }
-            pesan.setTambahan(tambahan);
+            
+            //20171222 - kiraju3
+//            pesan.setModal(menuItem.getModal());
+//            Integer untung;
+//            if(Objects.equals(menuItem.getUntungCode(), CommonConstant.RUPIAH_CODE)) {
+//                untung = menuItem.getUntung();
+//            }else{
+//                float untungPersen = (float) menuItem.getUntung()/100;
+//                untung = Math.round(untungPersen*menuItem.getModal());
+//            }
+//            pesan.setUntung(untung);
+//            Integer tambahan;
+//            if(Objects.equals(menuItem.getTambahanCode(), CommonConstant.RUPIAH_CODE)) {
+//                tambahan = menuItem.getTambahan();
+//            }else{
+//                float tambahanPersen = (float) menuItem.getTambahan()/100;
+//                tambahan = Math.round(tambahanPersen*(menuItem.getModal()+untung));
+//            }
+//            pesan.setTambahan(tambahan);
+            pesan.setHarga(menuItem.getHargaTotal());
             List<Object[]> obj = iPesan.getByMenuItemAndTransaksi(menuItem, transaksi);
             if(null != obj && !obj.isEmpty()) {
                 for(Object[] row : obj){
@@ -5368,10 +4618,8 @@ public class AdminController implements Initializable {
 
     private void kalkulatorZakat() {
         //bulanan
-//        Month bulan = LocalDate.now().minusMonths(1).getMonth();
         YearMonth yearMonth = YearMonth.now().minusMonths(1);
         zakatBulanNama.setText(yearMonth.getMonth().getDisplayName(TextStyle.FULL, new Locale("id", "ID")) + " " + yearMonth.getYear());
-        
         
         Laporan laporan = iTransaksi.getlabaRugi(yearMonth);
         if(null != laporan.getUntung()){
@@ -5391,7 +4639,6 @@ public class AdminController implements Initializable {
             }
             else{
                 zakatBulanModalTF.setText("0");
-//                rumusZakat("0", zakatLabaTF.getText(), zakatPiutangTF.getText(), zakatRugiTF.getText(), zakatHutangTF.getText());
             }
         });
         zakatBulanLabaTF.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -5403,7 +4650,6 @@ public class AdminController implements Initializable {
                 rumusZakatBulanan(zakatBulanModalTF.getText(), input, zakatBulanPiutangTF.getText(), zakatBulanRugiTF.getText(), zakatBulanHutangTF.getText());
             }else{
                 zakatBulanLabaTF.setText("0");
-//                rumusZakat(zakatModalTF.getText(), "0", zakatPiutangTF.getText(), zakatRugiTF.getText(), zakatHutangTF.getText());
             }
         });
         zakatBulanPiutangTF.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -5415,7 +4661,6 @@ public class AdminController implements Initializable {
                 rumusZakatBulanan(zakatBulanModalTF.getText(), zakatBulanLabaTF.getText(), input, zakatBulanRugiTF.getText(), zakatBulanHutangTF.getText());
             }else{
                 zakatBulanPiutangTF.setText("0");
-//                rumusZakat(zakatModalTF.getText(), zakatPiutangTF.getText(), "0", zakatRugiTF.getText(), zakatHutangTF.getText());
             }
         });
         zakatBulanRugiTF.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -5427,7 +4672,6 @@ public class AdminController implements Initializable {
                 rumusZakatBulanan(zakatBulanModalTF.getText(), zakatBulanLabaTF.getText(), zakatBulanPiutangTF.getText(), input, zakatBulanHutangTF.getText());
             }else{
                 zakatBulanRugiTF.setText("0");
-//                rumusZakat(zakatModalTF.getText(), zakatPiutangTF.getText(), zakatRugiTF.getText(), "0", zakatHutangTF.getText());
             }
         });
         zakatBulanHutangTF.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -5439,7 +4683,6 @@ public class AdminController implements Initializable {
                 rumusZakatBulanan(zakatBulanModalTF.getText(), zakatBulanLabaTF.getText(), zakatBulanPiutangTF.getText(), zakatBulanRugiTF.getText(), input);
             }else{
                 zakatBulanHutangTF.setText("0");
-//                rumusZakat(zakatModalTF.getText(), zakatPiutangTF.getText(), zakatRugiTF.getText(), zakatHutangTF.getText(), "0");
             }
         });
         
@@ -5489,7 +4732,6 @@ public class AdminController implements Initializable {
             }
             else{
                 zakatModalTF.setText("0");
-//                rumusZakat("0", zakatLabaTF.getText(), zakatPiutangTF.getText(), zakatRugiTF.getText(), zakatHutangTF.getText());
             }
         });
         zakatLabaTF.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -5501,7 +4743,6 @@ public class AdminController implements Initializable {
                 rumusZakat(zakatModalTF.getText(), input, zakatPiutangTF.getText(), zakatRugiTF.getText(), zakatHutangTF.getText());
             }else{
                 zakatLabaTF.setText("0");
-//                rumusZakat(zakatModalTF.getText(), "0", zakatPiutangTF.getText(), zakatRugiTF.getText(), zakatHutangTF.getText());
             }
         });
         zakatPiutangTF.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -5513,7 +4754,6 @@ public class AdminController implements Initializable {
                 rumusZakat(zakatModalTF.getText(), zakatLabaTF.getText(), input, zakatRugiTF.getText(), zakatHutangTF.getText());
             }else{
                 zakatPiutangTF.setText("0");
-//                rumusZakat(zakatModalTF.getText(), zakatPiutangTF.getText(), "0", zakatRugiTF.getText(), zakatHutangTF.getText());
             }
         });
         zakatRugiTF.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -5525,7 +4765,6 @@ public class AdminController implements Initializable {
                 rumusZakat(zakatModalTF.getText(), zakatLabaTF.getText(), zakatPiutangTF.getText(), input, zakatHutangTF.getText());
             }else{
                 zakatRugiTF.setText("0");
-//                rumusZakat(zakatModalTF.getText(), zakatPiutangTF.getText(), zakatRugiTF.getText(), "0", zakatHutangTF.getText());
             }
         });
         zakatHutangTF.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -5537,7 +4776,6 @@ public class AdminController implements Initializable {
                 rumusZakat(zakatModalTF.getText(), zakatLabaTF.getText(), zakatPiutangTF.getText(), zakatRugiTF.getText(), input);
             }else{
                 zakatHutangTF.setText("0");
-//                rumusZakat(zakatModalTF.getText(), zakatPiutangTF.getText(), zakatRugiTF.getText(), zakatHutangTF.getText(), "0");
             }
         });
         zakatHargaEmasTF.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -5557,7 +4795,6 @@ public class AdminController implements Initializable {
                 }
             }else{
                 zakatHargaEmasTF.setText("0");
-//                rumusZakat(zakatModalTF.getText(), zakatPiutangTF.getText(), zakatRugiTF.getText(), zakatHutangTF.getText(), "0");
             }
         });
     }
@@ -5606,37 +4843,32 @@ public class AdminController implements Initializable {
         int hartaTotBulanan = labaRugi + modal + laba + piutang - rugi - hutang;
         double zakat = hartaTotBulanan * (2.577/100);
         long zakatTotBulanan = Math.round(zakat);
-//        if(hartaTot >= Integer.parseInt(zakatNishab.getText().replace(".", ""))) {
-            zakatBulanTotal.setText(numberFormat.format(zakatTotBulanan));
-//            zakatBayarZAkat.setText("Ya");
-//        }else{
-//            zakatTotal.setText("0");
-//            zakatBayarZAkat.setText("Tidak");
-//        }
+        zakatBulanTotal.setText(numberFormat.format(zakatTotBulanan));
     }
 
     private void setMeja() {
         getMejaStatus();
         
         //set menu table
-        noMenuColumnMeja.setCellValueFactory((TableColumn.CellDataFeatures<MenuProperty, MenuProperty> p) -> new ReadOnlyObjectWrapper(p.getValue()));
-        noMenuColumnMeja.setCellFactory((TableColumn<MenuProperty, MenuProperty> param) -> new TableCell<MenuProperty, MenuProperty>() {
-            @Override protected void updateItem(MenuProperty item, boolean empty) {
-                super.updateItem(item, empty);
-                if (this.getTableRow() != null && item != null) {
-                    setText(this.getTableRow().getIndex()+1+"");
-                } else {
-                    setText("");
-                }
-            }
-        });
-        noMenuColumnMeja.setSortable(false);
-        namaMenuColumnMeja.setCellValueFactory(cellData -> cellData.getValue().namaProperty());
+//        noMenuColumnMeja.setCellValueFactory((TableColumn.CellDataFeatures<MenuProperty, MenuProperty> p) -> new ReadOnlyObjectWrapper(p.getValue()));
+//        noMenuColumnMeja.setCellFactory((TableColumn<MenuProperty, MenuProperty> param) -> new TableCell<MenuProperty, MenuProperty>() {
+//            @Override protected void updateItem(MenuProperty item, boolean empty) {
+//                super.updateItem(item, empty);
+//                if (this.getTableRow() != null && item != null) {
+//                    setText(this.getTableRow().getIndex()+1+"");
+//                } else {
+//                    setText("");
+//                }
+//            }
+//        });
+//        noMenuColumnMeja.setSortable(false);
+//        namaMenuColumnMeja.setCellValueFactory(cellData -> cellData.getValue().namaProperty());
         
         //set BoxChoice
         jenisMejaCB.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Choice> observable, Choice oldValue, Choice newValue) -> {
             if(null != newValue){
-                mejaMenuTable.setItems(iMenu.getActiveProperty(newValue.getId()));
+//                mejaMenuItemTable.setItems(iMenuItem.getActiveProperty(newValue.getId()));
+                setMejaMenuTable(newValue.getId());
             }
         });
         setMejaCB();
@@ -5657,13 +4889,13 @@ public class AdminController implements Initializable {
         namaColumnMenuItemMeja.setCellValueFactory(cellData -> cellData.getValue().namaProperty());
         
         //set button
-        mejaMenuTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if(null != newValue) {
-                mejaItemBtn.setDisable(false);
-            }else{
-                mejaItemBtn.setDisable(true);
-            }
-        });
+//        mejaMenuTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+//            if(null != newValue) {
+//                mejaItemBtn.setDisable(false);
+//            }else{
+//                mejaItemBtn.setDisable(true);
+//            }
+//        });
         
         mejaMenuItemTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if(null != newValue) {
@@ -5674,41 +4906,39 @@ public class AdminController implements Initializable {
         });
         
         //set search combo box
-        TextFields.bindAutoCompletion(mejaSearchmenuItemComboBox.getEditor(), (AutoCompletionBinding.ISuggestionRequest t) -> {
-            return iMenuItem.searchMenuItemByCode(t.getUserText());
-        });
-        mejaSearchmenuItemComboBox.getSelectionModel().selectedItemProperty().addListener(((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
-            if(null != newValue) {
-                int iend = newValue.indexOf("-");
-                if(iend != -1) {
-                    String subString = newValue.substring(0, iend);
-                    String code = subString.trim();
-                    mejaSearchmenuItemComboBox.getEditor().setText(null);
-
-                    TextInputDialog dialog = new TextInputDialog("1");
-                    dialog.setTitle(newValue);
-                    dialog.setHeaderText("Jumlah");
-                    dialog.setContentText("Masukkan jumlah barang yang dipesan:");
-
-                    Optional<String> result = dialog.showAndWait();
-                    // The Java 8 way to get the response value (with lambda expression).
-                    result.ifPresent((String jumlah) -> {
-                        
-                        addNewOrderMeja(code, Integer.valueOf(jumlah));
-                        
-                    });
-                }
-            }
-        }));
+//        TextFields.bindAutoCompletion(mejaSearchmenuItemComboBox.getEditor(), (AutoCompletionBinding.ISuggestionRequest t) -> {
+//            return iMenuItem.searchMenuItemByCode(t.getUserText());
+//        });
+//        mejaSearchmenuItemComboBox.getSelectionModel().selectedItemProperty().addListener(((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+//            if(null != newValue) {
+//                int iend = newValue.indexOf("-");
+//                if(iend != -1) {
+//                    String subString = newValue.substring(0, iend);
+//                    String code = subString.trim();
+//                    mejaSearchmenuItemComboBox.getEditor().setText(null);
+//
+//                    TextInputDialog dialog = new TextInputDialog("1");
+//                    dialog.setTitle(newValue);
+//                    dialog.setHeaderText("Jumlah");
+//                    dialog.setContentText("Masukkan jumlah barang yang dipesan:");
+//
+//                    Optional<String> result = dialog.showAndWait();
+//                    // The Java 8 way to get the response value (with lambda expression).
+//                    result.ifPresent((String jumlah) -> {
+//                        
+//                        addNewOrderMeja(code, Integer.valueOf(jumlah));
+//                        
+//                    });
+//                }
+//            }
+//        }));
         
         //set ordered table
-        menuNamaColumnMeja.setCellValueFactory(cellData -> cellData.getValue().menuNamaProperty());
+//        menuNamaColumnMeja.setCellValueFactory(cellData -> cellData.getValue().menuNamaProperty());
         menuItemNamaColumnMeja.setCellValueFactory(cellData -> cellData.getValue().menuItemNamaProperty());
         jumlahColumnMeja.setCellValueFactory(cellData -> cellData.getValue().jumlahProperty().asObject());
         
         //set diskon & pajak Choice Box
-//        mejaDiskonCB.setItems(iDiskon.getAllActive());
-//        mejaDiskonCB.getSelectionModel().selectFirst();
         mejaDiskonCB.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if(null != newValue && null != newValue.getId() && null != mejaPajakCB.getSelectionModel().getSelectedItem()) {
                 Integer diskonId = newValue.getId();
@@ -5716,8 +4946,7 @@ public class AdminController implements Initializable {
                 setGrandTotalMeja(totalHargaMeja, diskonId, pajakId);
             }
         });
-//        mejaPajakCB.setItems(iPajak.getAllActive());
-//        mejaPajakCB.getSelectionModel().selectFirst();
+
         mejaPajakCB.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if(null != newValue && null != newValue.getId() && null != mejaDiskonCB.getSelectionModel().getSelectedItem()) {
                 Integer diskonId = mejaDiskonCB.getSelectionModel().getSelectedItem().getId();
@@ -5744,13 +4973,13 @@ public class AdminController implements Initializable {
         jenisMejaCB.getSelectionModel().selectFirst();
     }
     
-    @FXML
-    private void mejaItemAction(ActionEvent actionEvent){
-        MenuProperty selectedMenuProp = mejaMenuTable.getSelectionModel().getSelectedItem();
-        mejaMenuItemTable.setItems(iMenuItem.getPropertyByMenuId(selectedMenuProp.getId()));
-        mejaMenuBox.setVisible(false);
-        mejaMenuItemBox.setVisible(true);
-    }
+//    @FXML
+//    private void mejaItemAction(ActionEvent actionEvent){
+//        MenuProperty selectedMenuProp = mejaMenuTable.getSelectionModel().getSelectedItem();
+//        mejaMenuItemTable.setItems(iMenuItem.getPropertyByMenuId(selectedMenuProp.getId()));
+//        mejaMenuBox.setVisible(false);
+//        mejaMenuItemBox.setVisible(true);
+//    }
     
     @FXML
     private void mejaPesanAction() {
@@ -5785,23 +5014,25 @@ public class AdminController implements Initializable {
             }
             Transaksi transaksi = new Transaksi(transaksiIdMeja);
             Pesan pesan = new Pesan();
-            pesan.setModal(menuItem.getModal());
-            Integer untung;
-            if(Objects.equals(menuItem.getUntungCode(), CommonConstant.RUPIAH_CODE)) {
-                untung = menuItem.getUntung();
-            }else{
-                float untungPersen = (float) menuItem.getUntung()/100;
-                untung = Math.round(untungPersen*menuItem.getModal());
-            }
-            pesan.setUntung(untung);
-            Integer tambahan;
-            if(Objects.equals(menuItem.getTambahanCode(), CommonConstant.RUPIAH_CODE)) {
-                tambahan = menuItem.getTambahan();
-            }else{
-                float tambahanPersen = (float) menuItem.getTambahan()/100;
-                tambahan = Math.round(tambahanPersen*(menuItem.getModal()+untung));
-            }
-            pesan.setTambahan(tambahan);
+            //20171222 - kiraju3
+//            pesan.setModal(menuItem.getModal());
+//            Integer untung;
+//            if(Objects.equals(menuItem.getUntungCode(), CommonConstant.RUPIAH_CODE)) {
+//                untung = menuItem.getUntung();
+//            }else{
+//                float untungPersen = (float) menuItem.getUntung()/100;
+//                untung = Math.round(untungPersen*menuItem.getModal());
+//            }
+//            pesan.setUntung(untung);
+//            Integer tambahan;
+//            if(Objects.equals(menuItem.getTambahanCode(), CommonConstant.RUPIAH_CODE)) {
+//                tambahan = menuItem.getTambahan();
+//            }else{
+//                float tambahanPersen = (float) menuItem.getTambahan()/100;
+//                tambahan = Math.round(tambahanPersen*(menuItem.getModal()+untung));
+//            }
+//            pesan.setTambahan(tambahan);
+            pesan.setHarga(menuItem.getHargaTotal());
             List<Object[]> obj = iPesan.getByMenuItemAndTransaksi(menuItem, transaksi);
             if(null != obj && !obj.isEmpty()) {
                 for(Object[] row : obj){
@@ -5821,11 +5052,11 @@ public class AdminController implements Initializable {
         
     }
     
-    @FXML
-    private void mejaMenuAction() {
-        mejaMenuItemBox.setVisible(false);
-        mejaMenuBox.setVisible(true);
-    }
+//    @FXML
+//    private void mejaMenuAction() {
+//        mejaMenuItemBox.setVisible(false);
+//        mejaMenuBox.setVisible(true);
+//    }
 
     private void displayOrderedMeja() {
         menuMejaObsList.clear();
@@ -5840,7 +5071,7 @@ public class AdminController implements Initializable {
         if(null != menuMejaObsList && !menuMejaObsList.isEmpty()) {
             for(int i=0; i<menuMejaObsList.size(); i++){
                 totalHargaMeja += menuMejaObsList.get(i).getTotalHarga();
-                totalModalMeja += menuMejaObsList.get(i).getTotalModal();
+//                totalModalMeja += menuMejaObsList.get(i).getTotalModal();
             }
             mejaDiskonCB.setValue(new Choice(menuMejaObsList.get(0).getDiskonId(), menuMejaObsList.get(0).getDiskonNama()));
             mejaPajakCB.setValue(new Choice(menuMejaObsList.get(0).getPajakId(), menuMejaObsList.get(0).getPajakNama()));
@@ -5851,8 +5082,6 @@ public class AdminController implements Initializable {
             mejaBayarBtn.setDisable(false);
             mejaBatalBtn.setDisable(false);
             mejaPindahBtn.setDisable(false);
-//            mejaUbahBtn.setDisable(false);
-//            mejaHapusBtn.setDisable(false);
             mejaCetakBtn.setDisable(false);
             
             transaksiIdMeja = menuMejaObsList.get(0).getTransaksiId();
@@ -5866,8 +5095,6 @@ public class AdminController implements Initializable {
             mejaBayarBtn.setDisable(true);
             mejaBatalBtn.setDisable(true);
             mejaPindahBtn.setDisable(true);
-//            mejaUbahBtn.setDisable(true);
-//            mejaHapusBtn.setDisable(true);
             mejaCetakBtn.setDisable(true);
         }
 
@@ -5961,13 +5188,11 @@ public class AdminController implements Initializable {
     
     @FXML
     private void pengaturanBatalAction() {
-//        General general = iGeneral.getGeneral();
         pengaturanModeCafeCheckBox.setSelected(general.getModeCafe());
         pengaturanPrinterCB.setValue(general.getPrinterCode());
     }
 
     private void pengaturan() {
-//        general = iGeneral.getGeneral();
         pengaturanModeCafeCheckBox.setSelected(general.getModeCafe());
         pengaturanPrinterCB.getItems().addAll("58mm", "80mm");
         pengaturanPrinterCB.setValue(general.getPrinterCode());
@@ -5999,5 +5224,79 @@ public class AdminController implements Initializable {
         
         mejaGrandTotal = totalHargaMeja - mejaGlobalDiskon + mejaGlobalPajak;
         total.setText(numberFormat.format(mejaGrandTotal));
+    }
+
+    private void setPesanMenuTable(Integer jenis) {
+        if(pesanMenuItemPropObsList != null){
+            pesanMenuItemPropObsList.clear();
+            pesanSearchTF.clear();
+        }
+        pesanMenuItemPropObsList = iMenuItem.getActiveProperty(jenis);
+        displayFilteredDataPesan(); 
+    }
+
+    private void displayFilteredDataPesan() {
+        FilteredList<MenuItemProperty> filteredData = new FilteredList<>(pesanMenuItemPropObsList, p -> true);
+        
+        pesanSearchTF.textProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate(person -> {
+                            // If filter text is empty, display all persons.
+                            if (newValue == null || newValue.isEmpty()) {
+                                return true;
+                            }
+
+                            // Compare first name and last name of every person with filter text.
+                            String lowerCaseFilter = newValue.toLowerCase();
+
+                            if (person.getCode().toLowerCase().contains(lowerCaseFilter)) {
+                                return true; // Filter matches first name.
+                            } 
+                            else if (person.getNama().toLowerCase().contains(lowerCaseFilter)) {
+                                return true; // Filter matches last name.
+                            }
+                            return false; // Does not match.
+			});
+		});
+        
+        SortedList<MenuItemProperty> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(pesanMenuItemTable.comparatorProperty());
+        pesanMenuItemTable.setItems(sortedData);
+    }
+
+    private void setMejaMenuTable(Integer jenis) {
+        if(mejaMenuItemPropObsList != null){
+            mejaMenuItemPropObsList.clear();
+            mejaSearchTF.clear();
+        }
+        mejaMenuItemPropObsList = iMenuItem.getActiveProperty(jenis);
+        displayFilteredDataMeja(); 
+    }
+
+    private void displayFilteredDataMeja() {
+        FilteredList<MenuItemProperty> filteredData = new FilteredList<>(mejaMenuItemPropObsList, p -> true);
+        
+        mejaSearchTF.textProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate(person -> {
+                            // If filter text is empty, display all persons.
+                            if (newValue == null || newValue.isEmpty()) {
+                                return true;
+                            }
+
+                            // Compare first name and last name of every person with filter text.
+                            String lowerCaseFilter = newValue.toLowerCase();
+
+                            if (person.getCode().toLowerCase().contains(lowerCaseFilter)) {
+                                return true; // Filter matches first name.
+                            } 
+                            else if (person.getNama().toLowerCase().contains(lowerCaseFilter)) {
+                                return true; // Filter matches last name.
+                            }
+                            return false; // Does not match.
+			});
+		});
+        
+        SortedList<MenuItemProperty> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(mejaMenuItemTable.comparatorProperty());
+        mejaMenuItemTable.setItems(sortedData);
     }
 }

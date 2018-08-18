@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated May 18, 2017 12:05:48 PM by Hibernate Tools 4.3.1 -->
+ Generated May 18, 2017 12:05:48 PM by Hibernate Tools 4.3.1 
 <hibernate-mapping>
   <class name="kiraju.model.Menu" schema="APP" table="MENU">
     <id name="id" type="int">
@@ -12,9 +12,9 @@
     <property name="nama" type="string">
       <column length="50" name="NAMA"/>
     </property>
-    <!--        <property name="harga" type="java.lang.Integer">
+            <property name="harga" type="java.lang.Integer">
             <column name="HARGA" />
-        </property>-->
+        </property>
     <property name="createdDt" type="timestamp">
       <column length="29" name="CREATED_DT"/>
     </property>
@@ -24,14 +24,14 @@
     <many-to-one class="kiraju.model.JenisMenu" name="jenisMenuId">
       <column name="JENIS_MENU_ID"/>
     </many-to-one>
-    <!--        <property name="deletedFlag" type="java.lang.Short">
+            <property name="deletedFlag" type="java.lang.Short">
             <column name="DELETED_FLAG" />
         </property>
         <property name="code" type="string">
             <column length="20" name="CODE"/>
-        </property>-->
+        </property>
     <property name="status" type="java.lang.Boolean">
       <column name="STATUS"/>
     </property>
   </class>
-</hibernate-mapping>
+</hibernate-mapping>-->

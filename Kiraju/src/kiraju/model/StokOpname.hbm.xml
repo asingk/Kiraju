@@ -1,35 +1,34 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Sep 22, 2017 2:46:48 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="kiraju.model.StokOpname" table="STOK_OPNAME" schema="APP" optimistic-lock="version" dynamic-update="true">
-        <id name="id" type="int">
-            <column name="ID" />
-            <generator class="increment">
-                <param name="schema">APP</param>
-            </generator>
-        </id>
-        <property name="tanggal" type="date">
-            <column name="TANGGAL" length="10" />
-        </property>
-        <property name="nama" type="string">
-            <column name="NAMA" length="100" />
-        </property>
-        <property name="status" type="java.lang.Boolean">
-            <column name="STATUS" />
-        </property>
-<!--        <property name="userId" type="java.lang.Short">
+  <class dynamic-update="true" name="kiraju.model.StokOpname" optimistic-lock="version" schema="APP" table="STOK_OPNAME">
+    <id name="id" type="int">
+      <column name="ID"/>
+      <generator class="increment">
+        <param name="schema">APP</param>
+      </generator>
+    </id>
+    <property name="tanggal" type="date">
+      <column length="10" name="TANGGAL"/>
+    </property>
+    <property name="nama" type="string">
+      <column length="100" name="NAMA"/>
+    </property>
+    <property name="status" type="java.lang.Boolean">
+      <column name="STATUS"/>
+    </property>
+    <!--        <property name="userId" type="java.lang.Short">
             <column name="USER_ID" />
         </property>-->
-        <many-to-one name="userId" class="kiraju.model.Users">
-            <column name="USER_ID" />
-        </many-to-one>
-        <set name="stokOpnameItem" cascade="delete" table="STOK_OPNAME_ITEM">
-            <key>
-                  <column name="STOK_OPNAME_ID" not-null="true" />
-            </key>
-            <one-to-many class="kiraju.model.StokOpnameItem" />
-        </set>
-    </class>
+    <many-to-one class="kiraju.model.Users" name="userId">
+      <column name="USER_ID"/>
+    </many-to-one>
+    <set cascade="delete" name="stokOpnameItem" table="STOK_OPNAME_ITEM">
+      <key>
+        <column name="STOK_OPNAME_ID" not-null="true"/>
+      </key>
+      <one-to-many class="kiraju.model.StokOpnameItem"/>
+    </set>
+  </class>
 </hibernate-mapping>

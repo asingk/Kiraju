@@ -49,15 +49,15 @@ public class CommonConstant {
 //    public static final String KEDAI_SYUKRAN_2 = "Kunjungi www.kiraju.com";
     
     //premium version
-    public static final String KEDAI_NAMA = "Cut Rizki Hijab";
-    public static final String KEDAI_SUB_NAMA = "";
-    public static final String KEDAI_ALAMAT1 = "Jl. Darussalam no. 30";
-    public static final String KEDAI_ALAMAT2 = "Kp. Jawa Baru, Lhokseumawe";
+    public static final String KEDAI_NAMA = "Kedai Pizza & Pasta";
+    public static final String KEDAI_SUB_NAMA = "Pizza & Pasta";
+    public static final String KEDAI_ALAMAT1 = "Jl. Prof. Ali Hasyimi, Lamteh, Ulee";
+    public static final String KEDAI_ALAMAT2 = "Kareng, Sp. BPKP, Banda Aceh";
     public static final String KEDAI_ALAMAT3 = "";
     public static final String KEDAI_SYUKRAN_1 = "Terima Kasih";
     public static final String KEDAI_SYUKRAN_2 = "===Powered by Kiraju===";
     
-    public static final String LOGO_KEDAI = "img/logo_kedai.png";
+    public static final String LOGO_KEDAI = "img/kedai_pizza_pasta.jpg";
     
     public static final String ADMIN_MEJA_ACTIVE = "Aktif";
     public static final String ADMIN_MEJA_NON_ACTIVE = "Tidak Aktif";

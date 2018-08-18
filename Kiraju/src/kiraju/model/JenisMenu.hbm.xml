@@ -12,14 +12,14 @@
     <property name="nama" type="string">
       <column length="50" name="NAMA"/>
     </property>
-<!--    <property name="deletedFlag" type="java.lang.Short">
+    <!--    <property name="deletedFlag" type="java.lang.Short">
       <column name="DELETED_FLAG"/>
     </property>
     <property name="code" type="string">
       <column length="20" name="CODE"/>
     </property>-->
     <property name="status" type="java.lang.Boolean">
-        <column name="STATUS" />
+      <column name="STATUS"/>
     </property>
   </class>
 </hibernate-mapping>

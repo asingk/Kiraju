@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="694.0" prefWidth="1200.0" style="-fx-font-size: 1.5em;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kiraju.RootLayoutController">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="694.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kiraju.RootLayoutController">
    <top>
       <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="background" stylesheets="@style/rootLayout.css" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -26,7 +26,7 @@
                <children>
                   <ButtonBar focusTraversable="false" prefHeight="40.0" prefWidth="200.0">
                     <buttons>
-                      <Button mnemonicParsing="false" onAction="#absensiBtn" stylesheets="@style/bayarBtn.css" text="Absensi" />
+                      <Button mnemonicParsing="false" onAction="#absensiBtn" stylesheets="@style/bayarBtn.css" text="Absensi" visible="false" />
                         <Button fx:id="masuk" mnemonicParsing="false" onAction="#masukBtn" stylesheets="@style/bayarBtn.css" text="Masuk" />
                     </buttons>
                   </ButtonBar>

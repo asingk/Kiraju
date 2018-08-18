@@ -44,9 +44,9 @@ Contributor(s):
     <property name="hibernate.dialect">org.hibernate.dialect.DerbyTenSevenDialect</property>
     <!--for development-->
     <property name="hibernate.connection.driver_class">org.apache.derby.jdbc.ClientDriver</property>
-    <property name="hibernate.connection.url">jdbc:derby://localhost:1527/kiraju</property>
+    <property name="hibernate.connection.url">jdbc:derby://localhost:1527/kiraju_lite</property>
     <!--for production-->
-    <!--    <property name="hibernate.connection.driver_class">org.apache.derby.jdbc.EmbeddedDriver</property>
+<!--    <property name="hibernate.connection.driver_class">org.apache.derby.jdbc.EmbeddedDriver</property>
     <property name="hibernate.connection.url">jdbc:derby:kiraju</property>-->
     <property name="hibernate.connection.username">app</property>
     <property name="hibernate.connection.password">password</property>
@@ -61,7 +61,7 @@ Contributor(s):
     <mapping resource="kiraju/model/Pelanggan.hbm.xml"/>
     <mapping resource="kiraju/model/General.hbm.xml"/>
     <mapping resource="kiraju/model/Transaksi.hbm.xml"/>
-    <mapping resource="kiraju/model/Menu.hbm.xml"/>
+    <!--<mapping resource="kiraju/model/Menu.hbm.xml"/>-->
     <mapping resource="kiraju/model/MenuItem.hbm.xml"/>
     <mapping resource="kiraju/model/Pajak.hbm.xml"/>
     <mapping resource="kiraju/model/Posisi.hbm.xml"/>

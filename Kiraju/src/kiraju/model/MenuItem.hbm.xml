@@ -1,57 +1,54 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Sep 9, 2017 10:15:33 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="kiraju.model.MenuItem" table="MENU_ITEM" schema="APP" optimistic-lock="version" dynamic-update="true">
-        <id name="code" type="string">
-            <column name="CODE" length="20" />
-            <generator class="assigned" />
-        </id>
-        <property name="nama" type="string">
-            <column name="NAMA" length="50" />
-        </property>
-        <many-to-one name="menuId" class="kiraju.model.Menu">
-            <column name="MENU_ID" />
-        </many-to-one>
-        <property name="stok" type="java.lang.Integer">
-            <column name="STOK" />
-        </property>
-<!--        <property name="code" type="string">
-            <column name="CODE" length="20" />
-        </property>-->
-        <property name="stokFlag" type="java.lang.Boolean">
-            <column name="STOK_FLAG" />
-        </property>
-        <property name="hargaTotal" type="java.lang.Integer">
-            <column name="HARGA_TOTAL" />
-        </property>
-        <property name="modal" type="java.lang.Integer">
-            <column name="MODAL" />
-        </property>
-        <property name="untungCode" type="java.lang.Integer">
-            <column name="UNTUNG_CODE" />
-        </property>
-<!--        <many-to-one name="untungCode" class="kiraju1.model.HargaCode">
-            <column name="UNTUNG_CODE" />
-        </many-to-one>-->
-        <property name="untung" type="java.lang.Integer">
-            <column name="UNTUNG" />
-        </property>
-<!--        <many-to-one name="tambahanCode" class="kiraju1.model.HargaCode">
-            <column name="TAMBAHAN_CODE" />
-        </many-to-one>-->
-        <property name="tambahanCode" type="java.lang.Integer">
-            <column name="TAMBAHAN_CODE" />
-        </property>
-        <property name="tambahan" type="java.lang.Integer">
-            <column name="TAMBAHAN" />
-        </property>
-        <set name="stokOpname" table="STOK_OPNAME_ITEM" inverse="true" lazy="true" cascade="delete" fetch="join">
-            <key>
-                <column name="MENU_ITEM_CODE" not-null="true" />
-            </key>
-            <one-to-many class="kiraju.model.StokOpnameItem" />
-        </set>
-    </class>
+  <class dynamic-update="true" name="kiraju.model.MenuItem" optimistic-lock="version" schema="APP" table="MENU_ITEM">
+    <id name="code" type="string">
+      <column length="20" name="CODE"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="nama" type="string">
+      <column length="50" name="NAMA"/>
+    </property>
+<!--    <many-to-one class="kiraju.model.Menu" name="menuId">
+      <column name="MENU_ID"/>
+    </many-to-one>-->
+    <property name="stok" type="java.lang.Integer">
+      <column name="STOK"/>
+    </property>
+    <property name="stokFlag" type="java.lang.Boolean">
+      <column name="STOK_FLAG"/>
+    </property>
+    <property name="hargaTotal" type="java.lang.Integer">
+      <column name="HARGA_TOTAL"/>
+    </property>
+    <!--20171222 - kiraju3-->
+<!--    <property name="modal" type="java.lang.Integer">
+      <column name="MODAL"/>
+    </property>
+    <property name="untungCode" type="java.lang.Integer">
+      <column name="UNTUNG_CODE"/>
+    </property>
+    <property name="untung" type="java.lang.Integer">
+      <column name="UNTUNG"/>
+    </property>
+    <property name="tambahanCode" type="java.lang.Integer">
+      <column name="TAMBAHAN_CODE"/>
+    </property>
+    <property name="tambahan" type="java.lang.Integer">
+      <column name="TAMBAHAN"/>
+    </property>-->
+    <set cascade="delete" fetch="join" inverse="true" lazy="true" name="stokOpname" table="STOK_OPNAME_ITEM">
+      <key>
+        <column name="MENU_ITEM_CODE" not-null="true"/>
+      </key>
+      <one-to-many class="kiraju.model.StokOpnameItem"/>
+    </set>
+    <many-to-one class="kiraju.model.JenisMenu" name="jenisMenuId">
+      <column name="JENIS_MENU_ID"/>
+    </many-to-one>
+    <property name="status" type="java.lang.Boolean">
+      <column name="STATUS"/>
+    </property>
+  </class>
 </hibernate-mapping>

@@ -1,27 +1,26 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Oct 5, 2017 3:24:32 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="kiraju.model.Pelanggan" table="PELANGGAN" schema="APP" optimistic-lock="version">
-        <id name="id" type="string">
-            <column name="ID" length="50" />
-            <generator class="assigned" />
-        </id>
-        <property name="nama" type="string">
-            <column name="NAMA" length="100" />
-        </property>
-        <property name="alamat" type="string">
-            <column name="ALAMAT" length="250" />
-        </property>
-        <property name="noTelp" type="string">
-            <column name="NO_TELP" length="20" />
-        </property>
-        <property name="status" type="java.lang.Boolean">
-            <column name="STATUS" />
-        </property>
-        <property name="dtStart" type="timestamp">
-            <column name="DT_START" length="29" />
-        </property>
-    </class>
+  <class name="kiraju.model.Pelanggan" optimistic-lock="version" schema="APP" table="PELANGGAN">
+    <id name="id" type="string">
+      <column length="50" name="ID"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="nama" type="string">
+      <column length="100" name="NAMA"/>
+    </property>
+    <property name="alamat" type="string">
+      <column length="250" name="ALAMAT"/>
+    </property>
+    <property name="noTelp" type="string">
+      <column length="20" name="NO_TELP"/>
+    </property>
+    <property name="status" type="java.lang.Boolean">
+      <column name="STATUS"/>
+    </property>
+    <property name="dtStart" type="timestamp">
+      <column length="29" name="DT_START"/>
+    </property>
+  </class>
 </hibernate-mapping>

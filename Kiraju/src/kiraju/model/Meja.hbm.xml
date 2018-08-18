@@ -1,18 +1,17 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated May 18, 2017 12:05:48 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="kiraju.model.Meja" table="MEJA" schema="APP">
-        <id name="id" type="short">
-            <column name="ID" />
-            <generator class="assigned"></generator>
-        </id>
-        <property name="status" type="java.lang.Short">
-            <column name="STATUS" />
-        </property>
-        <property name="nomor" type="string">
-            <column name="NOMOR" />
-        </property>
-    </class>
+  <class name="kiraju.model.Meja" schema="APP" table="MEJA">
+    <id name="id" type="short">
+      <column name="ID"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="status" type="java.lang.Short">
+      <column name="STATUS"/>
+    </property>
+    <property name="nomor" type="string">
+      <column name="NOMOR"/>
+    </property>
+  </class>
 </hibernate-mapping>

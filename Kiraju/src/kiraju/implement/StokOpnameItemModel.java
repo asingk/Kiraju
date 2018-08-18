@@ -9,7 +9,7 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import kiraju.interfaces.IStokOpnameItem;
-import kiraju.model.Menu;
+//import kiraju.model.Menu;
 import kiraju.model.MenuItem;
 import kiraju.model.StokOpname;
 import kiraju.model.StokOpnameItem;
@@ -44,12 +44,12 @@ public class StokOpnameItemModel implements IStokOpnameItem{
                 for(Object[] obj : resultList){
                     StokOpnameItem stokOpnameItem = (StokOpnameItem) obj[0];
                     MenuItem menuItem = (MenuItem) obj[1];
-                    Menu menu = (Menu) obj[2];
+//                    Menu menu = (Menu) obj[2];
                     
                     StokOpnameItemProperty itemProperty = new StokOpnameItemProperty();
                     itemProperty.setId(stokOpnameItem.getId());
                     itemProperty.setKode(menuItem.getCode());
-                    itemProperty.setMenuNama(menu.getNama());
+//                    itemProperty.setMenuNama(menu.getNama());
 //                    itemProperty.setMenuItemId(menuItem.getId());
                     itemProperty.setMenuItemNama(menuItem.getNama());
                     itemProperty.setStok(stokOpnameItem.getStokAwal());

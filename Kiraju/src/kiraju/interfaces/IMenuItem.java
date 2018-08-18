@@ -19,10 +19,10 @@ import kiraju.property.StokOpnameItemProperty;
  */
 public interface IMenuItem {
 //    ObservableList<PesanProperty> getByMenuIdAndJumlah(int menuId, int transaksiId);
-    ObservableList<MenuItemProperty> getPropertyByMenuId(int menuId);
+//    ObservableList<MenuItemProperty> getPropertyByMenuId(int menuId);
     MenuItem getById(int id);
     void insertOrupdate(MenuItem menuItem);
-    List<String> searchMenuItemByCode(String code);
+//    List<String> searchMenuItemByCode(String code);
     MenuItem getByCode(String code);
 //    ObservableList<StokOpnameItemProperty> getMenuAndStok(int stokOpnameId, int menuId, int jenisMenuId);
     void updateStok(ObservableList<StokOpnameItemProperty> itemObsList);
@@ -31,4 +31,7 @@ public interface IMenuItem {
     boolean insert(MenuItem menuItem, Stage primaryStage);
     void update(MenuItem menuItem);
     boolean cekStokBayar(ObservableList<PesanProperty> itemObsList, Stage primaryStage);
+    
+    ObservableList<MenuItemProperty> getAllProperty(int jenisId);
+    ObservableList<MenuItemProperty> getActiveProperty(int jenisId);
 }

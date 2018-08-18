@@ -1,71 +1,70 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated May 18, 2017 12:05:48 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="kiraju.model.Transaksi" table="TRANSAKSI" schema="APP">
-        <id name="id" type="int">
-            <column name="ID" />
-            <generator class="increment">
-                <param name="schema">APP</param>
-            </generator>
-        </id>
-        <many-to-one name="mejaId" class="kiraju.model.Meja">
-            <column name="MEJA_ID" default="0"/>
-        </many-to-one>
-        <property name="dtStart" type="timestamp">
-            <column name="DT_START" length="29" />
-        </property>
-        <property name="dtEnd" type="timestamp">
-            <column name="DT_END" length="29" />
-        </property>
-        <property name="total" type="java.lang.Integer">
-            <column name="TOTAL" />
-        </property>
-        <property name="status" type="java.lang.Short">
-            <column name="STATUS" />
-        </property>
-        <set name="pesan" table="PESAN" inverse="true" lazy="true" cascade="delete" fetch="join">
-            <key>
-                <column name="TRANSAKSI_ID" not-null="true" />
-            </key>
-            <one-to-many class="kiraju.model.Pesan" />
-        </set>
-        <property name="namaPemesan" type="string">
-            <column name="NAMA_PEMESAN" length="20" />
-        </property>
-        <many-to-one name="userStart" class="kiraju.model.Users">
-            <column name="USER_START" />
-        </many-to-one>
-        <many-to-one name="userEnd" class="kiraju.model.Users">
-            <column name="USER_END" />
-        </many-to-one>
-        <property name="endDtOnly" type="date">
-            <column name="END_DT_ONLY" length="10" />
-        </property>
-        <property name="endTimeOnly" type="time">
-            <column name="END_TIME_ONLY" length="8" />
-        </property>
-        <many-to-one name="metodePembayaranId" class="kiraju.model.MetodePembayaran">
-            <column name="METODE_PEMBAYARAN_ID" />
-        </many-to-one>
-        <many-to-one name="pelangganId" class="kiraju.model.Pelanggan">
-            <column name="PELANGGAN_ID" />
-        </many-to-one>
-        <many-to-one name="diskonId" class="kiraju.model.Diskon">
-            <column name="DISKON_ID" />
-        </many-to-one>
-        <many-to-one name="pajakId" class="kiraju.model.Pajak">
-            <column name="PAJAK_ID" />
-        </many-to-one>
-        <property name="diskonTotal" type="java.lang.Integer">
-            <column name="DISKON_TOTAL" />
-        </property>
-        <property name="pajakTotal" type="java.lang.Integer">
-            <column name="PAJAK_TOTAL" />
-        </property>
-        <property name="modalTotal" type="java.lang.Integer">
-            <column name="MODAL_TOTAL" />
-        </property>
-    </class>
+  <class name="kiraju.model.Transaksi" schema="APP" table="TRANSAKSI">
+    <id name="id" type="int">
+      <column name="ID"/>
+      <generator class="increment">
+        <param name="schema">APP</param>
+      </generator>
+    </id>
+    <many-to-one class="kiraju.model.Meja" name="mejaId">
+      <column default="0" name="MEJA_ID"/>
+    </many-to-one>
+    <property name="dtStart" type="timestamp">
+      <column length="29" name="DT_START"/>
+    </property>
+    <property name="dtEnd" type="timestamp">
+      <column length="29" name="DT_END"/>
+    </property>
+    <property name="total" type="java.lang.Integer">
+      <column name="TOTAL"/>
+    </property>
+    <property name="status" type="java.lang.Short">
+      <column name="STATUS"/>
+    </property>
+    <set cascade="delete" fetch="join" inverse="true" lazy="true" name="pesan" table="PESAN">
+      <key>
+        <column name="TRANSAKSI_ID" not-null="true"/>
+      </key>
+      <one-to-many class="kiraju.model.Pesan"/>
+    </set>
+    <property name="namaPemesan" type="string">
+      <column length="20" name="NAMA_PEMESAN"/>
+    </property>
+    <many-to-one class="kiraju.model.Users" name="userStart">
+      <column name="USER_START"/>
+    </many-to-one>
+    <many-to-one class="kiraju.model.Users" name="userEnd">
+      <column name="USER_END"/>
+    </many-to-one>
+    <property name="endDtOnly" type="date">
+      <column length="10" name="END_DT_ONLY"/>
+    </property>
+    <property name="endTimeOnly" type="time">
+      <column length="8" name="END_TIME_ONLY"/>
+    </property>
+    <many-to-one class="kiraju.model.MetodePembayaran" name="metodePembayaranId">
+      <column name="METODE_PEMBAYARAN_ID"/>
+    </many-to-one>
+    <many-to-one class="kiraju.model.Pelanggan" name="pelangganId">
+      <column name="PELANGGAN_ID"/>
+    </many-to-one>
+    <many-to-one class="kiraju.model.Diskon" name="diskonId">
+      <column name="DISKON_ID"/>
+    </many-to-one>
+    <many-to-one class="kiraju.model.Pajak" name="pajakId">
+      <column name="PAJAK_ID"/>
+    </many-to-one>
+    <property name="diskonTotal" type="java.lang.Integer">
+      <column name="DISKON_TOTAL"/>
+    </property>
+    <property name="pajakTotal" type="java.lang.Integer">
+      <column name="PAJAK_TOTAL"/>
+    </property>
+    <property name="modalTotal" type="java.lang.Integer">
+      <column name="MODAL_TOTAL"/>
+    </property>
+  </class>
 </hibernate-mapping>

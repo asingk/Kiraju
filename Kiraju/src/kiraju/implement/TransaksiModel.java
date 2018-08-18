@@ -17,7 +17,7 @@ import kiraju.model.Laporan;
 import kiraju.interfaces.ITransaksi;
 import kiraju.model.Diskon;
 import kiraju.model.Meja;
-import kiraju.model.Menu;
+//import kiraju.model.Menu;
 import kiraju.model.MenuItem;
 import kiraju.model.MetodePembayaran;
 import kiraju.model.Pajak;
@@ -50,8 +50,7 @@ public class TransaksiModel implements ITransaksi{
         Transaction tx;
         try {
             tx = session.beginTransaction();
-//            Query query = session.createQuery("from Transaksi t join t.mejaId mj join t.pesan p join p.menuId m join m.jenisMenuId j where mj.id = :mejaId and t.status = 0 and p.jumlah is not 0 order by j.id, p.menuId");
-            Query query = session.createQuery("from Transaksi t left join t.diskonId d left join t.pajakId pj join t.mejaId mj join t.pesan p join p.menuItemCode mi join mi.menuId m where mj.id = :mejaId and t.status = 0 and p.jumlah is not 0 order by p.id");
+            Query query = session.createQuery("from Transaksi t left join t.diskonId d left join t.pajakId pj join t.mejaId mj join t.pesan p join p.menuItemCode mi where mj.id = :mejaId and t.status = 0 and p.jumlah is not 0 order by p.id");
             query.setParameter("mejaId", meja_id);
             List<Object[]> obj = query.list();
             if(obj != null){
@@ -62,21 +61,20 @@ public class TransaksiModel implements ITransaksi{
                     Meja meja = (Meja) object[3];
                     Pesan pesan = (Pesan) object[4];
                     MenuItem menuItem = (MenuItem) object[5];
-                    Menu menu = (Menu) object[6];
+//                    Menu menu = (Menu) object[6];
                     PesanProperty pesanProperty = new PesanProperty();
                     pesanProperty.setId(pesan.getId());
                     pesanProperty.setTransaksiId(transaksi.getId());
                     pesanProperty.setJumlah(pesan.getJumlah());
-//                    pesanProperty.setMenuItemId(menuItem.getId());
                     pesanProperty.setMenuItemNama(menuItem.getNama());
                     pesanProperty.setHarga(menuItem.getHargaTotal());
                     pesanProperty.setTotalHarga(menuItem.getHargaTotal() * pesan.getJumlah());
-                    pesanProperty.setNama(menu.getNama() + " " + menuItem.getNama());
+//                    pesanProperty.setNama(menu.getNama() + " " + menuItem.getNama());
+                    pesanProperty.setNama(menuItem.getNama());
                     pesanProperty.setCode(menuItem.getCode());
-                    pesanProperty.setMenuId(menu.getId());
-                    pesanProperty.setMenuNama(menu.getNama());
+//                    pesanProperty.setMenuId(menu.getId());
+//                    pesanProperty.setMenuNama(menu.getNama());
                     pesanProperty.setNamaPemesan(transaksi.getNamaPemesan());
-//                    pesanProperty.setMejaId(transaksi.getMejaId().getId());
                     if(null != diskon){
                         pesanProperty.setDiskonId(diskon.getId());
                         pesanProperty.setDiskonNama(diskon.getNama());
@@ -85,7 +83,7 @@ public class TransaksiModel implements ITransaksi{
                         pesanProperty.setPajakId(pajak.getId());
                         pesanProperty.setPajakNama(pajak.getNama());
                     }
-                    pesanProperty.setTotalModal(pesan.getModal() * pesan.getJumlah());
+//                    pesanProperty.setTotalModal(pesan.getModal() * pesan.getJumlah());
                     pesanProperty.setMejaNama(meja.getNomor());
                     menuMejaObsList.add(pesanProperty);
                 }
@@ -130,30 +128,6 @@ public class TransaksiModel implements ITransaksi{
         }
         return dataProperty;
     }
-
-//    @Override
-//    public int insertByNama(String nama, short userId) {
-//        Transaksi transaksi = new Transaksi();
-//        transaksi.setNamaPemesan(nama);
-//        transaksi.setStatus((short) 0);
-//        transaksi.setDtStart(new Date());
-//        transaksi.setMejaId(new Meja((short) 0));
-//        Users users = new Users();
-//        users.setId(userId != 0 ? userId : 99);
-//        transaksi.setUserStart(users);
-//        Session session = HibernateUtil.getSessionFactory().openSession();
-//        Transaction tx;
-//        try {
-//            tx = session.beginTransaction();
-//            session.save(transaksi);
-//            tx.commit();
-//        } catch (HibernateException e) {
-//            LOGGER.error("failed to insert to database", e);
-//        } finally {
-//            session.close();
-//        }
-//        return transaksi.getId();
-//    }
 
     @Override
     public void updateStatus(Transaksi transaksi) {
@@ -419,7 +393,6 @@ public class TransaksiModel implements ITransaksi{
             String sql = "select tgl, sum(income) pemasukan, sum(outcome) pengeluaran, sum(diskon) diskon, sum(pajak) pajak, sum(modal) modal from ("
                     + "select END_DT_ONLY tgl, sum(t.total) income, 0 outcome, sum(diskon_total) diskon, sum(pajak_total) pajak, sum(modal_total) modal "
                     + "from APP.TRANSAKSI t "
-//                    + "join (select sum(modal*jumlah) modal, TRANSAKSI_ID from app.pesan group by TRANSAKSI_ID) p on t.ID = p.TRANSAKSI_ID "
                     + "where status = :status GROUP by END_DT_ONLY "
                     + "union all "
                     + "SELECT DT_ONLY tgl, 0 income, sum(harga) outcome, 0 diskon, 0 pajak, 0 modal from APP.PENGELUARAN GROUP by DT_ONLY) x "
@@ -442,14 +415,15 @@ public class TransaksiModel implements ITransaksi{
                 if(null != row[4]){
                     pajak = Integer.valueOf(row[4].toString());
                 }
-                Integer modal = Integer.valueOf(row[5].toString());
+//                Integer modal = Integer.valueOf(row[5].toString());
                 laporan.setPemasukan(pemasukan);
                 laporan.setPengeluaran(pengeluaran);
                 laporan.setDiskon(diskon);
                 laporan.setPajak(pajak);
                 
-                laporan.setModal(modal);
-                laporan.setUntung(pemasukan-modal-pajak-pengeluaran);
+//                laporan.setModal(modal);
+//                laporan.setUntung(pemasukan-modal-pajak-pengeluaran);
+                laporan.setUntung(pemasukan-pajak-pengeluaran);   //remove modal @20171222 - kiraju3
                 resultList.add(laporan);
             }
             tx.commit();
@@ -470,13 +444,13 @@ public class TransaksiModel implements ITransaksi{
         Transaction tx;
         try {
             tx = session.beginTransaction();
-            String sql = "select mi.NAMA menu_item, m.NAMA menu, j.NAMA jenis_menu, x.total, x.modal, x.untung, x.tambahan, mi.HARGA_TOTAL harga, x.modal+x.untung+x.tambahan subtotal from "
-                    + "(SELECT p.menu_item_code, sum(p.JUMLAH) total, sum(p.modal*p.JUMLAH) modal, sum(p.untung*p.JUMLAH) untung, sum(p.tambahan*p.JUMLAH) tambahan FROM APP.PESAN p "
+            String sql = "select mi.NAMA menu_item, j.NAMA jenis_menu, x.total, x.modal, x.untung, x.tambahan, mi.HARGA_TOTAL harga, x.subtotal from "
+                    + "(SELECT p.menu_item_code, sum(p.JUMLAH) total, sum(p.modal*p.JUMLAH) modal, sum(p.untung*p.JUMLAH) untung, sum(p.tambahan*p.JUMLAH) tambahan, sum(p.harga*p.jumlah) subtotal FROM APP.PESAN p "
                     + "join APP.TRANSAKSI t on t.ID = p.TRANSAKSI_ID "
                     + "where t.status = :status and t.END_DT_ONLY between :tglDari and :tglSampai group by p.menu_item_code having sum(p.JUMLAH) > 0) x "
                     + "join app.MENU_ITEM mi on mi.code = x.menu_item_code "
-                    + "join app.MENU m on m.ID = mi.MENU_ID "
-                    + "join app.JENIS_MENU j on j.ID = m.JENIS_MENU_ID "
+//                    + "join app.MENU m on m.ID = mi.MENU_ID "
+                    + "join app.JENIS_MENU j on j.ID = mi.JENIS_MENU_ID "
                     + "order by j.ID, x.total desc";
             Query query = session.createSQLQuery(sql);
             query.setDate("tglDari", dateDari);
@@ -485,14 +459,11 @@ public class TransaksiModel implements ITransaksi{
             List<Object[]> rows = query.list();
             for(Object[] row : rows){
                 Laporan laporan = new Laporan();
-                laporan.setDaftarMenu(row[1].toString() + " " + row[0].toString());
-                laporan.setJenisMenu(row[2].toString());
-                laporan.setJumlah(Integer.valueOf(row[3].toString()));
-                laporan.setModal(Integer.valueOf(row[4].toString()));
-                laporan.setUntung(Integer.valueOf(row[5].toString()));
-                laporan.setTambahan(Integer.valueOf(row[6].toString()));
-                laporan.setHarga(Integer.valueOf(row[7].toString()));
-                laporan.setSubtotal(Integer.valueOf(row[8].toString()));
+                laporan.setDaftarMenu(row[0].toString());
+                laporan.setJenisMenu(row[1].toString());
+                laporan.setJumlah(Integer.valueOf(row[2].toString()));
+                laporan.setHarga(Integer.valueOf(row[6].toString()));
+                laporan.setSubtotal(Integer.valueOf(row[7].toString()));
                 resultList.add(laporan);
             }
             tx.commit();
@@ -736,7 +707,7 @@ public class TransaksiModel implements ITransaksi{
                 laporan.setPengeluaran(pengeluaran);
                 laporan.setPajak(pajak);
                 
-                laporan.setModal(modal);
+//                laporan.setModal(modal);
                 laporan.setUntung(pemasukan-modal-pajak-pengeluaran);
             }
             tx.commit();
@@ -778,7 +749,7 @@ public class TransaksiModel implements ITransaksi{
                 laporan.setPengeluaran(pengeluaran);
                 laporan.setPajak(pajak);
                 
-                laporan.setModal(modal);
+//                laporan.setModal(modal);
                 laporan.setUntung(pemasukan-modal-pajak-pengeluaran);
             }
             tx.commit();
