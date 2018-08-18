@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 29, 2018 3:23:15 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="kiraju.model.Pemasok" table="PEMASOK" schema="APP" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="ID"/>
+            <generator class="increment">
+              <param name="schema">APP</param>
+            </generator>
+        </id>
+        <property name="nama" type="string">
+            <column name="NAMA" length="100" />
+        </property>
+        <property name="telp" type="string">
+            <column name="TELP" length="20" />
+        </property>
+        <property name="alamat" type="string">
+            <column name="ALAMAT" length="250" />
+        </property>
+        <property name="email" type="string">
+            <column name="EMAIL" length="50" />
+        </property>
+        <property name="status" type="java.lang.Boolean">
+            <column name="STATUS" />
+        </property>
+    </class>
+</hibernate-mapping>

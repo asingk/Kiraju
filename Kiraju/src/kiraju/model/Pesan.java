@@ -10,7 +10,7 @@ public class Pesan  implements java.io.Serializable {
 
 
      private int id;
-     private Transaksi transaksiId;
+     private Integer transaksiId;
      private Integer jumlah;
 //     private Integer modal;
 //     private Integer untung;
@@ -19,15 +19,18 @@ public class Pesan  implements java.io.Serializable {
      
      //20171222 - kiraju3
      private Integer harga;
+     
+     //20180417 - kiraju4
+     private String produk;
 
     public Pesan() {
     }
 
 	
-    public Pesan(Transaksi transaksiId) {
+    public Pesan(Integer transaksiId) {
         this.transaksiId = transaksiId;
     }
-    public Pesan(Transaksi transaksiId, Integer jumlah) {
+    public Pesan(Integer transaksiId, Integer jumlah) {
        this.transaksiId = transaksiId;
        this.jumlah = jumlah;
     }
@@ -39,11 +42,11 @@ public class Pesan  implements java.io.Serializable {
     public void setId(int id) {
         this.id = id;
     }
-    public Transaksi getTransaksiId() {
+    public Integer getTransaksiId() {
         return this.transaksiId;
     }
     
-    public void setTransaksiId(Transaksi transaksiId) {
+    public void setTransaksiId(Integer transaksiId) {
         this.transaksiId = transaksiId;
     }
     
@@ -93,6 +96,14 @@ public class Pesan  implements java.io.Serializable {
 
     public void setHarga(Integer harga) {
         this.harga = harga;
+    }
+
+    public String getProduk() {
+        return produk;
+    }
+
+    public void setProduk(String produk) {
+        this.produk = produk;
     }
 
 

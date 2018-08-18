@@ -17,15 +17,17 @@ import kiraju.model.Laporan;
 import kiraju.interfaces.ITransaksi;
 import kiraju.model.Diskon;
 import kiraju.model.Meja;
-//import kiraju.model.Menu;
 import kiraju.model.MenuItem;
 import kiraju.model.MetodePembayaran;
 import kiraju.model.Pajak;
 import kiraju.model.Pelanggan;
+import kiraju.model.Pemasok;
 import kiraju.model.Pesan;
 import kiraju.model.Transaksi;
+import kiraju.model.TransaksiPembelian;
 import kiraju.model.Users;
 import kiraju.property.PesanProperty;
+import kiraju.property.TransaksiPembelianProperty;
 import kiraju.property.TransaksiProperty;
 import kiraju.util.CommonConstant;
 import kiraju.util.HibernateUtil;
@@ -758,6 +760,156 @@ public class TransaksiModel implements ITransaksi{
         }
         session.close();
         return laporan;
+    }
+
+    @Override
+    public int insertJual(Transaksi transaksi) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx;
+        try {
+            tx = session.beginTransaction();
+            session.save(transaksi);
+            tx.commit();
+        } catch (HibernateException e) {
+            LOGGER.error("failed to insert to database", e);
+        } finally {
+            session.close();
+        }
+        return transaksi.getId();
+    }
+
+    @Override
+    public ObservableList<TransaksiProperty> getPemasukanByTgl(LocalDate localDate) {
+        ObservableList<TransaksiProperty> dataProperty = FXCollections.observableArrayList();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx;
+        try {
+            tx = session.beginTransaction();
+            Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            Query query = session.createQuery("from Transaksi t join t.metodePembayaranId mb where date(t.tanggal) = :date order by t.tanggal");
+            query.setParameter("date", date);
+
+            List<Object[]> rows = query.list();
+            if(null != rows){
+                for(Object[] row : rows){
+                    Transaksi transaksi = (Transaksi) row[0];
+                    MetodePembayaran metodePembayaran = (MetodePembayaran) row[1];
+                    TransaksiProperty transaksiProp = new TransaksiProperty();
+                    transaksiProp.setId(transaksi.getId());
+                    transaksiProp.setWaktu(transaksi.getTanggal());
+                    transaksiProp.setTotal(transaksi.getTotal());
+                    transaksiProp.setNamaPemesan(transaksi.getNamaPemesan());
+                    transaksiProp.setMetodePembayaranNama(metodePembayaran.getNama());
+                    dataProperty.add(transaksiProp);
+                }
+            }
+            tx.commit();
+        } catch (HibernateException e) {
+            LOGGER.error("failed to select to database", e);
+        } finally {
+            session.close();
+        }
+        return dataProperty;
+    }
+
+    @Override
+    public ObservableList<TransaksiProperty> getMetodePembayaranByTgl(LocalDate localDate) {
+        ObservableList<TransaksiProperty> dataObsList = FXCollections.observableArrayList();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            Transaction tx = session.beginTransaction();
+            Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            Query query = session.createQuery("select sum(t.total) as total, mb.nama, mb.id from Transaksi t join t.metodePembayaranId mb where date(t.tanggal) = :date group by mb.nama, mb.id order by mb.id");
+
+            query.setParameter("date", date);
+            List<Object[]> rows = query.list();
+            if(rows != null){
+                for(Object[] row : rows){
+                    TransaksiProperty transaksiProperty = new TransaksiProperty();
+                    transaksiProperty.setTotal(Integer.valueOf(row[0].toString()));
+                    transaksiProperty.setMetodePembayaranNama(row[1].toString());
+                    dataObsList.add(transaksiProperty);
+                }
+            }
+            tx.commit();
+        } catch (HibernateException e) {
+            LOGGER.error("failed to select to database", e);
+        } finally {
+            session.close();
+        }
+        return dataObsList;
+    }
+
+    @Override
+    public ObservableList<TransaksiPembelianProperty> getHutangList() {
+        ObservableList<TransaksiPembelianProperty> dataProp = FXCollections.observableArrayList();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            Transaction tx = session.beginTransaction();
+            Query query = session.createQuery("from TransaksiPembelian tp join tp.pemasokId p where tp.isLunas = false and tp.status = true order by tanggal");
+//            query.setParameter("isLunas", false);
+            List<Object[]> rows = query.list();
+            if(null != rows && !rows.isEmpty()) {
+                for(Object[] row : rows) {
+                    TransaksiPembelianProperty property = new TransaksiPembelianProperty();
+                    TransaksiPembelian pembelian = (TransaksiPembelian) row[0];
+                    Pemasok pemasok = (Pemasok) row[1];
+                    property.setId(pembelian.getId());
+                    property.setTanggal(pembelian.getTanggal());
+                    property.setPemasokNama(pemasok.getNama());
+                    property.setTotal(pembelian.getTotal());
+                    dataProp.add(property);
+                }
+            }
+            tx.commit();
+        } catch (HibernateException e) {
+            LOGGER.error("failed to select to database", e);
+        }
+        session.close();
+        return dataProp;
+    }
+
+    @Override
+    public ObservableList<TransaksiProperty> getPiutangList() {
+        ObservableList<TransaksiProperty> dataProp = FXCollections.observableArrayList();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            Transaction tx = session.beginTransaction();
+            Query query = session.createQuery("from Transaksi where isLunas = :isLunas order by tanggal");
+            query.setParameter("isLunas", false);
+            List<Transaksi> resultList = query.list();
+            if(null != resultList && !resultList.isEmpty()) {
+                for(Transaksi transaksi : resultList) {
+                    TransaksiProperty property = new TransaksiProperty();
+                    property.setId(transaksi.getId());
+                    property.setTanggal(transaksi.getTanggal());
+                    property.setNamaPemesan(transaksi.getNamaPemesan());
+                    property.setTotal(transaksi.getTotal());
+                    dataProp.add(property);
+                }
+            }
+            tx.commit();
+        } catch (HibernateException e) {
+            LOGGER.error("failed to select to database", e);
+        }
+        session.close();
+        return dataProp;
+    }
+
+    @Override
+    public void updateLunas(TransaksiProperty property) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx;
+        try {
+            tx = session.beginTransaction();
+            Query query =  session.createQuery("update Transaksi set isLunas = true where id = :id");
+            query.setParameter("id", property.getId());
+            query.executeUpdate();
+            tx.commit();
+        } catch (HibernateException e) {
+            LOGGER.error("failed to update to database", e);
+        }
+        session.close();
     }
     
 }

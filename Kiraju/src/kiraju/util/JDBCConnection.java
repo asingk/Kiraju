@@ -33,7 +33,7 @@ public class JDBCConnection {
     private final static Logger LOGGER = Logger.getLogger(JDBCConnection.class);
     //for development
     private static final String DRIVER = "org.apache.derby.jdbc.ClientDriver";
-    private static final String URL = "jdbc:derby://localhost:1527/kiraju_lite";
+    private static final String URL = "jdbc:derby://localhost:1527/kiraju4";
     //for production
 //    private static final String DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
 //    private static final String URL = "jdbc:derby:kiraju";

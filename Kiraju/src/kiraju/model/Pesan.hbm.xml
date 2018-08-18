@@ -9,11 +9,14 @@
         <param name="schema">APP</param>
       </generator>
     </id>
-    <many-to-one class="kiraju.model.Transaksi" name="transaksiId">
+<!--    <many-to-one class="kiraju.model.Transaksi" name="transaksiId">
       <column name="TRANSAKSI_ID" not-null="true"/>
-    </many-to-one>
+    </many-to-one>-->
+    <property name="transaksiId" type="java.lang.Integer">
+      <column name="TRANSAKSI_ID"/>
+    </property>
     <many-to-one class="kiraju.model.MenuItem" name="menuItemCode">
-      <column name="MENU_ITEM_CODE" not-null="true"/>
+      <column name="MENU_ITEM_CODE"/>
     </many-to-one>
     <property name="jumlah" type="java.lang.Integer">
       <column name="JUMLAH"/>
@@ -30,6 +33,9 @@
     </property>-->
     <property name="harga" type="java.lang.Integer">
       <column name="HARGA"/>
+    </property>
+    <property name="produk" type="string">
+        <column name="PRODUK" length="100" />
     </property>
   </class>
 </hibernate-mapping>

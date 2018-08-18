@@ -202,7 +202,7 @@ public class PesanModel implements IPesan{
         try {
             Transaction tx = session.beginTransaction();
             Query query = session.createQuery("from Pesan p join p.menuItemCode mi where p.transaksiId = :transaksi and mi.code = :menuItemCode");
-            query.setParameter("transaksi", transaksi);
+            query.setParameter("transaksi", transaksi.getId());
             query.setParameter("menuItemCode", menuItem.getCode());
             resultList = query.list();
             tx.commit();
@@ -211,6 +211,61 @@ public class PesanModel implements IPesan{
         }
         session.close();
         return resultList;
+    }
+
+    @Override
+    public void insertList(ObservableList<PesanProperty> data, int transaksiId) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            Transaction tx = session.beginTransaction();
+            for(int i=0; i<data.size(); i++) {
+                Pesan pesan = new Pesan();
+                pesan.setProduk(data.get(i).getProduk());
+                pesan.setJumlah(Integer.valueOf(data.get(i).getBanyak()));
+                pesan.setHarga(Integer.valueOf(data.get(i).getHargaJual()));
+                pesan.setTransaksiId(transaksiId);
+                session.save(pesan);
+                if ( i % 20 == 0 ) { //20, same as the JDBC batch size
+                    //flush a batch of inserts and release memory:
+                    session.flush();
+                    session.clear();
+                }
+            }
+            tx.commit();
+        } catch (HibernateException e) {
+            LOGGER.error("failed to insert or update to database", e);
+        }
+        session.close();
+    }
+
+    @Override
+    public ObservableList<PesanProperty> getDetailByTransaksiIdJual(int transaksiId) {
+        ObservableList<PesanProperty> dataProperty = FXCollections.observableArrayList();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx;
+        try {
+            tx = session.beginTransaction();
+            Query query = session.createQuery("from Pesan p where p.transaksiId = :transaksiId order by p.id");
+            query.setParameter("transaksiId", transaksiId);
+            List<Pesan> resultList = query.list();
+            if(null != resultList){
+                for(Pesan pesan : resultList){
+                    PesanProperty pesanProperty = new PesanProperty();
+                    pesanProperty.setId(pesan.getId());
+                    pesanProperty.setMenuItemNama(pesan.getProduk());
+                    pesanProperty.setJumlah(pesan.getJumlah());
+                    pesanProperty.setHarga(pesan.getHarga());
+                    
+                    dataProperty.add(pesanProperty);
+                }
+            }
+            tx.commit();
+        } catch (HibernateException e) {
+            LOGGER.error("failed to select to database", e);
+        } finally {
+            session.close();
+        }
+        return dataProperty;
     }
     
 }

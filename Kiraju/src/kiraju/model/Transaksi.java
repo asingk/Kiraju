@@ -31,6 +31,10 @@ public class Transaksi  implements java.io.Serializable {
      private Integer diskonTotal;
      private Integer pajakTotal;
      private Integer modalTotal;
+     
+     //20170419 - kiraju4
+     private Date tanggal;
+     private Boolean isLunas;
 
     public Transaksi() {
     }
@@ -192,6 +196,22 @@ public class Transaksi  implements java.io.Serializable {
 
     public void setModalTotal(Integer modalTotal) {
         this.modalTotal = modalTotal;
+    }
+
+    public Date getTanggal() {
+        return tanggal;
+    }
+
+    public void setTanggal(Date tanggal) {
+        this.tanggal = tanggal;
+    }
+
+    public Boolean getIsLunas() {
+        return isLunas;
+    }
+
+    public void setIsLunas(Boolean isLunas) {
+        this.isLunas = isLunas;
     }
 
 

@@ -13,6 +13,7 @@ import kiraju.model.Laporan;
 import kiraju.model.Pelanggan;
 import kiraju.model.Transaksi;
 import kiraju.property.PesanProperty;
+import kiraju.property.TransaksiPembelianProperty;
 import kiraju.property.TransaksiProperty;
 
 /**
@@ -43,4 +44,10 @@ public interface ITransaksi {
     Laporan getLaporanPenjualan2(LocalDate tglDari, LocalDate tglSampai);
     Laporan getlabaRugi(LocalDate tglDari, LocalDate tglSampai);
     Laporan getlabaRugi(YearMonth yearMonth);
+    int insertJual(Transaksi transaksi);
+    ObservableList<TransaksiProperty> getPemasukanByTgl(LocalDate localDate);
+    ObservableList<TransaksiProperty> getMetodePembayaranByTgl(LocalDate localDate);
+    ObservableList<TransaksiPembelianProperty> getHutangList();
+    ObservableList<TransaksiProperty> getPiutangList();
+    void updateLunas(TransaksiProperty property);
 }

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 29, 2018 3:23:15 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="kiraju.model.DaftarPembelian" table="DAFTAR_PEMBELIAN" schema="APP" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="ID"/>
+            <generator class="increment">
+              <param name="schema">APP</param>
+            </generator>
+        </id>
+        <property name="banyak" type="java.lang.Integer">
+            <column name="BANYAK" />
+        </property>
+        <property name="harga" type="java.lang.Integer">
+            <column name="HARGA" />
+        </property>
+<!--        <many-to-one class="kiraju.model.MenuItem" name="menuItemCode">
+            <column name="MENU_ITEM_CODE" not-null="true"/>
+        </many-to-one>-->
+<!--        <many-to-one class="kiraju.model.TransaksiPembelian" name="trxPembelianId">
+            <column name="TRX_PEMBELIAN_ID" not-null="true"/>
+        </many-to-one>-->
+        <property name="trxPembelianId" type="java.lang.Integer">
+            <column name="TRX_PEMBELIAN_ID" />
+        </property>
+        <property name="namaProduk" type="string">
+            <column name="NAMA_PRODUK" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>

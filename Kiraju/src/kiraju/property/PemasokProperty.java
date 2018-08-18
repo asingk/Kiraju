@@ -5,8 +5,8 @@
  */
 package kiraju.property;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -14,23 +14,23 @@ import javafx.beans.property.StringProperty;
  *
  * @author arvita
  */
-public class PelangganProperty {
-    private final StringProperty id = new SimpleStringProperty();
+public class PemasokProperty {
+    private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty nama = new SimpleStringProperty();
     private final StringProperty alamat = new SimpleStringProperty();
+    private final StringProperty email = new SimpleStringProperty();
     private final StringProperty telp = new SimpleStringProperty();
     private final StringProperty status = new SimpleStringProperty();
-    private final StringProperty tanggal = new SimpleStringProperty();
 
-    public String getId() {
+    public Integer getId() {
         return id.get();
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id.set(id);
     }
     
-    public StringProperty idProperty() {
+    public IntegerProperty idProperty() {
         return id;
     }
 
@@ -58,6 +58,18 @@ public class PelangganProperty {
         return alamat;
     }
 
+    public String getEmail() {
+        return email.get();
+    }
+
+    public void setEmail(String email) {
+        this.email.set(email);
+    }
+    
+    public StringProperty emailProperty() {
+        return email;
+    }
+
     public String getTelp() {
         return telp.get();
     }
@@ -66,21 +78,9 @@ public class PelangganProperty {
         this.telp.set(telp);
     }
     
-    public StringProperty telpProperty() {
+    public StringProperty telponProperty() {
         return telp;
     }
-
-//    public String getIdCard() {
-//        return idCard.get();
-//    }
-//
-//    public void setIdCard(String idCard) {
-//        this.idCard.set(idCard);
-//    }
-//    
-//    public StringProperty idCardProperty() {
-//        return idCard;
-//    }
 
     public Boolean getStatus() {
         Boolean statusBoolean = status.get().equalsIgnoreCase("Ya") ? Boolean.TRUE : Boolean.FALSE;
@@ -94,19 +94,5 @@ public class PelangganProperty {
     
     public StringProperty statusProperty() {
         return status;
-    }
-
-    public String getTanggal() {
-        return tanggal.get();
-    }
-
-    public void setTanggal(Date tanggal) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        String out = dateFormat.format(tanggal);
-        this.tanggal.set(out);
-    }
-    
-    public StringProperty tanggalProperty() {
-        return tanggal;
     }
 }

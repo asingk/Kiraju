@@ -40,6 +40,63 @@
 
 <TabPane fx:id="tabPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" styleClass="tab" stylesheets="@style/tab.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kiraju.AdminController">
   <tabs>
+      <Tab fx:id="jualTab" text="Penjualan">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <VBox layoutX="191.0" layoutY="166.0" prefHeight="617.0" prefWidth="1200.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="5.0">
+                           <children>
+                              <TextField fx:id="jualProdukTF" prefHeight="26.0" prefWidth="629.0" promptText="Produk" />
+                              <TextField fx:id="jualHargaTF" promptText="Harga @" />
+                              <TextField fx:id="jualJumlahTF" promptText="Jumlah" />
+                              <ButtonBar prefHeight="40.0" prefWidth="200.0">
+                                <buttons>
+                                  <Button fx:id="jualSimpanBtn" mnemonicParsing="false" onAction="#jualSimpanAction" text="Simpan" />
+                                    <Button fx:id="jualHapusBtn" mnemonicParsing="false" onAction="#jualHapusAction" text="Hapus" />
+                                </buttons>
+                              </ButtonBar>
+                           </children>
+                        </HBox>
+                        <TableView fx:id="jualTable" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                          <columns>
+                            <TableColumn fx:id="noClmnJual" maxWidth="-1.0" minWidth="50.0" prefWidth="50.0" text="No." />
+                            <TableColumn fx:id="produkClmnJual" maxWidth="1.7976931348623157E308" prefWidth="75.0" text="Produk" />
+                              <TableColumn fx:id="hargaClmnJual" minWidth="300.0" prefWidth="75.0" text="Harga @" />
+                              <TableColumn fx:id="jumlahClmnJual" minWidth="200.0" prefWidth="75.0" text="Jumlah" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                        <HBox alignment="CENTER_LEFT" spacing="5.0" style="-fx-background-color: black;">
+                           <children>
+                              <Label text="Total:" textFill="WHITE" />
+                              <Pane HBox.hgrow="ALWAYS" />
+                              <Text fx:id="totalJual" fill="GOLD" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0">
+                          <items>
+                            <Button fx:id="jualSubmitBtn" mnemonicParsing="false" onAction="#jualSubmitAction" text="Submit" />
+                              <ChoiceBox fx:id="jualMetodeBayarCB" prefWidth="150.0" />
+                              <TextField fx:id="jualPelangganTF" promptText="Pelanggan" />
+                          </items>
+                        </ToolBar>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
       <Tab fx:id="pesanTab" text="Pesan">
          <content>
             <SplitPane dividerPositions="0.5" prefHeight="467.0" prefWidth="1000.0">
@@ -521,7 +578,7 @@
             </AnchorPane>
         </content>
       </Tab>
-      <Tab fx:id="pemasukanTab" text="Penjualan">
+      <Tab fx:id="pemasukanTab" text="Pemasukan">
          <content>
             <SplitPane dividerPositions="0.6">
                <items>
@@ -531,22 +588,22 @@
                            <children>
                               <DatePicker fx:id="pemasukanDate" onAction="#pemasukanPilihTanggal" />
                               <Pane HBox.hgrow="ALWAYS" />
-                              <ChoiceBox fx:id="pemasukanChoiceBox" prefWidth="150.0" />
+                              <ChoiceBox fx:id="pemasukanChoiceBox" prefWidth="150.0" visible="false" />
                            </children>
                         </HBox>
                         <TableView fx:id="pemasukanTable" VBox.vgrow="ALWAYS">
                           <columns>
                             <TableColumn fx:id="noColumnPemasukan" prefWidth="75.0" text="No." />
                             <TableColumn fx:id="waktuColumnPemasukan" prefWidth="75.0" text="Waktu" />
+                              <TableColumn fx:id="pelangganColumnPemasukan" prefWidth="75.0" text="Pelanggan" />
                               <TableColumn fx:id="totalColumnPemasukan" prefWidth="75.0" text="Total" />
-                              <TableColumn fx:id="statusColumnPemasukan" prefWidth="75.0" text="Status" />
                               <TableColumn fx:id="metodePembayaranColumnPemasukan" prefWidth="75.0" text="Pembayaran" />
                           </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                         </TableView>
-                        <TableView fx:id="pemasukanMetodePembayaranTable" prefHeight="200.0" prefWidth="200.0" visible="false">
+                        <TableView fx:id="pemasukanMetodePembayaranTable" prefHeight="200.0" prefWidth="200.0">
                           <columns>
                             <TableColumn fx:id="pemasukanMetodePembayaranClm" prefWidth="75.0" text="Pembayaran" />
                             <TableColumn fx:id="pemasukanMetodePembayaranTotalClm" prefWidth="75.0" text="Total" />
@@ -562,7 +619,6 @@
                           </columnConstraints>
                           <rowConstraints>
                             <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
                               <StackPane alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0">
@@ -570,23 +626,9 @@
                                     <Label text="Bayar:" />
                                  </children>
                               </StackPane>
-                              <StackPane alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="1">
-                                 <children>
-                                    <Label text="Batal:" />
-                                 </children>
-                              </StackPane>
                               <StackPane alignment="CENTER_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1">
                                  <children>
                                     <Text fx:id="totalBayar" fill="LIME" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </StackPane>
-                              <StackPane alignment="CENTER_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                 <children>
-                                    <Text fx:id="totalBatal" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                        <font>
                                           <Font size="24.0" />
                                        </font>
@@ -617,7 +659,7 @@
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                         </TableView>
-                        <GridPane hgap="5.0" vgap="5.0">
+                        <GridPane hgap="5.0" vgap="5.0" visible="false">
                            <columnConstraints>
                               <ColumnConstraints halignment="RIGHT" hgrow="NEVER" minWidth="10.0" prefWidth="75.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -670,7 +712,7 @@
             </SplitPane>
          </content>
       </Tab>
-      <Tab fx:id="pengeluaranTab" text="Beban">
+      <Tab fx:id="pengeluaranTab" text="Pengeluaran">
         <content>
             <SplitPane dividerPositions="0.7" prefHeight="617.0" prefWidth="1200.0">
               <items>
@@ -850,10 +892,10 @@
                               <Label text="Nama:" />
                               <Label text="Harga:" GridPane.rowIndex="3" />
                               <TextField fx:id="menuItemHargaJualTF" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <Label text="Stok:" visible="false" GridPane.rowIndex="5" />
-                              <CheckBox fx:id="stokCheckBox" mnemonicParsing="false" onAction="#handleStokCheckBoxAction" text="Aktif" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                              <Label text="Tambah:" visible="false" GridPane.rowIndex="6" />
-                              <TextField fx:id="stokTambahTF" disable="true" text="0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <Label text="Stok:" GridPane.rowIndex="5" />
+                              <CheckBox fx:id="stokCheckBox" mnemonicParsing="false" onAction="#handleStokCheckBoxAction" text="Aktif" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <Label text="Tambah:" GridPane.rowIndex="6" />
+                              <TextField fx:id="stokTambahTF" disable="true" text="0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                               <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="7">
                                  <buttons>
                                     <Button mnemonicParsing="false" onAction="#menuItemBatalAction" stylesheets="@style/bayarBtn.css" text="Batal" />
@@ -921,6 +963,164 @@
             </SplitPane>
          </content>
     </Tab>
+      <Tab fx:id="pembelianTab" text="Pembelian">
+         <content>
+            <SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <VBox layoutX="134.0" layoutY="32.0" prefHeight="617.0" prefWidth="596.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane prefWidth="586.0">
+                                 <children>
+                                    <Button layoutX="520.0" layoutY="10.0" mnemonicParsing="false" onAction="#pembelianCreateAction" text="Buat Baru" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <ChoiceBox fx:id="pembelianBulanCB" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <TableView fx:id="pembelianTrxTable" VBox.vgrow="ALWAYS">
+                                <columns>
+                                  <TableColumn fx:id="noClmnTrxBeli" prefWidth="75.0" text="No" />
+                                    <TableColumn fx:id="tglClmnTrxBeli" prefWidth="75.0" text="Tanggal" />
+                                  <TableColumn fx:id="pemasokClmnTrxBeli" prefWidth="75.0" text="Pemasok" />
+                                    <TableColumn fx:id="totalClmnTrxBeli" prefWidth="75.0" text="Total" />
+                                </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                              <ButtonBar prefHeight="40.0" prefWidth="200.0">
+                                <buttons>
+                                  <Button fx:id="pembelianUbahBtn" disable="true" mnemonicParsing="false" onAction="#pembelianEditAction" text="Ubah" />
+                                    <Button fx:id="pembelianHapusBtn" disable="true" mnemonicParsing="false" onAction="#pembelianHapusAction" text="Hapus" />
+                                </buttons>
+                              </ButtonBar>
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <VBox layoutX="36.0" layoutY="123.0" prefHeight="617.0" prefWidth="596.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <TableView fx:id="pembelianDetilTable" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                <columns>
+                                  <TableColumn fx:id="produkClmnTrxBeli" prefWidth="75.0" text="Produk" />
+                                  <TableColumn fx:id="hargaClmnTrxBeli" prefWidth="75.0" text="Harga @" />
+                                    <TableColumn fx:id="jumlahClmnTrxBeli" prefWidth="75.0" text="Jumlah" />
+                                </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                              <GridPane styleClass="background" stylesheets="@style/harga.css">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <StackPane alignment="CENTER_LEFT">
+                                       <children>
+                                          <Label text="Total:" />
+                                       </children>
+                                    </StackPane>
+                                    <StackPane alignment="CENTER_RIGHT" GridPane.columnIndex="1">
+                                       <children>
+                                          <Text fx:id="pembelianTotal" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </GridPane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </content>
+      </Tab>
+      <Tab fx:id="pemasokTab" text="Pemasok">
+         <content>
+            <SplitPane dividerPositions="0.6" prefHeight="160.0" prefWidth="200.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <VBox layoutX="258.0" layoutY="132.0" prefHeight="617.0" prefWidth="716.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <TextField fx:id="cariPemasokTF" maxWidth="248.0" promptText="Cari Pemasok" />
+                              <TableView fx:id="pemasokTable" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                <columns>
+                                    <TableColumn fx:id="noColumnPemasok" prefWidth="75.0" text="No." />
+                                  <TableColumn fx:id="namaColumnPemasok" prefWidth="75.0" text="Nama" />
+                                  <TableColumn fx:id="alamatColumnPemasok" prefWidth="75.0" text="Alamat" />
+                                    <TableColumn fx:id="emailColumnPemasok" prefWidth="75.0" text="Email" />
+                                    <TableColumn fx:id="telponColumnPemasok" prefWidth="75.0" text="Telpon" />
+                                </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <GridPane hgap="5.0" layoutX="76.0" layoutY="108.0" vgap="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columnConstraints>
+                            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Nama:" />
+                              <Label text="Alamat:" GridPane.rowIndex="1" />
+                              <Label text="Telpon:" GridPane.rowIndex="3" />
+                              <Label text="Email:" GridPane.rowIndex="2" />
+                              <TextField fx:id="pemasokNamaTF" maxWidth="248.0" GridPane.columnIndex="1" />
+                              <TextArea fx:id="pemasokAlamatTF" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="pemasokEmailTF" maxWidth="248.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="pemasokTelponTF" maxWidth="248.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="5">
+                                <buttons>
+                                  <Button fx:id="pemasokBatalBtn" mnemonicParsing="false" onAction="#pemasokBatalAction" text="Batal" />
+                                    <Button fx:id="pemasokSimpanBtn" mnemonicParsing="false" onAction="#pemasokSimpanAction" text="Simpan" />
+                                </buttons>
+                              </ButtonBar>
+                              <Label text="Aktif:" GridPane.rowIndex="4" />
+                              <CheckBox fx:id="pemasokStatusCheckBox" mnemonicParsing="false" selected="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                           </children>
+                        </GridPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding></AnchorPane>
+              </items>
+            </SplitPane>
+         </content>
+      </Tab>
       <Tab fx:id="diskonPajakTab" text="Diskon &amp; Pajak">
          <content>
             <Accordion>
@@ -1030,6 +1230,97 @@
                            </items>
                         </SplitPane>
                      </content>
+                </TitledPane>
+              </panes>
+            </Accordion>
+         </content>
+      </Tab>
+      <Tab fx:id="hutangPiutangTab" text="Hutang-Piutang">
+         <content>
+            <Accordion>
+              <panes>
+                <TitledPane animated="false" text="Hutang">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox layoutX="205.0" layoutY="89.0" prefHeight="564.0" prefWidth="1198.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <TableView fx:id="hutangTable" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                      <columns>
+                                        <TableColumn fx:id="tglClmnHutang" prefWidth="75.0" text="Tanggal" />
+                                        <TableColumn fx:id="noClmnHutang" prefWidth="75.0" text="No. Invoice" />
+                                          <TableColumn fx:id="pelangganClmnHutang" prefWidth="75.0" text="Pelanggan" />
+                                          <TableColumn fx:id="totalClmnHutang" prefWidth="75.0" text="Total" />
+                                      </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                    </TableView>
+                                    <HBox alignment="CENTER_LEFT" spacing="5.0" style="-fx-background-color: black;">
+                                       <children>
+                                          <Label text="Total:" textFill="WHITE" />
+                                          <Pane HBox.hgrow="ALWAYS" />
+                                          <Text fx:id="hutangTotal" fill="GOLD" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                    </HBox>
+                                    <ButtonBar prefHeight="40.0" prefWidth="200.0">
+                                      <buttons>
+                                        <Button mnemonicParsing="false" text="Bayar" />
+                                      </buttons>
+                                    </ButtonBar>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </TitledPane>
+                <TitledPane animated="false" text="Piutang">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox prefHeight="564.0" prefWidth="1198.0">
+                                 <children>
+                                    <TableView fx:id="piutangTable" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                       <columns>
+                                          <TableColumn fx:id="tglClmnPiutang" prefWidth="75.0" text="Tanggal" />
+                                          <TableColumn fx:id="noClmnPiutang" prefWidth="75.0" text="No. Invoice" />
+                                          <TableColumn fx:id="pelangganClmnPiutang" prefWidth="75.0" text="Pelanggan" />
+                                          <TableColumn fx:id="totalClmnPiutang" prefWidth="75.0" text="Total" />
+                                       </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                    </TableView>
+                                    <HBox alignment="CENTER_LEFT" spacing="5.0" style="-fx-background-color: black;">
+                                       <children>
+                                          <Label text="Total:" textFill="WHITE" />
+                                          <Pane HBox.hgrow="ALWAYS" />
+                                          <Text fx:id="piutangTotal" fill="GOLD" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                    </HBox>
+                                    <ButtonBar prefHeight="40.0" prefWidth="200.0">
+                                       <buttons>
+                                          <Button mnemonicParsing="false" onAction="#piutangLunasAction" text="Bayar" />
+                                       </buttons>
+                                    </ButtonBar>
+                                 </children>
+                              </VBox>
+                           </children></AnchorPane>
+                  </content>
                 </TitledPane>
               </panes>
             </Accordion>

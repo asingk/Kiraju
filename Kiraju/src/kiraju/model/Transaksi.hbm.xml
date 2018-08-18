@@ -24,7 +24,7 @@
     <property name="status" type="java.lang.Short">
       <column name="STATUS"/>
     </property>
-    <set cascade="delete" fetch="join" inverse="true" lazy="true" name="pesan" table="PESAN">
+    <set cascade="all" fetch="join" inverse="true" lazy="true" name="pesan" table="PESAN">
       <key>
         <column name="TRANSAKSI_ID" not-null="true"/>
       </key>
@@ -65,6 +65,12 @@
     </property>
     <property name="modalTotal" type="java.lang.Integer">
       <column name="MODAL_TOTAL"/>
+    </property>
+    <property name="tanggal" type="timestamp">
+      <column length="29" name="TANGGAL"/>
+    </property>
+    <property name="isLunas" type="java.lang.Boolean">
+        <column name="IS_LUNAS" />
     </property>
   </class>
 </hibernate-mapping>

@@ -47,6 +47,11 @@ public class PesanProperty {
     private final IntegerProperty pajakId = new SimpleIntegerProperty();
 //    private final IntegerProperty totalModal = new SimpleIntegerProperty();
     private String jumlahNumberFormat;
+    
+    //20180417 - kiraju4
+    private final StringProperty produk = new SimpleStringProperty();
+    private final StringProperty banyak = new SimpleStringProperty();
+    private final StringProperty hargaJual = new SimpleStringProperty();
 
     public int getId() {
         return id.get();
@@ -352,5 +357,41 @@ public class PesanProperty {
 //    public IntegerProperty totalModalProperty() {
 //        return totalModal;
 //    }
+
+    public String getProduk() {
+        return produk.get();
+    }
+
+    public void setProduk(String produk) {
+        this.produk.set(produk);
+    }
+    
+    public StringProperty produkProperty() {
+        return produk;
+    }
+
+    public String getBanyak() {
+        return banyak.get();
+    }
+
+    public void setBanyak(String banyak) {
+        this.banyak.set(banyak);
+    }
+    
+    public StringProperty banyakProperty() {
+        return banyak;
+    }
+
+    public String getHargaJual() {
+        return hargaJual.get();
+    }
+
+    public void setHargaJual(String hargaJual) {
+        this.hargaJual.set(hargaJual);
+    }
+    
+    public StringProperty hargaJualProperty() {
+        return hargaJual;
+    }
     
 }

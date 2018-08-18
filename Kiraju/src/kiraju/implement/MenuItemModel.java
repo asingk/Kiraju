@@ -14,10 +14,8 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import kiraju.interfaces.IMenuItem;
 import kiraju.model.JenisMenu;
-//import kiraju.model.Menu;
 import kiraju.model.MenuItem;
 import kiraju.property.MenuItemProperty;
-//import kiraju.property.MenuProperty;
 import kiraju.property.PesanProperty;
 import kiraju.property.StokOpnameItemProperty;
 import kiraju.util.HibernateUtil;
@@ -39,47 +37,6 @@ import org.hibernate.exception.ConstraintViolationException;
 public class MenuItemModel implements IMenuItem{
     
     private final static Logger LOGGER = Logger.getLogger(MenuItemModel.class);
-
-//    @Override
-//    public ObservableList<MenuItemProperty> getPropertyByMenuId(int menuId) {
-//        ObservableList<MenuItemProperty> dataProperty = FXCollections.observableArrayList();
-//        Session session = HibernateUtil.getSessionFactory().openSession();
-//        try {
-//            Transaction tx = session.beginTransaction();
-//            Query query = session.createQuery("from MenuItem mi join mi.menuId m where mi.menuId = :menuId");
-//            query.setParameter("menuId", new Menu(menuId));
-//            List<Object[]> obj = query.list();
-//            if(null != obj){
-//                for(Object[] row : obj){
-//                    MenuItem menuItem = (MenuItem) row[0];
-//                    Menu menu = (Menu) row[1];
-//                    MenuItemProperty menuItemProp = new MenuItemProperty();
-//                    MenuProperty menuProp = new MenuProperty();
-//                    menuProp.setId(menu.getId());
-//                    menuProp.setNama(menu.getNama());
-//                    menuItemProp.setNama(menuItem.getNama());
-//                    menuItemProp.setCode(menuItem.getCode());
-//                    menuItemProp.setHargaJual(menuItem.getHargaTotal());
-//                    menuItemProp.setStokFlag(menuItem.getStokFlag());
-//                    if(menuItem.getStokFlag()){
-//                        menuItemProp.setStok(menuItem.getStok().toString());
-//                    }
-////                    menuItemProp.setModal(menuItem.getModal());
-////                    menuItemProp.setUntung(menuItem.getUntung());
-////                    menuItemProp.setUntungCode(menuItem.getUntungCode());
-////                    menuItemProp.setTambahan(menuItem.getTambahan());
-////                    menuItemProp.setTambahanCode(menuItem.getTambahanCode());
-//                    dataProperty.add(menuItemProp);
-//                }
-//            }
-//            tx.commit();
-//        } catch (HibernateException e) {
-//            LOGGER.error("failed to select to database", e);
-//        } finally {
-//            session.close();
-//        }
-//        return dataProperty;
-//    }
 
     @Override
     public MenuItem getById(int id) {
@@ -114,31 +71,6 @@ public class MenuItemModel implements IMenuItem{
         }
         session.close();
     }
-
-//    @Override
-//    public List<String> searchMenuItemByCode(String code) {
-//        Session session = HibernateUtil.getSessionFactory().openSession();
-//        List<String> data = new ArrayList();
-//        try {
-//            Transaction tx = session.beginTransaction();
-//            Query query = session.createQuery("from MenuItem where code like :code");
-//            query.setParameter("code", code.toUpperCase()+"%");
-//            query.setMaxResults(10);
-//            List resultList = query.list();
-//            if(null != resultList) {
-//                for(Object o : resultList) {
-//                    MenuItem menuItem = (MenuItem) o;
-//                    Menu menu = menuItem.getMenuId();
-//                    data.add(menuItem.getCode() + " - " + menu.getNama() + " " + menuItem.getNama());
-//                }
-//            }
-//            tx.commit();
-//        } catch (HibernateException e) {
-//            LOGGER.error("failed to select to database", e);
-//        }
-//        session.close();
-//        return data;
-//    }
 
     @Override
     public MenuItem getByCode(String code) {

@@ -28,4 +28,6 @@ public interface IPesan {
     void deleteById(Pesan pesan);
     List<Pesan> getPieChartByPelanggan(Pelanggan pelanggan);
     List<Object[]> getByMenuItemAndTransaksi(MenuItem menuItem, Transaksi transaksi);
+    void insertList(ObservableList<PesanProperty> data, int transaksiId);
+    ObservableList<PesanProperty> getDetailByTransaksiIdJual(int transaksiId);
 }

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 29, 2018 3:23:15 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="kiraju.model.TransaksiPembelian" table="TRANSAKSI_PEMBELIAN" schema="APP" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="ID"/>
+            <generator class="increment">
+              <param name="schema">APP</param>
+            </generator>
+        </id>
+        <property name="tanggal" type="timestamp">
+            <column name="TANGGAL" length="29" />
+        </property>
+        <property name="total" type="java.lang.Integer">
+            <column name="TOTAL" />
+        </property>
+        <many-to-one class="kiraju.model.Pemasok" name="pemasokId">
+            <column name="PEMASOK_ID"/>
+        </many-to-one>
+        <many-to-one class="kiraju.model.MetodePembayaran" name="mtdByrId">
+            <column name="MTD_BYR_ID"/>
+        </many-to-one>
+        <property name="isLunas" type="java.lang.Boolean">
+            <column name="IS_LUNAS" />
+        </property>
+        <set cascade="delete" fetch="join" inverse="true" lazy="true" name="daftarPembelian" table="DAFTAR_PEMBELIAN">
+            <key>
+              <column name="TRX_PEMBELIAN_ID" not-null="true"/>
+            </key>
+            <one-to-many class="kiraju.model.DaftarPembelian"/>
+        </set>
+        <property name="status" type="java.lang.Boolean">
+            <column name="STATUS" />
+        </property>
+    </class>
+</hibernate-mapping>

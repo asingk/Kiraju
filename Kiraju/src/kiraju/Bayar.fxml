@@ -31,11 +31,11 @@
         </rowConstraints>
          <children>
             <TextField fx:id="uang" promptText="0" GridPane.columnIndex="1" />
-            <ChoiceBox fx:id="metode" prefWidth="150.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <ComboBox fx:id="bayarPelangganComboBox" editable="true" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Label focusTraversable="false" text="Metode:" visible="false" GridPane.rowIndex="4" />
+            <ChoiceBox fx:id="metode" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ComboBox fx:id="bayarPelangganComboBox" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label focusTraversable="false" text="Metode:" GridPane.rowIndex="4" />
             <Label focusTraversable="false" text="Bayar:" />
-            <Label focusTraversable="false" text="Pelanggan:" visible="false" GridPane.rowIndex="5" />
+            <Label focusTraversable="false" text="Pelanggan:" GridPane.rowIndex="5" />
             <Label text="Kembalian:" textFill="RED" GridPane.rowIndex="3" />
             <StackPane alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
